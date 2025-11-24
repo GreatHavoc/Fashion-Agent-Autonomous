@@ -2,7 +2,7 @@ import React from 'react';
 import { ChevronRight, ChevronDown } from 'lucide-react';
 import './FashionAgentUI.css';
 
-const DynamicForm = ({ data, onChange, readOnly = false, level = 0, path = [] }) => {
+const DynamicForm = ({ data, onChange, readOnly = false, level = 0, path = [], collapsedByDefault = false }) => {
     const [expanded, setExpanded] = React.useState({});
 
     if (data === null || data === undefined) {
@@ -28,7 +28,7 @@ const DynamicForm = ({ data, onChange, readOnly = false, level = 0, path = [] })
         if (isObject) {
             const isArray = Array.isArray(value);
             const isEmpty = Object.keys(value).length === 0;
-            const isExpanded = expanded[key] !== false; // Default to expanded
+            const isExpanded = expanded[key] !== undefined ? expanded[key] : !collapsedByDefault;
 
             return (
                 <div key={key} className="form-group-nested">
@@ -55,6 +55,7 @@ const DynamicForm = ({ data, onChange, readOnly = false, level = 0, path = [] })
                                     readOnly={readOnly}
                                     level={level + 1}
                                     path={fieldPath}
+                                    collapsedByDefault={collapsedByDefault}
                                 />
                             )}
                         </div>
