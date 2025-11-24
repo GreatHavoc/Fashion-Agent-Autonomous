@@ -1,0 +1,136 @@
+{
+    "Outfits": [
+        {
+            "outfit_name": "Modernized Heritage Fusion",
+            "outfit_description": "A regal red, A-line, Pheran-inspired dress made of a handcrafted weave with a subtle, dark winter floral print. It features a mandarin collar and full-length sleeves. This is layered with a structured, black velvet waistcoat that has intricate Aari work embroidery on the collar. The design epitomizes the 'Modernized Heritage & Tailoring' trend, blending traditional Indian silhouettes with sharp, contemporary tailoring for the fall/winter season.",
+            "season": "Fall/Winter",
+            "occasion": "Semi-formal, Festive",
+            "fashion_metrics": {
+                "Formality": 0.7,
+                "Trendiness": 0.9,
+                "Boldness": 0.8,
+                "Wearability": 0.6
+            },
+            "style_tags": [
+                "Modernized Heritage",
+                "Tailored",
+                "Festive",
+                "Velvet",
+                "Embroidery"
+            ],
+            "dominant_colors": [
+                "Regal Red",
+                "Black"
+            ],
+            "forecasted_popularity": 0.9,
+            "target_market_alignment": "Excellent alignment for young Indian consumers who appreciate a blend of tradition and modernity for festive occasions. The design is culturally appropriate, sophisticated, and makes a strong style statement.",
+            "trend_incorporation": [
+                "Modernized Heritage & Tailoring",
+                "Regal Red (Rising Color)",
+                "Velvet (Rising Material)",
+                "A-line / Flared Silhouette (Rising)",
+                "Structured Tailoring (Rising)",
+                "Embroidery & Appliqu\u00e9 (Rising)",
+                "Winter Floral (Stable Print)"
+            ],
+            "total_revisions": 0,
+            "revision_history": [],
+            "final_garment_specs": {},
+            "saved_image_path": "generated_images/Modernized_Heritage_Tailoring.png",
+            "design_success": true,
+            "reflection_insights": [
+                "Exceptional synthesis of multiple high-confidence, rising trends, particularly 'Modernized Heritage & Tailoring'.",
+                "The Regal Red and Black color combination is powerful and commercially viable for the Indian market.",
+                "Successfully merges the top two rising silhouette trends: 'A-line/Flared' and 'Structured Tailoring'.",
+                "The design's primary limitation is its climate and occasion specificity, making it ideal for North Indian winter festive events."
+            ]
+        },
+        {
+            "outfit_name": "Global Celebrity Streetwear",
+            "outfit_description": "An oversized jersey top in a rich espresso brown, featuring drop shoulders and long sleeves. It is paired with high-waisted, straight-fit denim jeans in a light cream wash that includes a subtle, dark brown pinstripe pattern. This outfit captures the 'Global Celebrity Influence' trend, focusing on comfortable, on-trend streetwear suitable for a casual university setting during the fall.",
+            "season": "Fall",
+            "occasion": "Casual, University",
+            "fashion_metrics": {
+                "Formality": 0.3,
+                "Trendiness": 0.8,
+                "Boldness": 0.6,
+                "Wearability": 0.9
+            },
+            "style_tags": [
+                "Streetwear",
+                "Oversized",
+                "Casual",
+                "Denim",
+                "Pinstripe"
+            ],
+            "dominant_colors": [
+                "Espresso Brown",
+                "Cream"
+            ],
+            "forecasted_popularity": 0.85,
+            "target_market_alignment": "High alignment with the target demographic's desire for comfortable, globally influenced, and Instagram-worthy casual wear. The style is modest, versatile, and reflects current K-pop and Western artist-inspired fashion.",
+            "trend_incorporation": [
+                "Global Celebrity Influence",
+                "Espresso / Brown (Rising Color)",
+                "Oversized Silhouette (Rising)",
+                "Pinstripes (Rising Pattern)",
+                "High-Waisted Silhouette (Stable)",
+                "Denim (Stable Material)"
+            ],
+            "total_revisions": 0,
+            "revision_history": [],
+            "final_garment_specs": {},
+            "saved_image_path": "generated_images/Global_Celebrity_Influence.png",
+            "design_success": true,
+            "reflection_insights": [
+                "Perfectly captures the rising 'Espresso / Brown' and stable 'White / Cream' color trends.",
+                "Masterfully combines 'Oversized' and 'Straight-fit/High-Waisted' silhouette trends for a balanced, modern look.",
+                "Successfully integrates the rising 'Pinstripes' pattern trend, elevating the otherwise simple trousers.",
+                "The main concern is climate specificity; the heavy top is best suited for North Indian winters or air-conditioned environments."
+            ]
+        },
+        {
+            "outfit_name": "Monochrome Comfort Kaftan",
+            "outfit_description": "A monochrome ensemble in powder pink, featuring a long, oversized kaftan in sheer organza with a high neckline and flowing sleeves. The kaftan is adorned with delicate, tonal embroidery in a winter floral pattern. It is layered over a matching straight-fit slip dress. This design is a direct reflection of 'Comfort-Driven & Oversized Silhouettes' and 'Monochrome Dressing' trends, ideal for a celebratory occasion in the spring.",
+            "season": "Spring",
+            "occasion": "Festive, Celebratory",
+            "fashion_metrics": {
+                "Formality": 0.6,
+                "Trendiness": 0.9,
+                "Boldness": 0.5,
+                "Wearability": 0.8
+            },
+            "style_tags": [
+                "Monochrome",
+                "Oversized",
+                "Comfort-Driven",
+                "Sheer Organza",
+                "Kaftan"
+            ],
+            "dominant_colors": [
+                "Powder Pink"
+            ],
+            "forecasted_popularity": 0.8,
+            "target_market_alignment": "Very high alignment for young consumers seeking elegant, comfortable, and fashion-forward options for festive events. The design is ethereal, modern, and culturally appropriate, appealing to those who favor a minimalist yet sophisticated aesthetic.",
+            "trend_incorporation": [
+                "Comfort-Driven & Oversized Silhouettes",
+                "Monochrome Dressing",
+                "Powder Pink (Rising Color)",
+                "Lace / Sheer Organza (Stable Material)",
+                "Embroidery & Appliqu\u00e9 (Rising)",
+                "Winter Floral (Stable Print)"
+            ],
+            "total_revisions": 0,
+            "revision_history": [],
+            "final_garment_specs": {},
+            "saved_image_path": "generated_images/Comfort_Driven_Oversized_Silhouettes.png",
+            "design_success": true,
+            "reflection_insights": [
+                "The 'Powder Pink' color is a rising trend and aligns with the 'Vibrant Pastels' predicted for the next season.",
+                "The design perfectly embodies the 'Comfort-Driven & Oversized Silhouettes' and 'Monochrome Dressing' style trends.",
+                "The tonal embroidery reflects the rising 'Embroidery & Appliqu\u00e9' trend, adding value and craftsmanship appeal.",
+                "The silhouette is a versatile and modern interpretation of traditional Indian garments, suitable for a wide range of events."
+            ]
+        }
+    ]
+}

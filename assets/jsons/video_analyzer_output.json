@@ -1,0 +1,966 @@
+{
+    "video_analysis": [
+        {
+            "per_video_results": [
+                {
+                    "video_url": "https://www.youtube.com/watch?v=0sbE9F4NSD4&ab_channel=RalphLauren",
+                    "trend_identification": {
+                        "silhouette_trends": [
+                            {
+                                "name": "Tailored Suiting and Blazers",
+                                "frequency": 15
+                            },
+                            {
+                                "name": "Flowing Maxi Skirts and Dresses",
+                                "frequency": 11
+                            },
+                            {
+                                "name": "Wide-Leg Trousers",
+                                "frequency": 9
+                            },
+                            {
+                                "name": "A-Line Gown",
+                                "frequency": 8
+                            },
+                            {
+                                "name": "Oversized Outerwear",
+                                "frequency": 4
+                            },
+                            {
+                                "name": "Jumpsuit",
+                                "frequency": 2
+                            }
+                        ],
+                        "popular_colors": [
+                            {
+                                "name": "Black",
+                                "frequency": 22
+                            },
+                            {
+                                "name": "Brown / Camel / Beige",
+                                "frequency": 16
+                            },
+                            {
+                                "name": "White / Cream",
+                                "frequency": 10
+                            },
+                            {
+                                "name": "Grey",
+                                "frequency": 4
+                            },
+                            {
+                                "name": "Purple",
+                                "frequency": 3
+                            }
+                        ],
+                        "trending_fabrics": [
+                            {
+                                "name": "Leather and Suede",
+                                "frequency": 13
+                            },
+                            {
+                                "name": "Wool and Tweed",
+                                "frequency": 10
+                            },
+                            {
+                                "name": "Lace",
+                                "frequency": 8
+                            },
+                            {
+                                "name": "Sheer Fabrics (Chiffon, Organza)",
+                                "frequency": 7
+                            },
+                            {
+                                "name": "Velvet",
+                                "frequency": 5
+                            },
+                            {
+                                "name": "Sequins and Beading",
+                                "frequency": 5
+                            },
+                            {
+                                "name": "Shearling and Fur",
+                                "frequency": 3
+                            }
+                        ],
+                        "prints": [
+                            {
+                                "name": "Floral",
+                                "frequency": 4
+                            },
+                            {
+                                "name": "Paisley",
+                                "frequency": 1
+                            }
+                        ],
+                        "patterns": [
+                            {
+                                "name": "Plaid",
+                                "frequency": 3
+                            }
+                        ],
+                        "seasonal_style_cues": []
+                    },
+                    "collection_analysis": {
+                        "number_of_looks": 35,
+                        "demographic_representation": {
+                            "gender": [
+                                "Female"
+                            ],
+                            "age_range": [
+                                "Young Adult (20s-30s)",
+                                "Adult (30s-40s)"
+                            ],
+                            "inclusivity_notes": "The collection exclusively featured female models. While there was some ethnic diversity, the representation of body types and age ranges was limited, primarily focusing on taller, slim models in their 20s and 30s."
+                        },
+                        "dominant_themes": [
+                            "Modern Romanticism",
+                            "Equestrian Elegance",
+                            "Androgynous Tailoring",
+                            "Victorian/Edwardian Influence",
+                            "Gothic Romance"
+                        ],
+                        "statement_pieces": [
+                            {
+                                "name": "Jackets with strong, structured shoulders",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Flowing gowns with ruffled collars and lace details",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Leather corsets and wide waist-cinching belts",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Full-length fur and shearling coats",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Sequin and bead-embellished eveningwear",
+                                "frequency": 0
+                            }
+                        ]
+                    },
+                    "styling_insights": {
+                        "accessories": [
+                            {
+                                "name": "Statement Earrings",
+                                "frequency": 30
+                            },
+                            {
+                                "name": "Leather Handbags (Totes and Shoulder Bags)",
+                                "frequency": 25
+                            },
+                            {
+                                "name": "Wide Leather Belts & Corsets",
+                                "frequency": 16
+                            },
+                            {
+                                "name": "Ruffled Jabots and Collars",
+                                "frequency": 12
+                            },
+                            {
+                                "name": "Layered Necklaces",
+                                "frequency": 8
+                            },
+                            {
+                                "name": "Brooches",
+                                "frequency": 3
+                            },
+                            {
+                                "name": "Ties",
+                                "frequency": 2
+                            }
+                        ],
+                        "hair_makeup_styles": [
+                            {
+                                "name": "Natural, loose, wavy hair",
+                                "frequency": 25
+                            },
+                            {
+                                "name": "Slicked back hair or low bun",
+                                "frequency": 8
+                            },
+                            {
+                                "name": "Short bob",
+                                "frequency": 2
+                            }
+                        ],
+                        "layering_outfit_pairing": [
+                            {
+                                "name": "Tailored blazer or coat over dresses and trouser sets",
+                                "frequency": 15
+                            },
+                            {
+                                "name": "Ruffled collar blouse under vests, sweaters, or jackets",
+                                "frequency": 12
+                            },
+                            {
+                                "name": "Wide belts worn over jackets and dresses",
+                                "frequency": 9
+                            },
+                            {
+                                "name": "Sheer tops or dresses layered under opaque garments",
+                                "frequency": 5
+                            }
+                        ],
+                        "props_unconventional_items": []
+                    },
+                    "diversity_representation": {
+                        "model_selection": {
+                            "body_types": [
+                                "slim",
+                                "athletic"
+                            ],
+                            "ethnic_diversity": [
+                                "Caucasian",
+                                "Black",
+                                "Asian"
+                            ],
+                            "age": [
+                                "20s-40s"
+                            ],
+                            "gender_fluidity": "female"
+                        },
+                        "inclusivity_social_messaging": "The primary message is of timeless, romantic luxury. The inclusion of androgynous styling elements like suits and ties on female models reinforces a theme of empowered femininity, a long-standing Ralph Lauren signature."
+                    },
+                    "show_production": {
+                        "audience_engagement": ""
+                    },
+                    "commercial_potential": {
+                        "retail_success_pieces": [],
+                        "viral_moments": []
+                    },
+                    "designer_collaboration_influences": {
+                        "guest_designers_partners": [],
+                        "cross_industry_references": [
+                            "Historical costuming (Victorian/Edwardian ruffles, corsetry, and tailoring)",
+                            "Equestrian lifestyle (tailored jackets, boots, leather goods)",
+                            "Classic Menswear Tailoring"
+                        ]
+                    }
+                },
+                {
+                    "video_url": "https://www.youtube.com/watch?v=B4TvaCwLCxQ",
+                    "trend_identification": {
+                        "silhouette_trends": [
+                            {
+                                "name": "Wide-Leg Trousers/Palazzo Pants",
+                                "frequency": 22
+                            },
+                            {
+                                "name": "Oversized Blazer/Coat",
+                                "frequency": 18
+                            },
+                            {
+                                "name": "Flowing Maxi Dress/Skirt",
+                                "frequency": 15
+                            },
+                            {
+                                "name": "A-Line Dress/Skirt",
+                                "frequency": 10
+                            },
+                            {
+                                "name": "Column Dress",
+                                "frequency": 8
+                            },
+                            {
+                                "name": "Jumpsuit/Playsuit",
+                                "frequency": 5
+                            }
+                        ],
+                        "popular_colors": [
+                            {
+                                "name": "White/Cream",
+                                "frequency": 51
+                            },
+                            {
+                                "name": "Black",
+                                "frequency": 42
+                            },
+                            {
+                                "name": "Red",
+                                "frequency": 7
+                            },
+                            {
+                                "name": "Silver/Metallic",
+                                "frequency": 5
+                            }
+                        ],
+                        "trending_fabrics": [
+                            {
+                                "name": "Cotton/Linen",
+                                "frequency": 20
+                            },
+                            {
+                                "name": "Silk/Satin",
+                                "frequency": 15
+                            },
+                            {
+                                "name": "Knitwear",
+                                "frequency": 8
+                            },
+                            {
+                                "name": "Sequins/Embellished fabrics",
+                                "frequency": 6
+                            },
+                            {
+                                "name": "Sheer/Organza",
+                                "frequency": 5
+                            },
+                            {
+                                "name": "Leather",
+                                "frequency": 4
+                            }
+                        ],
+                        "prints": [
+                            {
+                                "name": "Floral",
+                                "frequency": 3
+                            },
+                            {
+                                "name": "Abstract/Tie-Dye effect",
+                                "frequency": 2
+                            }
+                        ],
+                        "patterns": [
+                            {
+                                "name": "Stripes (Pinstripe/Nautical)",
+                                "frequency": 10
+                            },
+                            {
+                                "name": "Geometric/Chevron",
+                                "frequency": 2
+                            }
+                        ],
+                        "seasonal_style_cues": []
+                    },
+                    "collection_analysis": {
+                        "number_of_looks": 61,
+                        "demographic_representation": {
+                            "gender": [
+                                "Female"
+                            ],
+                            "age_range": [
+                                "20-30s",
+                                "40-50s"
+                            ],
+                            "inclusivity_notes": "The collection features notable age diversity with the inclusion of several mature models, but lacks significant body type diversity, primarily showcasing slim figures."
+                        },
+                        "dominant_themes": [
+                            "Modern Minimalism",
+                            "Timeless Elegance",
+                            "Sculptural Forms",
+                            "Sophisticated Resort",
+                            "Black and White Contrast"
+                        ],
+                        "statement_pieces": [
+                            {
+                                "name": "Oversized structured hats (straw and black)",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Bold, sculptural silver necklaces",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Flowing gowns in red and black",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Bamboo-handled handbags (the 'Ricky' bag)",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Sequined skirts and dresses",
+                                "frequency": 0
+                            }
+                        ]
+                    },
+                    "styling_insights": {
+                        "accessories": [
+                            {
+                                "name": "Sculptural Silver Necklaces",
+                                "frequency": 25
+                            },
+                            {
+                                "name": "Handbags (Ricky, clutch, net bags)",
+                                "frequency": 18
+                            },
+                            {
+                                "name": "Statement Earrings (Pearl/Silver)",
+                                "frequency": 15
+                            },
+                            {
+                                "name": "Belts (Leather, Fabric)",
+                                "frequency": 10
+                            },
+                            {
+                                "name": "Oversized Hats",
+                                "frequency": 8
+                            },
+                            {
+                                "name": "Silver Cuff Bracelets",
+                                "frequency": 5
+                            }
+                        ],
+                        "hair_makeup_styles": [
+                            {
+                                "name": "Natural loose waves/straight",
+                                "frequency": 35
+                            },
+                            {
+                                "name": "Sleek bun/ponytail",
+                                "frequency": 12
+                            },
+                            {
+                                "name": "Natural curls/Afro texture",
+                                "frequency": 8
+                            },
+                            {
+                                "name": "Short/Buzz cut",
+                                "frequency": 6
+                            }
+                        ],
+                        "layering_outfit_pairing": [
+                            {
+                                "name": "Oversized blazer/coat over bralette/crop top",
+                                "frequency": 11
+                            },
+                            {
+                                "name": "Unbuttoned or tied shirt over a bralette or bustier",
+                                "frequency": 7
+                            },
+                            {
+                                "name": "Vest over shirt",
+                                "frequency": 5
+                            },
+                            {
+                                "name": "Maxi skirt with crop top",
+                                "frequency": 4
+                            }
+                        ],
+                        "props_unconventional_items": []
+                    },
+                    "diversity_representation": {
+                        "model_selection": {
+                            "body_types": [
+                                "slim",
+                                "athletic"
+                            ],
+                            "ethnic_diversity": [
+                                "Caucasian",
+                                "Black",
+                                "East Asian"
+                            ],
+                            "age": [
+                                "20s-30s",
+                                "40s+"
+                            ],
+                            "gender_fluidity": "female"
+                        },
+                        "inclusivity_social_messaging": "The runway communicates a message of enduring, ageless style by including iconic, mature models, suggesting sophistication is not confined by age."
+                    },
+                    "show_production": {
+                        "audience_engagement": ""
+                    },
+                    "commercial_potential": {
+                        "retail_success_pieces": [],
+                        "viral_moments": []
+                    },
+                    "designer_collaboration_influences": {
+                        "guest_designers_partners": [],
+                        "cross_industry_references": [
+                            "Architecture and Art: The show is set in a minimalist, gallery-like space with a prominent spiral staircase, evoking modern art museums and architectural design principles.",
+                            "Equestrian and Nautical Lifestyle: Classic brand elements like tailored blazers, crisp whites, and nautical stripes reference the brand's long-standing connection to equestrian and yachting cultures."
+                        ]
+                    }
+                },
+                {
+                    "video_url": "https://www.youtube.com/watch?v=5wRIHVclKCk",
+                    "trend_identification": {
+                        "silhouette_trends": [
+                            {
+                                "name": "Tailored Suit",
+                                "frequency": 30
+                            },
+                            {
+                                "name": "A-line Coat/Dress",
+                                "frequency": 25
+                            },
+                            {
+                                "name": "Sheath Dress",
+                                "frequency": 15
+                            },
+                            {
+                                "name": "Wide-leg Trousers",
+                                "frequency": 10
+                            },
+                            {
+                                "name": "Oversized Knitwear",
+                                "frequency": 8
+                            }
+                        ],
+                        "popular_colors": [
+                            {
+                                "name": "Black",
+                                "frequency": 35
+                            },
+                            {
+                                "name": "White/Ecru",
+                                "frequency": 20
+                            },
+                            {
+                                "name": "Shades of Pink/Red",
+                                "frequency": 12
+                            },
+                            {
+                                "name": "Grey",
+                                "frequency": 10
+                            },
+                            {
+                                "name": "Blue (Denim/Navy)",
+                                "frequency": 6
+                            },
+                            {
+                                "name": "Beige/Khaki",
+                                "frequency": 5
+                            }
+                        ],
+                        "trending_fabrics": [
+                            {
+                                "name": "Tweed",
+                                "frequency": 55
+                            },
+                            {
+                                "name": "Sheer Fabrics (Tulle, Organza, Chiffon)",
+                                "frequency": 28
+                            },
+                            {
+                                "name": "Knitwear",
+                                "frequency": 18
+                            },
+                            {
+                                "name": "Leather/Patent Finish",
+                                "frequency": 12
+                            },
+                            {
+                                "name": "Satin",
+                                "frequency": 10
+                            },
+                            {
+                                "name": "Denim",
+                                "frequency": 5
+                            }
+                        ],
+                        "prints": [
+                            {
+                                "name": "Abstract Ribbon/Logo Motif",
+                                "frequency": 5
+                            },
+                            {
+                                "name": "Multi-color Plaid",
+                                "frequency": 4
+                            }
+                        ],
+                        "patterns": [
+                            {
+                                "name": "Tweed Weave",
+                                "frequency": 55
+                            },
+                            {
+                                "name": "Houndstooth",
+                                "frequency": 2
+                            }
+                        ],
+                        "seasonal_style_cues": []
+                    },
+                    "collection_analysis": {
+                        "number_of_looks": 88,
+                        "demographic_representation": {
+                            "gender": [
+                                "Female"
+                            ],
+                            "age_range": [
+                                "Young Adult (late teens to late 20s)"
+                            ],
+                            "inclusivity_notes": "The collection focuses on a modern, feminine aesthetic, showcasing ethnic diversity among models but maintaining a standard of young, slim body types."
+                        },
+                        "dominant_themes": [
+                            "Modern Romanticism",
+                            "Sheer Transparency and Layering",
+                            "Reimagined Chanel Classics",
+                            "Monochromatic Elegance (Black & White)",
+                            "Equestrian Influence"
+                        ],
+                        "statement_pieces": [
+                            {
+                                "name": "Sheer overlay skirts on tweed mini dresses",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Wide-brimmed hats",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Double-breasted long tweed coats",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Oversized multi-strand pearl necklaces",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Jackets with large bow details",
+                                "frequency": 0
+                            }
+                        ]
+                    },
+                    "styling_insights": {
+                        "accessories": [
+                            {
+                                "name": "Handbags (Mini Flap, Totes, Clutches)",
+                                "frequency": 75
+                            },
+                            {
+                                "name": "Pearl Necklaces (Layered, Oversized)",
+                                "frequency": 55
+                            },
+                            {
+                                "name": "Statement Earrings",
+                                "frequency": 40
+                            },
+                            {
+                                "name": "Wide-Brimmed Hats",
+                                "frequency": 18
+                            },
+                            {
+                                "name": "Belts (Chain, Pearl, Leather)",
+                                "frequency": 15
+                            },
+                            {
+                                "name": "Gloves",
+                                "frequency": 12
+                            }
+                        ],
+                        "hair_makeup_styles": [
+                            {
+                                "name": "Natural styles with center parts, long waves, bobs, and braids",
+                                "frequency": 88
+                            },
+                            {
+                                "name": "Makeup focused on heavy, winged black eyeliner with a neutral lip",
+                                "frequency": 88
+                            }
+                        ],
+                        "layering_outfit_pairing": [
+                            {
+                                "name": "Sheer dresses or skirts layered over shorts or mini dresses",
+                                "frequency": 28
+                            },
+                            {
+                                "name": "Tweed jackets paired with matching skirts or trousers",
+                                "frequency": 35
+                            },
+                            {
+                                "name": "Blouses with large collars or bows worn under coats and jackets",
+                                "frequency": 15
+                            }
+                        ],
+                        "props_unconventional_items": []
+                    },
+                    "diversity_representation": {
+                        "model_selection": {
+                            "body_types": [
+                                "slim"
+                            ],
+                            "ethnic_diversity": [
+                                "Caucasian",
+                                "Black",
+                                "East Asian"
+                            ],
+                            "age": [
+                                "20s"
+                            ],
+                            "gender_fluidity": "female"
+                        },
+                        "inclusivity_social_messaging": "The runway casting promotes ethnic diversity, reflecting a global brand identity. However, representation is limited in terms of body size and age, adhering to conventional high-fashion standards."
+                    },
+                    "show_production": {
+                        "audience_engagement": ""
+                    },
+                    "commercial_potential": {
+                        "retail_success_pieces": [],
+                        "viral_moments": []
+                    },
+                    "designer_collaboration_influences": {
+                        "guest_designers_partners": [],
+                        "cross_industry_references": [
+                            "Equestrianism (wide-brimmed hats, boots)",
+                            "Sculpture/Installation Art (Runway Design)"
+                        ]
+                    }
+                },
+                {
+                    "video_url": "https://www.youtube.com/watch?v=EacTFqmKX3Y",
+                    "trend_identification": {
+                        "silhouette_trends": [
+                            {
+                                "name": "Wide-leg and baggy trousers",
+                                "frequency": 25
+                            },
+                            {
+                                "name": "Sleeveless vests and gilets",
+                                "frequency": 18
+                            },
+                            {
+                                "name": "Maxi-length dresses and skirts",
+                                "frequency": 12
+                            },
+                            {
+                                "name": "Longline coats and jackets",
+                                "frequency": 10
+                            },
+                            {
+                                "name": "A-line midi skirts",
+                                "frequency": 8
+                            }
+                        ],
+                        "popular_colors": [
+                            {
+                                "name": "White / Off-White",
+                                "frequency": 15
+                            },
+                            {
+                                "name": "Black",
+                                "frequency": 12
+                            },
+                            {
+                                "name": "Tan / Beige",
+                                "frequency": 11
+                            },
+                            {
+                                "name": "Brown / Burgundy",
+                                "frequency": 8
+                            },
+                            {
+                                "name": "Denim Blue",
+                                "frequency": 5
+                            },
+                            {
+                                "name": "Dark Green",
+                                "frequency": 3
+                            }
+                        ],
+                        "trending_fabrics": [
+                            {
+                                "name": "Cotton / Canvas",
+                                "frequency": 20
+                            },
+                            {
+                                "name": "Leather / Suede",
+                                "frequency": 15
+                            },
+                            {
+                                "name": "Denim",
+                                "frequency": 8
+                            },
+                            {
+                                "name": "Knitwear (including distressed)",
+                                "frequency": 6
+                            },
+                            {
+                                "name": "Sheer / Organza",
+                                "frequency": 5
+                            },
+                            {
+                                "name": "Metallic",
+                                "frequency": 1
+                            }
+                        ],
+                        "prints": [
+                            {
+                                "name": "Photographic / Cityscape print",
+                                "frequency": 4
+                            },
+                            {
+                                "name": "Star and cloud motifs",
+                                "frequency": 3
+                            },
+                            {
+                                "name": "Graphic Logo (e.g., Santa Cruz, New York)",
+                                "frequency": 2
+                            },
+                            {
+                                "name": "Heart / Balloon print",
+                                "frequency": 2
+                            }
+                        ],
+                        "patterns": [
+                            {
+                                "name": "Plaid / Check",
+                                "frequency": 8
+                            },
+                            {
+                                "name": "Pinstripe",
+                                "frequency": 2
+                            },
+                            {
+                                "name": "Jacquard / Monogram",
+                                "frequency": 1
+                            }
+                        ],
+                        "seasonal_style_cues": []
+                    },
+                    "collection_analysis": {
+                        "number_of_looks": 41,
+                        "demographic_representation": {
+                            "gender": [
+                                "Male",
+                                "Female",
+                                "Gender-fluid presentation"
+                            ],
+                            "age_range": [
+                                "20s-30s"
+                            ],
+                            "inclusivity_notes": "The collection presents a strong androgynous theme, with many garments styled interchangeably on male and female models. It also includes a plus-size model, showing a step towards body diversity."
+                        },
+                        "dominant_themes": [
+                            "Urban Romanticism",
+                            "Deconstructed Workwear",
+                            "Nostalgic Americana",
+                            "Playful Imperfection"
+                        ],
+                        "statement_pieces": [
+                            {
+                                "name": "Oversized locket and pouch necklaces",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Long sleeveless leather and canvas coats",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Maxi dresses with photographic city prints",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Baggy, distressed cargo and tailored trousers",
+                                "frequency": 0
+                            },
+                            {
+                                "name": "Round crossbody 'Tabby' bags",
+                                "frequency": 0
+                            }
+                        ]
+                    },
+                    "styling_insights": {
+                        "accessories": [
+                            {
+                                "name": "Large, functional pendant necklaces (lockets, pouches)",
+                                "frequency": 35
+                            },
+                            {
+                                "name": "Crossbody and shoulder bags (round, bucket, clutch)",
+                                "frequency": 28
+                            },
+                            {
+                                "name": "Neckerchiefs and slim scarves",
+                                "frequency": 18
+                            },
+                            {
+                                "name": "Neckties worn as a styling accessory",
+                                "frequency": 12
+                            },
+                            {
+                                "name": "Leather belts with statement buckles",
+                                "frequency": 10
+                            },
+                            {
+                                "name": "Eyeglasses",
+                                "frequency": 8
+                            }
+                        ],
+                        "hair_makeup_styles": [
+                            {
+                                "name": "Minimal and natural makeup",
+                                "frequency": 41
+                            },
+                            {
+                                "name": "Varied and individualistic hair (bobs, shags, natural textures, braids)",
+                                "frequency": 41
+                            }
+                        ],
+                        "layering_outfit_pairing": [
+                            {
+                                "name": "Vests layered over jackets and tees",
+                                "frequency": 15
+                            },
+                            {
+                                "name": "Turtlenecks or mock necks as a base layer",
+                                "frequency": 12
+                            },
+                            {
+                                "name": "Blazers paired with wide-leg, casual trousers",
+                                "frequency": 10
+                            },
+                            {
+                                "name": "Sheer dresses layered over t-shirts and trousers",
+                                "frequency": 8
+                            }
+                        ],
+                        "props_unconventional_items": []
+                    },
+                    "diversity_representation": {
+                        "model_selection": {
+                            "body_types": [
+                                "slim",
+                                "plus-size"
+                            ],
+                            "ethnic_diversity": [
+                                "Caucasian",
+                                "Black",
+                                "East Asian",
+                                "South Asian"
+                            ],
+                            "age": [
+                                "Young Adult (20s-30s)"
+                            ],
+                            "gender_fluidity": "female"
+                        },
+                        "inclusivity_social_messaging": "The runway showcases significant ethnic diversity and promotes gender-fluid fashion by blurring the lines between traditional menswear and womenswear. The inclusion of a plus-size model is a positive gesture towards body inclusivity."
+                    },
+                    "show_production": {
+                        "audience_engagement": ""
+                    },
+                    "commercial_potential": {
+                        "retail_success_pieces": [],
+                        "viral_moments": []
+                    },
+                    "designer_collaboration_influences": {
+                        "guest_designers_partners": [],
+                        "cross_industry_references": [
+                            "Utilitarian Workwear & Uniforms",
+                            "Urban Architecture & City Life (via prints)",
+                            "Skateboard Culture (graphic tees)"
+                        ]
+                    }
+                }
+            ],
+            "metrics_summary": {},
+            "trending_elements": {},
+            "commercial_insights": {},
+            "technical_quality": {}
+        }
+    ],
+    "agent_memories": {
+        "video_analyzer": {
+            "processed_videos": 4
+        }
+    },
+    "execution_status": {
+        "video_analyzer": "completed"
+    }
+}

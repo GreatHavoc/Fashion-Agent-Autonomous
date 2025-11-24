@@ -1,0 +1,139 @@
+{
+    "Outfits": [
+        {
+            "outfit_name": "Urban Dhoti Ensemble",
+            "outfit_description": "A chic and comfortable summer outfit featuring relaxed, ivory-colored dhoti pants in a handwoven cotton-linen blend with subtle mint and gold chikankari embroidery. It is paired with a simple, fitted mint green crop top, a sustainable woven basket bag, and contemporary silver jewelry, perfectly blending traditional Indian drapes with modern casual style.",
+            "season": "Summer",
+            "occasion": "Day Out",
+            "fashion_metrics": {
+                "Formality": 0.3,
+                "Trendiness": 0.9,
+                "Boldness": 0.5,
+                "Wearability": 0.9
+            },
+            "style_tags": [
+                "Indo-Western",
+                "Sustainable Fashion",
+                "Casual Chic",
+                "Comfort-wear",
+                "Fusion"
+            ],
+            "dominant_colors": [
+                "ivory",
+                "mint",
+                "gold"
+            ],
+            "forecasted_popularity": 0.9,
+            "target_market_alignment": "Excellent. The design directly caters to the 18-26 age group's preference for comfortable, culturally rooted, yet modern and globally relevant fashion. Its versatility for casual outings makes it highly marketable.",
+            "trend_incorporation": [
+                "Traditional-Modern Fusion",
+                "Sustainable & Ethical Fashion",
+                "Comfort-Centric & Versatile",
+                "Handloom Cottons & Silks",
+                "Deconstructed / Reimagined Traditional (Dhotis)",
+                "Woven basket bags"
+            ],
+            "total_revisions": 0,
+            "revision_history": [],
+            "final_garment_specs": {},
+            "saved_image_path": "generated_images/urban_dhoti_v1.png",
+            "design_success": true,
+            "reflection_insights": [
+                "The design strongly aligns with the 'Traditional-Modern Fusion' and 'Comfort-Centric' trends by reinterpreting the classic dhoti into a versatile, stylish pant.",
+                "Incorporates sustainable elements like handwoven fabric and a natural fiber basket bag, appealing to the eco-conscious Gen Z consumer.",
+                "The color palette of ivory with mint accents is fresh, modern, and highly suitable for the summer season, aligning with the trend of using natural tones with vibrant highlights."
+            ]
+        },
+        {
+            "outfit_name": "Artisanal Ajrakh Maxi",
+            "outfit_description": "A bohemian-chic, flowing maxi dress made from soft, handloom cotton. The dress features a traditional Ajrakh block print in a classic indigo and madder red colorway. With a comfortable V-neck and kimono sleeves, it's styled with layered silver necklaces, leather sandals, and a woven tote, embodying artisan-led, sustainable fashion.",
+            "season": "Spring",
+            "occasion": "Casual Outing",
+            "fashion_metrics": {
+                "Formality": 0.4,
+                "Trendiness": 0.9,
+                "Boldness": 0.7,
+                "Wearability": 1.0
+            },
+            "style_tags": [
+                "Bohemian",
+                "Artisanal",
+                "Sustainable Fashion",
+                "Ethnic",
+                "Handloom"
+            ],
+            "dominant_colors": [
+                "indigo",
+                "madder red",
+                "white"
+            ],
+            "forecasted_popularity": 0.95,
+            "target_market_alignment": "Excellent. The outfit's blend of traditional craft with a relaxed, modern silhouette is highly appealing to the target demographic who value authenticity, comfort, and ethical production.",
+            "trend_incorporation": [
+                "Artisan-Led Design & Cultural Authorship",
+                "Sustainable & Ethical Fashion",
+                "Traditional-Modern Fusion",
+                "Comfort-Centric & Versatile",
+                "Ajrakh (Block Prints)",
+                "Indigo / Madder Colors",
+                "Flowing Maxi Skirts & Dresses",
+                "Handloom Cottons & Silks"
+            ],
+            "total_revisions": 0,
+            "revision_history": [],
+            "final_garment_specs": {},
+            "saved_image_path": "generated_images/ajrakh_maxi_v1.png",
+            "design_success": true,
+            "reflection_insights": [
+                "This design is a prime example of the 'Artisan-Led Design' and 'Cultural Authorship' trend, using authentic Ajrakh patterns which appeal to consumers seeking story-rich garments.",
+                "The flowing maxi silhouette is identified as a key rising trend, prioritizing both comfort and style.",
+                "The use of handloom cotton and traditional colors (Indigo/Madder) directly aligns with the material and color trends, reinforcing its sustainable and cultural credentials."
+            ]
+        },
+        {
+            "outfit_name": "Chikankari Denim Fusion",
+            "outfit_description": "A contemporary fusion look featuring a classic medium-wash blue denim jacket embellished with vibrant Chikankari embroidery on the back and cuffs. The jacket is layered over a simple white summer maxi dress and paired with casual white sneakers and silver hoops, creating an effortlessly cool, 'Indian Cool' aesthetic.",
+            "season": "All-Season",
+            "occasion": "College/Casual Wear",
+            "fashion_metrics": {
+                "Formality": 0.2,
+                "Trendiness": 0.8,
+                "Boldness": 0.6,
+                "Wearability": 1.0
+            },
+            "style_tags": [
+                "Fusion Wear",
+                "Denim",
+                "Street Style",
+                "Embroidered",
+                "Casual"
+            ],
+            "dominant_colors": [
+                "medium-wash blue",
+                "white",
+                "fuchsia",
+                "yellow"
+            ],
+            "forecasted_popularity": 0.85,
+            "target_market_alignment": "Excellent. This outfit is perfectly suited for the everyday, casual wardrobe of the 18-26 age group. It's practical for college or social outings and reflects a modern way of incorporating traditional crafts into daily wear.",
+            "trend_incorporation": [
+                "Traditional-Modern Fusion",
+                "Denim Material Trend",
+                "Vibrant Accents (Colors)",
+                "Flowing Maxi Skirts & Dresses",
+                "Artisan-Led Design (Chikankari)",
+                "Versatile Layered Separates"
+            ],
+            "total_revisions": 0,
+            "revision_history": [],
+            "final_garment_specs": {},
+            "saved_image_path": "generated_images/denim_fusion_v1.png",
+            "design_success": true,
+            "reflection_insights": [
+                "The outfit perfectly captures the micro-trend of 'Denim with Indian embellishments', creating a highly commercial and wearable fusion piece.",
+                "It demonstrates a strong layering potential, aligning with the trend of versatile separates that can be styled in multiple ways.",
+                "The combination of a global fashion staple (denim jacket) with a traditional Indian craft (Chikankari) makes the design accessible yet unique for the target market."
+            ]
+        }
+    ]
+}

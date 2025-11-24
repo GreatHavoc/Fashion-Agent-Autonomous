@@ -1,0 +1,308 @@
+{
+    "final_report": {
+        "trend_analysis": {
+            "analysis_date": "2025-10-02",
+            "total_outfits_analyzed": 225,
+            "dominant_color_trends": [
+                {
+                    "name": "White / Ecru / Natural Tones",
+                    "hex_code": "#F5F5DC",
+                    "frequency": 96,
+                    "trend_direction": "Rising",
+                    "confidence_score": 1
+                },
+                {
+                    "name": "Black",
+                    "hex_code": "#000000",
+                    "frequency": 99,
+                    "trend_direction": "Stable",
+                    "confidence_score": 1
+                },
+                {
+                    "name": "Earthy Tones / Brown / Beige",
+                    "hex_code": "#A0522D",
+                    "frequency": 27,
+                    "trend_direction": "Rising",
+                    "confidence_score": 1
+                },
+                {
+                    "name": "Vibrant Accents (Fuchsia, Yellow, Green, Red)",
+                    "hex_code": "#FF00FF",
+                    "frequency": 19,
+                    "trend_direction": "Rising",
+                    "confidence_score": 1
+                },
+                {
+                    "name": "Indigo / Madder",
+                    "hex_code": "#4B0082",
+                    "frequency": 4,
+                    "trend_direction": "Rising",
+                    "confidence_score": 0.9
+                }
+            ],
+            "style_trends": [
+                {
+                    "trend_name": "Traditional-Modern Fusion",
+                    "frequency": 112,
+                    "trend_direction": "Rising",
+                    "confidence_score": 1,
+                    "description": "A dynamic blend of Indian heritage with contemporary global aesthetics, focusing on reinterpreting traditional garments and crafts for modern wear.",
+                    "key_pieces": [
+                        "Dhoti pants",
+                        "Embellished denim",
+                        "Deconstructed saris",
+                        "Re-styled lehengas",
+                        "Couture sherwanis"
+                    ]
+                },
+                {
+                    "trend_name": "Sustainable & Ethical Fashion",
+                    "frequency": 57,
+                    "trend_direction": "Rising",
+                    "confidence_score": 1,
+                    "description": "Emphasis on ethically produced, culturally significant textiles, eco-friendly accessories, and circular fashion practices like re-styling.",
+                    "key_pieces": [
+                        "Handloom garments",
+                        "Woven basket bags",
+                        "Upcycled ethnic wear"
+                    ]
+                },
+                {
+                    "trend_name": "Artisan-Led Design & Cultural Authorship",
+                    "frequency": 39,
+                    "trend_direction": "Rising",
+                    "confidence_score": 0.9,
+                    "description": "A growing appreciation for unique, story-rich pieces crafted by artisans, with a focus on preserving and innovating traditional crafts.",
+                    "key_pieces": [
+                        "Ajrakh textiles",
+                        "Ryndia silk garments",
+                        "Handcrafted accessories"
+                    ]
+                },
+                {
+                    "trend_name": "Comfort-Centric & Versatile",
+                    "frequency": 17,
+                    "trend_direction": "Rising",
+                    "confidence_score": 1,
+                    "description": "Fashion that prioritizes ease of wear and adaptability, allowing for multi-functional styling across various occasions.",
+                    "key_pieces": [
+                        "Dhoti pants",
+                        "Kaftans",
+                        "Wide-leg pants",
+                        "Relaxed-fit maxis"
+                    ]
+                }
+            ],
+            "pattern_trends": [
+                {
+                    "pattern_name": "Ajrakh (Block Prints)",
+                    "pattern_type": "Geometric / Traditional",
+                    "frequency": 25,
+                    "trend_direction": "Rising",
+                    "confidence_score": 0.9,
+                    "description": "Traditional geometric and floral block prints from Kutch, often in indigo and madder, now with modern interpretations and artisan authorship.",
+                    "scale": "Medium to Large",
+                    "color_combinations": [
+                        "Indigo & Madder",
+                        "Abstract modern colors"
+                    ]
+                },
+                {
+                    "pattern_name": "Mythological / Astrological Prints",
+                    "pattern_type": "Narrative / Symbolic",
+                    "frequency": 31,
+                    "trend_direction": "Rising",
+                    "confidence_score": 1,
+                    "description": "Narrative-driven prints inspired by Indian mythology or astrology, integrated into contemporary casual wear.",
+                    "scale": "Medium to Large",
+                    "color_combinations": [
+                        "Vibrant accents on neutral bases",
+                        "Monochrome"
+                    ]
+                },
+                {
+                    "pattern_name": "Floral",
+                    "pattern_type": "Nature-inspired",
+                    "frequency": 7,
+                    "trend_direction": "Rising",
+                    "confidence_score": 1,
+                    "description": "Versatile floral motifs, from subtle embellishments to bold prints, appearing on various garments.",
+                    "scale": "Small to Medium",
+                    "color_combinations": [
+                        "White with vibrant accents",
+                        "Multi-colored"
+                    ]
+                },
+                {
+                    "pattern_name": "Plaid / Check",
+                    "pattern_type": "Geometric",
+                    "frequency": 11,
+                    "trend_direction": "Rising",
+                    "confidence_score": 0.7,
+                    "description": "Classic checkered patterns, seen in both tailored and casual wear, often with a modern twist.",
+                    "scale": "Small to Medium",
+                    "color_combinations": [
+                        "Monochrome",
+                        "Multi-color"
+                    ]
+                }
+            ],
+            "print_trends": [
+                {
+                    "print_name": "Traditional Indian Prints & Embroidery",
+                    "print_category": "Cultural/Artisanal",
+                    "frequency": 10,
+                    "trend_direction": "rising",
+                    "confidence_score": 1,
+                    "description": "Revitalization and modern reinterpretation of heritage Indian prints and embroidery techniques like Ajrakh, Ikat, Chikankari, Parsi Gara, and Lambadi.",
+                    "placement_style": "All-over, Accents, Fusion elements",
+                    "color_palette": [
+                        "Traditional Ajrakh colors (indigo, madder red, black, white)",
+                        "Vibrant and earthy tones of Odisha Ikat",
+                        "Vibrant colors of Lambadi embroidery"
+                    ]
+                },
+                {
+                    "print_name": "Plaid/Check & Stripes",
+                    "print_category": "Geometric",
+                    "frequency": 22,
+                    "trend_direction": "rising",
+                    "confidence_score": 0.7,
+                    "description": "Classic geometric patterns, including various forms of plaid/check and stripes (pinstripe, Breton), gaining popularity in contemporary and fusion wear.",
+                    "placement_style": "All-over, Suiting, Casual wear",
+                    "color_palette": [
+                        "Monochromatic (black/white)",
+                        "Earthy tones",
+                        "Classic navy/white"
+                    ]
+                },
+                {
+                    "print_name": "Floral",
+                    "print_category": "Nature",
+                    "frequency": 7,
+                    "trend_direction": "stable",
+                    "confidence_score": 0.6,
+                    "description": "Enduring popularity of floral motifs, appearing in both traditional and contemporary contexts, often with a fresh, modern interpretation.",
+                    "placement_style": "All-over, Accents",
+                    "color_palette": [
+                        "Bright summer palettes",
+                        "Traditional Indian floral hues"
+                    ]
+                },
+                {
+                    "print_name": "Cityscape/Graphic Prints",
+                    "print_category": "Abstract/Modern",
+                    "frequency": 4,
+                    "trend_direction": "emerging",
+                    "confidence_score": 0.6,
+                    "description": "Emerging trend of urban-inspired and graphic prints, reflecting a global, contemporary aesthetic.",
+                    "placement_style": "All-over, Statement pieces",
+                    "color_palette": [
+                        "Monochromatic",
+                        "Subtle color accents"
+                    ]
+                }
+            ],
+            "material_trends": [
+                {
+                    "material": "Handloom Cottons & Silks",
+                    "frequency": 35,
+                    "trend": "Rising"
+                },
+                {
+                    "material": "Denim",
+                    "frequency": 13,
+                    "trend": "Rising"
+                },
+                {
+                    "material": "Natural Fibers (Banana, Sabai Grass, Rattan)",
+                    "frequency": 11,
+                    "trend": "Rising"
+                },
+                {
+                    "material": "Sheer Fabrics (Organza, Chiffon)",
+                    "frequency": 40,
+                    "trend": "Rising"
+                }
+            ],
+            "silhouette_trends": [
+                {
+                    "silhouette": "Wide-Leg Trousers / Palazzo Pants",
+                    "frequency": 31,
+                    "trend": "Rising"
+                },
+                {
+                    "silhouette": "Flowing Maxi Skirts & Dresses",
+                    "frequency": 26,
+                    "trend": "Rising"
+                },
+                {
+                    "silhouette": "Deconstructed / Reimagined Traditional (Saris, Dhotis)",
+                    "frequency": 4,
+                    "trend": "Rising"
+                },
+                {
+                    "silhouette": "Oversized Outerwear / Blazers",
+                    "frequency": 22,
+                    "trend": "Rising"
+                },
+                {
+                    "silhouette": "Bralettes / Crop Tops",
+                    "frequency": 14,
+                    "trend": "Rising"
+                }
+            ],
+            "seasonal_insights": {
+                "fall": [
+                    "Tailored pieces with traditional Indian embellishments",
+                    "Deeper traditional color palettes (e.g., Indigo, Madder)",
+                    "Layering of handloom fabrics with modern silhouettes"
+                ],
+                "winter": [
+                    "Rich handloom silks and wools (e.g., Ryndia silk) in structured yet comfortable forms",
+                    "Fusion outerwear combining Indian crafts with global styles"
+                ],
+                "spring": [
+                    "Breathable handloom cottons and linens",
+                    "White and natural palettes with vibrant accents",
+                    "Flowing maxi dresses and kaftans"
+                ],
+                "summer": [
+                    "Dhoti pants and deconstructed saris for comfort and style",
+                    "Sustainable accessories made from natural fibers",
+                    "Lightweight, versatile separates with Indian craft details"
+                ]
+            },
+            "predicted_next_season_trends": [
+                "Continued innovation in traditional Indian drapes for casual and festive wear, with a focus on comfort and versatility.",
+                "Growing appeal of gender-neutral traditional garments, expanding the market for styles like modernized dhoti pants.",
+                "Increased demand for ethically produced, sustainable accessories and handloom textiles, driven by Gen Z's conscious consumption values.",
+                "Further integration of Indian crafts (e.g., chikankari, Ajrakh) into global casual wear, particularly denim, creating unique fusion pieces.",
+                "Emphasis on versatile, layered separates and creative re-styling of existing ethnic wear to promote circular fashion.",
+                "Rise of artisan-led design with strong cultural narratives, offering unique and authentic fashion choices."
+            ]
+        },
+        "overall_confidence_score": 0.9,
+        "analysis_summary": "The Indian fashion landscape for Gen Z women is dynamically shaped by a strong emphasis on traditional-modern fusion and sustainable practices. This demographic actively seeks comfort, versatility, and cultural authenticity in their clothing choices. Key trends include the reinterpretation of classic Indian drapes like the dhoti into contemporary, often gender-neutral silhouettes, and the seamless integration of traditional crafts such as chikankari and Ajrakh into modern casual wear. Sustainability is a paramount driver, evidenced by the rising popularity of handloom textiles, eco-friendly accessories crafted from natural and recycled materials, and a conscious move towards re-styling existing ethnic wear. Color palettes favor crisp whites, natural tones, and earthy hues, often punctuated by vibrant traditional accents. The market is increasingly valuing artisan-led design, where cultural narratives and ethical production are as important as aesthetic appeal. This synthesis indicates a robust and evolving market for 'Indian Cool' fashion that is both globally relevant and deeply rooted in heritage, offering significant commercial potential for brands that align with these values."
+    },
+    "agent_memories": {
+        "data_collector": {
+            "last_analysis": "Initial scraping from Elle India and Grazia India yielded mostly global fashion week and celebrity style content, which is not directly relevant to Indian Gen Z women's casual, sustainable, or traditional-modern fusion trends. The Voice of Fashion and Times of India Fashion provided much more relevant content. I've identified several articles discussing handlooms, traditional textiles (Odisha Ikat, Eri silk, Ajrakh), traditional Indian wear (sarees, lehengas, dhoti) with modern interpretations, and sustainable fashion practices. The focus on festive wear during Durga Puja and Navratri from Times of India also highlights the ongoing relevance and potential for fusion in traditional attire. I will continue to look for more specific examples of Gen Z casual wear and explicit mentions of sustainable practices within Indian fashion."
+        },
+        "video_analyzer": {
+            "processed_videos": 4
+        },
+        "content_analyzer": {
+            "last_analysis": "Indian fashion for Gen Z women (18-26, casual) is strongly characterized by a dynamic fusion of traditional elements with modern, comfortable, and sustainable aesthetics. Key trends include the reinterpretation of classic Indian drapes like the dhoti into versatile, gender-neutral silhouettes, and the integration of traditional crafts like chikankari and Ajrakh into contemporary casual wear, often with a global appeal. Sustainability is a significant driver, seen in the promotion of handloom textiles, eco-friendly accessories made from natural and recycled materials, and the emphasis on restyling existing ethnic wear. White and natural tones are popular, alongside vibrant accents, reflecting a desire for both minimalist chic and cultural expression. This demographic values authenticity, ethical production, and personal authorship in fashion, leading to a growing appreciation for artisan-led design and conscious consumption."
+        },
+        "final_processor": {
+            "synthesis_complete": true
+        }
+    },
+    "execution_status": {
+        "data_collector": "completed",
+        "video_analyzer": "completed",
+        "content_analyzer": "completed",
+        "final_processor": "completed"
+    }
+}

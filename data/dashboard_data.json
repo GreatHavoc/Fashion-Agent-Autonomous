@@ -1,0 +1,386 @@
+{
+    "trend_analysis": {
+        "analysis_date": "2025-11-18",
+        "total_outfits_analyzed": 68,
+        "dominant_color_trends": [
+            {
+                "name": "Black",
+                "pantone_code": "19-4007 TPG",
+                "frequency": 35,
+                "trend_direction": "stable",
+                "confidence_score": 0.95
+            },
+            {
+                "name": "White / Cream",
+                "pantone_code": "11-0601 TPG",
+                "frequency": 22,
+                "trend_direction": "stable",
+                "confidence_score": 0.9
+            },
+            {
+                "name": "Grey",
+                "pantone_code": "17-3911 TPG",
+                "frequency": 15,
+                "trend_direction": "stable",
+                "confidence_score": 0.85
+            },
+            {
+                "name": "Regal Red",
+                "pantone_code": "19-1763 TPG",
+                "frequency": 0,
+                "trend_direction": "rising",
+                "confidence_score": 0.8
+            },
+            {
+                "name": "Espresso / Brown",
+                "pantone_code": "19-0912 TPG",
+                "frequency": 8,
+                "trend_direction": "rising",
+                "confidence_score": 0.8
+            },
+            {
+                "name": "Powder Pink",
+                "pantone_code": "14-1511 TPG",
+                "frequency": 0,
+                "trend_direction": "rising",
+                "confidence_score": 0.75
+            },
+            {
+                "name": "Edgy Eggplant",
+                "pantone_code": "19-3526 TPG",
+                "frequency": 0,
+                "trend_direction": "rising",
+                "confidence_score": 0.75
+            }
+        ],
+        "style_trends": [
+            {
+                "trend_name": "Modernized Heritage & Tailoring",
+                "frequency": 15,
+                "trend_direction": "rising",
+                "confidence_score": 0.9,
+                "description": "A blend of classic, sharp tailoring (blazers, waistcoats) with modernized traditional garments (Pheran-inspired dresses, Manipuri weaves), emphasizing craftsmanship.",
+                "key_pieces": [
+                    "Structured Blazers",
+                    "Waistcoats",
+                    "Handcrafted Textiles",
+                    "A-line Skirts"
+                ]
+            },
+            {
+                "trend_name": "Global Celebrity Influence",
+                "frequency": 0,
+                "trend_direction": "rising",
+                "confidence_score": 0.85,
+                "description": "Fashion driven by international pop culture, including K-pop and Western music artists, focusing on streetwear and body-positive silhouettes.",
+                "key_pieces": [
+                    "Oversized Jersey Tops",
+                    "High-Waisted Bottoms",
+                    "Tennis Skirts",
+                    "Thigh-High Boots"
+                ]
+            },
+            {
+                "trend_name": "Comfort-Driven & Oversized Silhouettes",
+                "frequency": 0,
+                "trend_direction": "rising",
+                "confidence_score": 0.8,
+                "description": "A focus on comfort and individuality through loose-fitting and flowing garments, such as kaftans and oversized salwar-kameez.",
+                "key_pieces": [
+                    "Oversized Kaftans",
+                    "Pheran-inspired Dresses",
+                    "Full-length Flowing Dresses"
+                ]
+            },
+            {
+                "trend_name": "Monochrome Dressing",
+                "frequency": 0,
+                "trend_direction": "stable",
+                "confidence_score": 0.75,
+                "description": "Styling outfits using a single color or varying shades of the same color to create a clean, elongated, and impactful look.",
+                "key_pieces": [
+                    "Matching Sets",
+                    "Long Coats"
+                ]
+            }
+        ],
+        "pattern_trends": [
+            {
+                "pattern_name": "Embroidery & Appliqu\u00e9",
+                "pattern_type": "Textural",
+                "frequency": 8,
+                "trend_direction": "rising",
+                "confidence_score": 0.8,
+                "description": "Intricate threadwork, including traditional Indian Aari work and modern appliqu\u00e9s, used to add texture and cultural significance to garments.",
+                "scale": "Small to Medium",
+                "color_combinations": [
+                    "Black & White",
+                    "Red & Black"
+                ]
+            },
+            {
+                "pattern_name": "Plaid / Tartan",
+                "pattern_type": "Geometric",
+                "frequency": 6,
+                "trend_direction": "stable",
+                "confidence_score": 0.7,
+                "description": "Classic woven patterns, including tartan and checks, appearing frequently in winter outerwear and skirts.",
+                "scale": "Medium to Large",
+                "color_combinations": [
+                    "Red & Black",
+                    "Green & Blue",
+                    "Grey & White"
+                ]
+            },
+            {
+                "pattern_name": "Pinstripes",
+                "pattern_type": "Geometric",
+                "frequency": 0,
+                "trend_direction": "rising",
+                "confidence_score": 0.65,
+                "description": "Thin, vertical lines used to create an elongating effect, particularly on trousers and long coats, influenced by celebrity styling.",
+                "scale": "Small",
+                "color_combinations": [
+                    "Black & White",
+                    "Navy & White"
+                ]
+            }
+        ],
+        "print_trends": [
+            {
+                "print_name": "Winter Floral",
+                "print_category": "Nature",
+                "frequency": 4,
+                "trend_direction": "stable",
+                "confidence_score": 0.6,
+                "description": "Floral motifs continue to be present, adapted for winter with deeper color palettes and appearing on floor-length dresses and as embroidery details.",
+                "placement_style": "All-over",
+                "color_palette": [
+                    "Varies",
+                    "Pastels",
+                    "Deep Reds"
+                ]
+            }
+        ],
+        "material_trends": [
+            {
+                "material": "Wool / Tweed",
+                "frequency": 20,
+                "trend_direction": "rising"
+            },
+            {
+                "material": "Denim",
+                "frequency": 15,
+                "trend_direction": "stable"
+            },
+            {
+                "material": "Velvet",
+                "frequency": 12,
+                "trend_direction": "rising"
+            },
+            {
+                "material": "Lace / Sheer Organza",
+                "frequency": 12,
+                "trend_direction": "stable"
+            },
+            {
+                "material": "Handcrafted Weaves",
+                "frequency": 0,
+                "trend_direction": "rising"
+            }
+        ],
+        "silhouette_trends": [
+            {
+                "silhouette": "A-line / Flared",
+                "frequency": 25,
+                "trend_direction": "rising"
+            },
+            {
+                "silhouette": "Structured Tailoring",
+                "frequency": 15,
+                "trend_direction": "rising"
+            },
+            {
+                "silhouette": "Oversized",
+                "frequency": 0,
+                "trend_direction": "rising"
+            },
+            {
+                "silhouette": "Straight-fit / Sheath",
+                "frequency": 8,
+                "trend_direction": "stable"
+            },
+            {
+                "silhouette": "High-Waisted",
+                "frequency": 0,
+                "trend_direction": "stable"
+            }
+        ],
+        "seasonal_insights": {
+            "fall": [
+                "Emphasis on rich textures like velvet and wool.",
+                "Layering is a key styling technique, combining oversized and tailored pieces.",
+                "A color palette blending deep neutrals (Espresso, Black) with vibrant jewel tones (Regal Red, Emerald Green)."
+            ],
+            "winter": [
+                "Structured tailoring and statement outerwear are foundational.",
+                "Dominance of a neutral color base (Black, White, Grey) accented with bold colors.",
+                "Key materials are Wool/Tweed and Velvet for warmth and luxury."
+            ],
+            "spring": [
+                "Lighter fabrics like cotton and sheer organza will become more prominent.",
+                "Expect a rise in pastel versions of the current vibrant color trend.",
+                "Floral and handcrafted details will continue into the new season."
+            ],
+            "summer": [
+                "Oversized kaftans and relaxed silhouettes will be key.",
+                "Focus on breathable, natural fabrics like modal silk and handcrafted weaves.",
+                "Bright, expressive colors will dominate summer collections."
+            ]
+        },
+        "predicted_next_season_trends": [
+            "Artisanal Craft & Handcrafted Details",
+            "Vibrant Pastels (Mint Green, Powder Pink)",
+            "Relaxed & Fluid Silhouettes",
+            "Sustainable & Upcycled Materials"
+        ]
+    },
+    "outfit_designs": [
+        {
+            "Outfits": [
+                {
+                    "outfit_name": "Modernized Heritage Fusion",
+                    "outfit_description": "A regal red, A-line, Pheran-inspired dress made of a handcrafted weave with a subtle, dark winter floral print. It features a mandarin collar and full-length sleeves. This is layered with a structured, black velvet waistcoat that has intricate Aari work embroidery on the collar. The design epitomizes the 'Modernized Heritage & Tailoring' trend, blending traditional Indian silhouettes with sharp, contemporary tailoring for the fall/winter season.",
+                    "season": "Fall/Winter",
+                    "occasion": "Semi-formal, Festive",
+                    "fashion_metrics": {
+                        "Formality": 0.7,
+                        "Trendiness": 0.9,
+                        "Boldness": 0.8,
+                        "Wearability": 0.6
+                    },
+                    "style_tags": [
+                        "Modernized Heritage",
+                        "Tailored",
+                        "Festive",
+                        "Velvet",
+                        "Embroidery"
+                    ],
+                    "dominant_colors": [
+                        "Regal Red",
+                        "Black"
+                    ],
+                    "forecasted_popularity": 0.9,
+                    "target_market_alignment": "Excellent alignment for young Indian consumers who appreciate a blend of tradition and modernity for festive occasions. The design is culturally appropriate, sophisticated, and makes a strong style statement.",
+                    "trend_incorporation": [
+                        "Modernized Heritage & Tailoring",
+                        "Regal Red (Rising Color)",
+                        "Velvet (Rising Material)",
+                        "A-line / Flared Silhouette (Rising)",
+                        "Structured Tailoring (Rising)",
+                        "Embroidery & Appliqu\u00e9 (Rising)",
+                        "Winter Floral (Stable Print)"
+                    ],
+                    "total_revisions": 0,
+                    "revision_history": [],
+                    "final_garment_specs": {},
+                    "saved_image_path": "generated_images/Modernized_Heritage_Tailoring.png",
+                    "design_success": true,
+                    "reflection_insights": [
+                        "Exceptional synthesis of multiple high-confidence, rising trends, particularly 'Modernized Heritage & Tailoring'.",
+                        "The Regal Red and Black color combination is powerful and commercially viable for the Indian market.",
+                        "Successfully merges the top two rising silhouette trends: 'A-line/Flared' and 'Structured Tailoring'.",
+                        "The design's primary limitation is its climate and occasion specificity, making it ideal for North Indian winter festive events."
+                    ]
+                },
+                {
+                    "outfit_name": "Global Celebrity Streetwear",
+                    "outfit_description": "An oversized jersey top in a rich espresso brown, featuring drop shoulders and long sleeves. It is paired with high-waisted, straight-fit denim jeans in a light cream wash that includes a subtle, dark brown pinstripe pattern. This outfit captures the 'Global Celebrity Influence' trend, focusing on comfortable, on-trend streetwear suitable for a casual university setting during the fall.",
+                    "season": "Fall",
+                    "occasion": "Casual, University",
+                    "fashion_metrics": {
+                        "Formality": 0.3,
+                        "Trendiness": 0.8,
+                        "Boldness": 0.6,
+                        "Wearability": 0.9
+                    },
+                    "style_tags": [
+                        "Streetwear",
+                        "Oversized",
+                        "Casual",
+                        "Denim",
+                        "Pinstripe"
+                    ],
+                    "dominant_colors": [
+                        "Espresso Brown",
+                        "Cream"
+                    ],
+                    "forecasted_popularity": 0.85,
+                    "target_market_alignment": "High alignment with the target demographic's desire for comfortable, globally influenced, and Instagram-worthy casual wear. The style is modest, versatile, and reflects current K-pop and Western artist-inspired fashion.",
+                    "trend_incorporation": [
+                        "Global Celebrity Influence",
+                        "Espresso / Brown (Rising Color)",
+                        "Oversized Silhouette (Rising)",
+                        "Pinstripes (Rising Pattern)",
+                        "High-Waisted Silhouette (Stable)",
+                        "Denim (Stable Material)"
+                    ],
+                    "total_revisions": 0,
+                    "revision_history": [],
+                    "final_garment_specs": {},
+                    "saved_image_path": "generated_images/Global_Celebrity_Influence.png",
+                    "design_success": true,
+                    "reflection_insights": [
+                        "Perfectly captures the rising 'Espresso / Brown' and stable 'White / Cream' color trends.",
+                        "Masterfully combines 'Oversized' and 'Straight-fit/High-Waisted' silhouette trends for a balanced, modern look.",
+                        "Successfully integrates the rising 'Pinstripes' pattern trend, elevating the otherwise simple trousers.",
+                        "The main concern is climate specificity; the heavy top is best suited for North Indian winters or air-conditioned environments."
+                    ]
+                },
+                {
+                    "outfit_name": "Monochrome Comfort Kaftan",
+                    "outfit_description": "A monochrome ensemble in powder pink, featuring a long, oversized kaftan in sheer organza with a high neckline and flowing sleeves. The kaftan is adorned with delicate, tonal embroidery in a winter floral pattern. It is layered over a matching straight-fit slip dress. This design is a direct reflection of 'Comfort-Driven & Oversized Silhouettes' and 'Monochrome Dressing' trends, ideal for a celebratory occasion in the spring.",
+                    "season": "Spring",
+                    "occasion": "Festive, Celebratory",
+                    "fashion_metrics": {
+                        "Formality": 0.6,
+                        "Trendiness": 0.9,
+                        "Boldness": 0.5,
+                        "Wearability": 0.8
+                    },
+                    "style_tags": [
+                        "Monochrome",
+                        "Oversized",
+                        "Comfort-Driven",
+                        "Sheer Organza",
+                        "Kaftan"
+                    ],
+                    "dominant_colors": [
+                        "Powder Pink"
+                    ],
+                    "forecasted_popularity": 0.8,
+                    "target_market_alignment": "Very high alignment for young consumers seeking elegant, comfortable, and fashion-forward options for festive events. The design is ethereal, modern, and culturally appropriate, appealing to those who favor a minimalist yet sophisticated aesthetic.",
+                    "trend_incorporation": [
+                        "Comfort-Driven & Oversized Silhouettes",
+                        "Monochrome Dressing",
+                        "Powder Pink (Rising Color)",
+                        "Lace / Sheer Organza (Stable Material)",
+                        "Embroidery & Appliqu\u00e9 (Rising)",
+                        "Winter Floral (Stable Print)"
+                    ],
+                    "total_revisions": 0,
+                    "revision_history": [],
+                    "final_garment_specs": {},
+                    "saved_image_path": "generated_images/Comfort_Driven_Oversized_Silhouettes.png",
+                    "design_success": true,
+                    "reflection_insights": [
+                        "The 'Powder Pink' color is a rising trend and aligns with the 'Vibrant Pastels' predicted for the next season.",
+                        "The design perfectly embodies the 'Comfort-Driven & Oversized Silhouettes' and 'Monochrome Dressing' style trends.",
+                        "The tonal embroidery reflects the rising 'Embroidery & Appliqu\u00e9' trend, adding value and craftsmanship appeal.",
+                        "The silhouette is a versatile and modern interpretation of traditional Indian garments, suitable for a wide range of events."
+                    ]
+                }
+            ]
+        }
+    ]
+}

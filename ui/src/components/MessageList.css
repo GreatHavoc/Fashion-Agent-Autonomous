@@ -1,0 +1,142 @@
+.messages-container {
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+.messages-container h3 {
+  margin: 0 0 1rem 0;
+  color: #333;
+  font-size: 1.25rem;
+}
+
+.messages-list {
+  max-height: 400px;
+  overflow-y: auto;
+  padding-right: 0.5rem;
+}
+
+.messages-list::-webkit-scrollbar {
+  width: 8px;
+}
+
+.messages-list::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 4px;
+}
+
+.messages-list::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 4px;
+}
+
+.messages-list::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.message {
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  border-radius: 8px;
+  border-left: 4px solid;
+  animation: messageSlide 0.3s ease-out;
+}
+
+@keyframes messageSlide {
+  from {
+    opacity: 0;
+    transform: translateX(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.message-type {
+  font-weight: 600;
+}
+
+.message-time {
+  margin-left: auto;
+  color: #999;
+  font-size: 0.8rem;
+}
+
+.message-content {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #333;
+}
+
+.message-info {
+  background: #e3f2fd;
+  border-left-color: #2196f3;
+}
+
+.message-info .message-header {
+  color: #1976d2;
+}
+
+.message-success {
+  background: #e8f5e9;
+  border-left-color: #4caf50;
+}
+
+.message-success .message-header {
+  color: #388e3c;
+}
+
+.message-error {
+  background: #ffebee;
+  border-left-color: #f44336;
+}
+
+.message-error .message-header {
+  color: #d32f2f;
+}
+
+.message-interrupt {
+  background: #fff3e0;
+  border-left-color: #ff9800;
+}
+
+.message-interrupt .message-header {
+  color: #f57c00;
+}
+
+.message-details {
+  margin-top: 0.75rem;
+  cursor: pointer;
+}
+
+.message-details summary {
+  color: #667eea;
+  font-size: 0.875rem;
+  font-weight: 600;
+  user-select: none;
+}
+
+.message-details summary:hover {
+  color: #764ba2;
+}
+
+.details-code {
+  margin-top: 0.5rem;
+  background: #f5f5f5;
+  padding: 0.75rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  overflow-x: auto;
+  max-height: 200px;
+  overflow-y: auto;
+}

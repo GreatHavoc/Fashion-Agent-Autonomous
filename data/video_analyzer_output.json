@@ -1,0 +1,281 @@
+{
+  "per_video_results": [
+    {
+      "video_url": "https://www.youtube.com/watch?v=CwmKr-wkj1M",
+      "trend_identification": {
+        "silhouette_trends": [
+          {
+            "name": "A-line / Fit-and-flare",
+            "frequency": 25
+          },
+          {
+            "name": "Structured Tailoring (Peplum Blazers, Sharp Shoulders)",
+            "frequency": 15
+          },
+          {
+            "name": "Bubble Hem / Voluminous Skirt",
+            "frequency": 12
+          },
+          {
+            "name": "Sheath / Straight",
+            "frequency": 8
+          },
+          {
+            "name": "Cape / Poncho",
+            "frequency": 6
+          }
+        ],
+        "popular_colors": [
+          {
+            "name": "Black",
+            "frequency": 35
+          },
+          {
+            "name": "White / Cream",
+            "frequency": 22
+          },
+          {
+            "name": "Gray",
+            "frequency": 15
+          },
+          {
+            "name": "Green (Olive, Forest)",
+            "frequency": 10
+          },
+          {
+            "name": "Brown / Tan",
+            "frequency": 8
+          },
+          {
+            "name": "Blue (Denim, Light Blue)",
+            "frequency": 6
+          },
+          {
+            "name": "Pink / Mauve",
+            "frequency": 4
+          }
+        ],
+        "trending_fabrics": [
+          {
+            "name": "Wool / Tweed",
+            "frequency": 20
+          },
+          {
+            "name": "Cotton (Shirting, Denim)",
+            "frequency": 15
+          },
+          {
+            "name": "Lace / Sheer Organza",
+            "frequency": 12
+          },
+          {
+            "name": "Satin / Silk",
+            "frequency": 10
+          },
+          {
+            "name": "Leather (Skirts, Trim)",
+            "frequency": 5
+          }
+        ],
+        "prints": [
+          {
+            "name": "Plaid / Tartan",
+            "frequency": 6
+          },
+          {
+            "name": "Floral",
+            "frequency": 4
+          }
+        ],
+        "patterns": [
+          {
+            "name": "Embroidery / Appliqu\u00e9",
+            "frequency": 8
+          },
+          {
+            "name": "Woven / Basket Weave Texture",
+            "frequency": 5
+          },
+          {
+            "name": "Quilted / Cannage",
+            "frequency": 3
+          }
+        ],
+        "seasonal_style_cues": [
+          {
+            "name": "Transitional Season (Fall/Winter)",
+            "frequency": 68
+          },
+          {
+            "name": "Layering",
+            "frequency": 40
+          },
+          {
+            "name": "Statement Outerwear",
+            "frequency": 30
+          }
+        ]
+      },
+      "collection_analysis": {
+        "number_of_looks": 68,
+        "demographic_representation": {
+          "gender": [
+            "Primarily Female",
+            "Androgynous/Male"
+          ],
+          "age_range": [
+            "20s - 30s"
+          ],
+          "inclusivity_notes": "The collection primarily features very slim, tall model builds, with limited representation of other body types."
+        },
+        "dominant_themes": [
+          "Sculptural Romanticism",
+          "Modern Reinterpretation of Classic Tailoring",
+          "Dystopian Formalwear",
+          "Emphasis on texture and volume"
+        ],
+        "statement_pieces": [
+          {
+            "name": "Oversized sculptural hats",
+            "frequency": 28
+          },
+          {
+            "name": "Dresses and skirts with large bow details",
+            "frequency": 12
+          },
+          {
+            "name": "Structured peplum blazers",
+            "frequency": 15
+          },
+          {
+            "name": "Voluminous woven or ribbon-constructed skirts",
+            "frequency": 12
+          },
+          {
+            "name": "Sheer lace gowns",
+            "frequency": 12
+          },
+          {
+            "name": "Full-length capes",
+            "frequency": 6
+          }
+        ]
+      },
+      "styling_insights": {
+        "accessories": [
+          {
+            "name": "Sculptural avant-garde hats",
+            "frequency": 28
+          },
+          {
+            "name": "Pointed-toe heels (pumps, slingbacks, mules)",
+            "frequency": 55
+          },
+          {
+            "name": "Leather & Suede Bags (Shoulder, Top-handle, Pouch)",
+            "frequency": 22
+          },
+          {
+            "name": "Bow ties / Neck bows",
+            "frequency": 20
+          },
+          {
+            "name": "Lace face veils",
+            "frequency": 5
+          }
+        ],
+        "hair_makeup_styles": [
+          {
+            "name": "Natural hair texture (wavy, straight, curly)",
+            "frequency": 60
+          },
+          {
+            "name": "Minimal, 'no-makeup' makeup look",
+            "frequency": 65
+          },
+          {
+            "name": "Short bob cuts",
+            "frequency": 8
+          }
+        ],
+        "layering_outfit_pairing": [
+          {
+            "name": "Blazer or Jacket over Mini Skirt",
+            "frequency": 15
+          },
+          {
+            "name": "High-neck collared blouse (often with bow) as a base layer",
+            "frequency": 12
+          },
+          {
+            "name": "Sheer dress or top revealing undergarments",
+            "frequency": 8
+          },
+          {
+            "name": "Cape over trousers or jean ensembles",
+            "frequency": 5
+          }
+        ],
+        "props_unconventional_items": []
+      },
+      "diversity_representation": {
+        "model_selection": {
+          "body_types": [
+            "slim"
+          ],
+          "ethnic_diversity": [
+            "Caucasian",
+            "Black",
+            "East Asian"
+          ],
+          "age": [
+            "20s-30s"
+          ],
+          "gender_fluidity": "female"
+        },
+        "inclusivity_social_messaging": "While there is ethnic diversity, the collection lacks representation in body size and age, focusing on a singular, very slender and youthful ideal."
+      },
+      "show_production": {
+        "audience_engagement": "The audience was attentive and recorded the show on their devices, indicating high engagement with the avant-garde designs."
+      },
+      "commercial_potential": {
+        "retail_success_pieces": [
+          {
+            "name": "Pointed-toe heels",
+            "frequency": 55
+          },
+          {
+            "name": "Leather & Suede Bags",
+            "frequency": 22
+          },
+          {
+            "name": "Wool/Tweed items",
+            "frequency": 20
+          },
+          {
+            "name": "Structured Tailoring",
+            "frequency": 15
+          }
+        ],
+        "viral_moments": [
+          "Looks featuring the oversized sculptural hats are highly likely to become viral fashion moments online."
+        ]
+      },
+      "designer_collaboration_influences": {
+        "guest_designers_partners": [],
+        "cross_industry_references": [
+          "Architecture and Sculpture (in hats and structured garments)",
+          "Historical costume (Victorian-era necklines, 18th-century hats)",
+          "Ballet / Dance (sheer tulle, romantic silhouettes)"
+        ]
+      }
+    }
+  ],
+  "trending_elements": [
+    "Most Frequent Silhouette: A-line / Fit-and-flare (25 appearances)",
+    "Most Frequent Color: Black (35 appearances)",
+    "Most Frequent Fabric: Wool / Tweed (20 appearances)",
+    "Most Frequent Accessory: Pointed-toe heels (55 appearances)"
+  ],
+  "commercial_insights": "The collection's most commercially viable pieces are the structured peplum blazers and A-line skirts, which are versatile for both professional and formal settings. The prevalence of classic colors like black, white, and gray ensures broad market appeal. Statement accessories, particularly the pointed-toe heels and leather bags, are expected to perform well in retail."
+}

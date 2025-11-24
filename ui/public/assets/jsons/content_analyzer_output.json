@@ -1,0 +1,673 @@
+{
+    "content_analysis": [
+        {
+            "per_url_findings": [
+                {
+                    "title": "AK|OK Lands Indian Cool at London Fashion Week",
+                    "url": "https://www.thevoiceoffashion.com/centrestage/fashion-shows/akok-lands-indian-cool-at-london-fashion-week-6412",
+                    "author": "Anannya Sarkar",
+                    "date": "September 23, 2025",
+                    "category": "traditional-modern fusion",
+                    "summary": "Anamika Khanna's pr\u00eat label AK|OK debuted at London Fashion Week, showcasing a collection that blends Indian heritage with modern, global sensibilities. The collection was inspired by a London girl rediscovering her Rajasthani roots, featuring denim, chikankari, silver jewellery, and mythological prints, recalibrated for international appeal.",
+                    "micro_trends": [
+                        "Denim with Indian embellishments",
+                        "Chikankari fusion",
+                        "Silver jewellery with contemporary outfits",
+                        "Mythological/astrological prints"
+                    ],
+                    "macro_trends": [
+                        "Globalisation of Indian fashion",
+                        "Traditional-modern fusion",
+                        "Elevated pr\u00eat-\u00e0-porter"
+                    ],
+                    "colors": [
+                        "Fuchsia",
+                        "Yellow",
+                        "Green (as accents on beads)",
+                        "Monochrome (for Aishwarya Rai's sherwani in a related context)",
+                        "Blues (implied by denim)",
+                        "Neutrals (implied by chikankari)"
+                    ],
+                    "fabrics": [
+                        "Denim",
+                        "Chikankari",
+                        "Cotton",
+                        "Silk-cotton",
+                        "Tencel",
+                        "Linen",
+                        "Silk organza",
+                        "Mul cotton"
+                    ],
+                    "silhouettes": [
+                        "Power shoulders",
+                        "Chainmail details",
+                        "Bralettes",
+                        "Kaftans",
+                        "Shirt dresses",
+                        "Wide-leg pants",
+                        "Deconstructed separates",
+                        "Tailored lines",
+                        "Fluid drapes",
+                        "Deconstructed saris",
+                        "Summer maxis",
+                        "Asymmetric pants",
+                        "Floral bandeau tops",
+                        "Ripped and baggy denim"
+                    ],
+                    "sellout_signals": [
+                        "Contemporary denim with Indian grammar (grunge, Boho, chic)",
+                        "Versatile kaftans for summer"
+                    ],
+                    "signals_for_future": [
+                        "Increased global recognition for Indian designers",
+                        "Adaptation of Indian aesthetics for international markets",
+                        "Focus on versatile, layered separates",
+                        "Fusion of traditional crafts with modern silhouettes"
+                    ],
+                    "influencer_mentions": [
+                        "Anamika Khanna",
+                        "Sonam Kapoor",
+                        "Reliance Brands Limited (RBL)"
+                    ],
+                    "sentiment": "Optimistic, forward-looking, celebrating Indian design's global potential.",
+                    "supporting_images": [
+                        "https://cdn.thevoiceoffashion.com/articleheaderimage/68d25b2925cd3-banner1-2.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/68d25b2983655-Inline-collage.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/68d25b29bcddf-Inline-1-Collage.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/68d25b2a07c44-Inline-2-Collage.jpg"
+                    ],
+                    "evidence_strength": 0.9,
+                    "extrapolation": "This article highlights a strong trend towards integrating traditional Indian crafts and aesthetics into contemporary, globally appealing casual wear, particularly for Gen Z who appreciate unique, culturally rich, yet modern styles. The emphasis on denim and versatile separates suggests a move towards comfortable, adaptable fashion with an Indian identity."
+                },
+                {
+                    "title": "What Fashion Does Not Understand About Handlooms",
+                    "url": "https://www.thevoiceoffashion.com/fabric-of-india/Opinion/What Fashion Does Not Understand About Handlooms-6376",
+                    "author": "Laila Tyabji",
+                    "date": "August 11, 2025",
+                    "category": "sustainable fashion",
+                    "summary": "This opinion piece critiques the Indian fashion industry's underutilization of handlooms, citing logistical challenges, production time, and inherent fabric characteristics. It advocates for designers to better understand and invest in weavers' innovation to truly leverage India's unique handloom heritage.",
+                    "micro_trends": [
+                        "Designer-weaver collaboration",
+                        "Innovation in handloom application"
+                    ],
+                    "macro_trends": [
+                        "Sustainable fashion",
+                        "Preservation of traditional crafts",
+                        "Ethical production"
+                    ],
+                    "colors": [
+                        "Natural dyes (implied)",
+                        "Earthy tones (implied)",
+                        "Vibrant traditional palettes (implied)"
+                    ],
+                    "fabrics": [
+                        "Handloom fabrics (general)",
+                        "Ikat",
+                        "Madras checks",
+                        "Raw silk",
+                        "Pashmina",
+                        "Cotton",
+                        "Banarasi brocade"
+                    ],
+                    "silhouettes": [
+                        "Draping-friendly garments (traditional)",
+                        "Less suited for fitted or highly structured Western attire"
+                    ],
+                    "sellout_signals": [
+                        "Missed opportunities for handlooms to become a global 'craze'"
+                    ],
+                    "signals_for_future": [
+                        "Deeper integration of handlooms into mainstream fashion",
+                        "Addressing logistical and design challenges for handloom adoption",
+                        "Increased investment in weaver innovation and livelihoods"
+                    ],
+                    "influencer_mentions": [
+                        "Laila Tyabji (DASTKAR)",
+                        "Hanae Mori",
+                        "Zandra Rhodes",
+                        "Pierre Cardin",
+                        "Kenzo",
+                        "Dries van Noten"
+                    ],
+                    "sentiment": "Critical but hopeful, advocating for deeper understanding and integration of handlooms.",
+                    "supporting_images": [
+                        "https://cdn.thevoiceoffashion.com/articleheaderimage/6899b84b295a0-Banner-shutterstock_2527402337.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6899b84b79514-Inline.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6899bc47369a1-Inline-Dries-Van-noten-high-summer-2022.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6899bc47785db-Inline-shutterstock_2141557811.jpg"
+                    ],
+                    "evidence_strength": 0.8,
+                    "extrapolation": "This article underscores the foundational importance of handlooms for sustainable and authentic Indian fashion. For Gen Z, who value ethical production and unique aesthetics, a better integration of handlooms into modern, casual styles presents a significant opportunity, provided designers overcome the practical challenges."
+                },
+                {
+                    "title": "The Dhoti Drop",
+                    "url": "https://www.thevoiceoffashion.com/shopping/fashion/the-dhoti-drop-6374",
+                    "author": "Ananya Verma",
+                    "date": "August 9, 2025",
+                    "category": "traditional-modern fusion",
+                    "summary": "The traditional Indian dhoti is evolving into contemporary styles like dhoti pants and dhoti salwar, gaining popularity across genders for its comfort and elegance. The article showcases various handwoven dhoti styles from local brands, highlighting their versatility for modern wardrobes.",
+                    "micro_trends": [
+                        "Dhoti pants",
+                        "Dhoti salwar",
+                        "Gender-neutral traditional wear",
+                        "Contemporary draping styles"
+                    ],
+                    "macro_trends": [
+                        "Traditional-modern fusion",
+                        "Comfort-centric fashion",
+                        "Handloom revival in modern contexts"
+                    ],
+                    "colors": [
+                        "Mint",
+                        "Earthy brown",
+                        "Dual pink",
+                        "Turquoise (contrast)",
+                        "Deep ochre",
+                        "Crimson red",
+                        "Ivory",
+                        "Green (with gold embroidery)",
+                        "Kora (natural off-white)"
+                    ],
+                    "fabrics": [
+                        "Handwoven cotton",
+                        "Handloom cotton",
+                        "Crinkle cotton",
+                        "Handwoven silk-cotton",
+                        "Handwoven silk",
+                        "Kora Khadi"
+                    ],
+                    "silhouettes": [
+                        "Relaxed silhouette dhoti pants",
+                        "Salwar style dhoti",
+                        "Easy fit harem pants",
+                        "Dhoti drape skirt",
+                        "Dhoti shalwar",
+                        "Kalai pants (contemporary dhoti pants with wide cuff)",
+                        "Cowl dhoti pants"
+                    ],
+                    "sellout_signals": [
+                        "Modernized dhoti styles as a 'timeless staple' and 'wardrobe essential'"
+                    ],
+                    "signals_for_future": [
+                        "Continued innovation in traditional Indian drapes for casual and festive wear",
+                        "Growing appeal of gender-neutral traditional garments",
+                        "Emphasis on comfort and versatility in ethnic wear"
+                    ],
+                    "influencer_mentions": [
+                        "Itr by Khyati Pandey",
+                        "Mati",
+                        "Pratha",
+                        "Urvashi Kaur",
+                        "Swati Kapoor",
+                        "Ekaya",
+                        "Maal Gaadi",
+                        "Sepia Stories",
+                        "Brown Living"
+                    ],
+                    "sentiment": "Enthusiastic, highlighting the versatility and contemporary relevance of the dhoti.",
+                    "supporting_images": [
+                        "https://cdn.thevoiceoffashion.com/articleheaderimage/6896e6b247940-banner-7.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6896eb97b1755-Itr-by-khyati-Pandey.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6896eb9810682-Mati-2.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6896eb986ca85-Pratha.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6896eb98b7c2f-Urvashi-kaur.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6896eb993730d-Swati-Kapoor.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6896f142c1ab1-Ekaya.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6896eb9a3309f-Maal-Gadi.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6896eb9a83b20-Sepia.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6896eb9acc56d-Brown-Living.jpg"
+                    ],
+                    "evidence_strength": 0.9,
+                    "extrapolation": "The dhoti, in its modernized forms, is a strong trend for Gen Z women seeking comfortable, stylish, and culturally rooted casual wear. The variety of fabrics and silhouettes indicates its adaptability for different occasions, from casual to festive, aligning with the traditional-modern fusion aesthetic."
+                },
+                {
+                    "title": "Tote-ally Green",
+                    "url": "https://www.thevoiceoffashion.com/shopping/fashion/toteally-green-6366",
+                    "author": "Ananya Verma",
+                    "date": "August 1, 2025",
+                    "category": "sustainable fashion",
+                    "summary": "This article spotlights woven basket bags made from natural and recycled materials by local Indian labels. These eco-chic accessories are presented as a bohemian everyday staple, emphasizing sustainability and trans-seasonal appeal.",
+                    "micro_trends": [
+                        "Woven basket bags",
+                        "Bags from natural fibers (banana, sabai grass, rattan)",
+                        "Bags from recycled plastic",
+                        "Homegrown functional chic"
+                    ],
+                    "macro_trends": [
+                        "Sustainable accessories",
+                        "Eco-friendly fashion",
+                        "Support for local artisans"
+                    ],
+                    "colors": [
+                        "Natural tones",
+                        "Beige",
+                        "Ochre",
+                        "Off-white",
+                        "Multicoloured floral motifs (accents)",
+                        "Earthy tones of brown",
+                        "Bright hues (available)"
+                    ],
+                    "fabrics": [
+                        "Banana fibre",
+                        "Sabai grass",
+                        "Rattan",
+                        "Recycled plastic",
+                        "Seagrass",
+                        "Moonj grass",
+                        "Kaans grass",
+                        "Water hyacinth"
+                    ],
+                    "silhouettes": [
+                        "Woven basket bags (various shapes)",
+                        "Potli bag",
+                        "Striped handbag",
+                        "Wire tote",
+                        "Mesh bag",
+                        "Sling bag"
+                    ],
+                    "sellout_signals": [
+                        "Woven basket bags as a 'bohemian everyday staple' and 'eco chic'"
+                    ],
+                    "signals_for_future": [
+                        "Increased demand for ethically produced, sustainable accessories",
+                        "Diversification of materials used in eco-friendly fashion",
+                        "Growth of local artisanal brands in the accessory market"
+                    ],
+                    "influencer_mentions": [
+                        "Habere India",
+                        "Pankh",
+                        "Sirohi",
+                        "Inaki",
+                        "Brown Living",
+                        "Ed-a-Mamma (Alia Bhatt's brand)",
+                        "MaLeeMa",
+                        "House of Locals",
+                        "Prada",
+                        "Loewe",
+                        "YSL",
+                        "Chanel",
+                        "H&M",
+                        "Zara",
+                        "Mango (global context)"
+                    ],
+                    "sentiment": "Positive, promoting eco-conscious choices and local craftsmanship.",
+                    "supporting_images": [
+                        "https://cdn.thevoiceoffashion.com/articleheaderimage/688ca39ba2fc4-Banner---op2.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/688ca39cbed21-Habere-India.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/688ca39d74250-Pankh.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/688ca39e5bceb-Sirohi.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/688ca39f110e1-Inaki-1.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/688ca39fd5ad2-Brown-Living.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/688ca3a092d4d-Ed-a-Mamma---2.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/688ca3a16012e-MaLeeMa---1.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/688ca3a21f2a0-House-of-Locals.jpg"
+                    ],
+                    "evidence_strength": 0.9,
+                    "extrapolation": "Sustainable accessories, particularly woven bags made from natural and recycled materials, are a significant trend for Gen Z women who prioritize ethical and eco-friendly fashion. This aligns with the casual aesthetic and a desire for unique, handcrafted items, indicating a growing market for conscious consumption."
+                },
+                {
+                    "title": "White Here, White Now",
+                    "url": "https://www.thevoiceoffashion.com/shopping/fashion/white-here-white-now-6284",
+                    "author": "Unnati Saini",
+                    "date": "April 26, 2025",
+                    "category": "modern Indian fashion",
+                    "summary": "This article highlights white as a timeless summer favorite in modern Indian fashion, showcasing various pieces from deconstructed saris and maxis to asymmetric pants and bandeau tops. It emphasizes the color's crispness, lightness, and versatility.",
+                    "micro_trends": [
+                        "Deconstructed saris",
+                        "Asymmetric pants",
+                        "Floral bandeau tops",
+                        "White monochrome looks",
+                        "Summer maxis"
+                    ],
+                    "macro_trends": [
+                        "Modern Indian fashion",
+                        "Minimalist aesthetics",
+                        "Comfortable summer wear"
+                    ],
+                    "colors": [
+                        "White",
+                        "Ecru",
+                        "Natural ivory",
+                        "Almond",
+                        "Blush",
+                        "Gold stripes (accents)",
+                        "Fuchsia (accents)",
+                        "Yellow (accents)",
+                        "Green (accents)",
+                        "Charcoal (accents)"
+                    ],
+                    "fabrics": [
+                        "Jersey",
+                        "Silk organza",
+                        "Cotton-silk blend",
+                        "Tencel",
+                        "Cotton-lycra",
+                        "Cotton and linen blend",
+                        "Mul cotton",
+                        "Handwoven linen",
+                        "Linen and silk blend"
+                    ],
+                    "silhouettes": [
+                        "Sari dress (reimagined)",
+                        "Minimal button-down silk shirt",
+                        "Relaxed-fit midi dress with gathered tiers",
+                        "Belted jacket dress (overlay maxi)",
+                        "Hand-painted statement dress (floor-length, power shoulders)",
+                        "Sari pants with pallu-like drape",
+                        "Slouchy floor-length kaftan",
+                        "Anti-fit swing dress",
+                        "Bib cum crop top",
+                        "Bralette-esque cropped top (bandeau)"
+                    ],
+                    "sellout_signals": [
+                        "White as a 'perennial favourite' and 'never goes out of style'",
+                        "Specific pieces highlighted as 'must-have' or 'ideal pick for laidback luxe'"
+                    ],
+                    "signals_for_future": [
+                        "Enduring popularity of white and off-white palettes",
+                        "Continued innovation in deconstructing and reinterpreting traditional Indian garments",
+                        "Emphasis on breathable and comfortable fabrics for all seasons"
+                    ],
+                    "influencer_mentions": [
+                        "Ituvana",
+                        "Abraham & Thakore",
+                        "Ek\u00e0",
+                        "Rajesh Pratap Singh",
+                        "Polite Society",
+                        "Antar-Agni",
+                        "AK|OK Anamika Khanna",
+                        "Khara Kapas",
+                        "Ode To Odd",
+                        "Sand by Shirin",
+                        "Ralph Lauren",
+                        "Dior"
+                    ],
+                    "sentiment": "Positive, celebrating the versatility and timelessness of white in modern Indian fashion.",
+                    "supporting_images": [
+                        "https://cdn.thevoiceoffashion.com/articleheaderimage/680b7f4023f4a-Banner.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/680b83b164e72-ituvana.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/680b83b1a8fa0-abraham--thakore.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/680b83b20d303-eka.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/680b83b29a555-rajesh-pratap-singh.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/680b83b2eed1d-polite-society.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/680b83b3457c8-antar-agni.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/680b83b386932-ak-ok.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/680b83b3d24c5-khara-kapas.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/680b83b4310cd-ode-to-odd.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/680b83b47aa8d-sand-by-shirin.jpg"
+                    ],
+                    "evidence_strength": 0.9,
+                    "extrapolation": "White and its variations are a strong and enduring color trend for Gen Z women, especially in casual and summer wear. The article demonstrates how traditional Indian elements are being subtly integrated into modern, comfortable silhouettes, offering a fresh take on fusion fashion that is both stylish and practical."
+                },
+                {
+                    "title": "Ryndia, Not a Trend: The Living Silk of Meghalaya",
+                    "url": "https://www.thevoiceoffashion.com/fabric-of-india/features/ryndia-not-a-trend-the-living-silk-of-meghalaya-6370",
+                    "author": "Shefalee Vasudev",
+                    "date": "August 7, 2025",
+                    "category": "sustainable fashion",
+                    "summary": "This article explores Ryndia (Eri silk) from Meghalaya, highlighting its deep cultural significance and community-rooted production. It emphasizes that Ryndia is a living practice, not merely a fashion trend, and discusses the ethical considerations around its 'Ahimsa silk' label.",
+                    "micro_trends": [
+                        "Ethical textile production",
+                        "Community-based craft preservation",
+                        "Reinterpretation of traditional textiles (Jainsem)"
+                    ],
+                    "macro_trends": [
+                        "Slow fashion",
+                        "Cultural sustainability",
+                        "Conscious consumption"
+                    ],
+                    "colors": [
+                        "Natural dyes (implied)",
+                        "Earthy tones (implied)"
+                    ],
+                    "fabrics": [
+                        "Ryndia silk (Eri silk)",
+                        "Muga silk (mentioned in context)"
+                    ],
+                    "silhouettes": [
+                        "Traditional Khasi Jainsem (reinterpreted)",
+                        "Shawls",
+                        "Stoles",
+                        "Dresses",
+                        "Men's shirts"
+                    ],
+                    "sellout_signals": [
+                        "Focus on niche, handmade, and culturally significant products rather than mass-market 'sellouts'"
+                    ],
+                    "signals_for_future": [
+                        "Increased consumer demand for transparent and ethical supply chains",
+                        "Appreciation for textiles with strong cultural narratives",
+                        "Growth of niche markets for artisanal, non-mass-produced fabrics"
+                    ],
+                    "influencer_mentions": [
+                        "Juhi Pandey",
+                        "Frederick Roy Kharkongor",
+                        "Daniel Syiem",
+                        "Iba Mallai (Kiniho)",
+                        "Jagrity Phukan (Way of Living Design Studio)",
+                        "Falguni Shane Peacock"
+                    ],
+                    "sentiment": "Respectful, advocating for the preservation of cultural practices and ethical production over commercial trends.",
+                    "supporting_images": [
+                        "https://cdn.thevoiceoffashion.com/articleheaderimage/6895b8556bb5f-ryndia-with-unit.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/689493e6e8876-Inline-1-The-Ryndia-Ecosystem.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/689493e79d714-Inline-2-Promotions-of-Eri-Silk.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/689493e8423cf-Inline-3-Eri-Silk-Village.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/689493e8ea0fc-Inline-4-1st-slider-Extracting-fibre-from-cocoons.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/689493e905519-Inline-4-slider-Natural-Dye-for-Eri-Silk.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/689493e993887-Inline-5-DS-collag.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/689493ea33a32-Inline-6-Rihun-jainsemoffwhite.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/689493eac1129-Inline-7_EB_2670.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/689493eb5c560-End-AHP01526.jpg"
+                    ],
+                    "evidence_strength": 0.8,
+                    "extrapolation": "For Gen Z women interested in truly sustainable and culturally authentic fashion, Ryndia silk represents a high-value, conscious choice. While not a mass-market trend, its story and ethical production align perfectly with the values of this demographic, suggesting a growing niche for such artisanal textiles and a shift towards valuing the entire craft ecosystem."
+                },
+                {
+                    "title": "\u201cThis is My Ajrakh\u201d: Reclaiming Tradition and Authorship",
+                    "url": "https://www.thevoiceoffashion.com/fabric-of-india/features/this-is-my-ajrakh-reclaiming-tradition-and-authorship-6303",
+                    "author": "Shweta Shiware",
+                    "date": "May 26, 2025",
+                    "category": "traditional-modern fusion",
+                    "summary": "This article explores the transformation of Ajrakh, a heritage craft from Kutch, as a new generation of artisans blends tradition with personal expression. It highlights the shift towards 'artisan-designers' who are reclaiming narrative control and innovating within the craft.",
+                    "micro_trends": [
+                        "Artisan-led design",
+                        "Personal expression in traditional crafts",
+                        "Ajrakh on new materials (leather)",
+                        "Modular garment design (Button Masala technique)"
+                    ],
+                    "macro_trends": [
+                        "Artisan empowerment",
+                        "Traditional craft revival",
+                        "Sustainable innovation in textiles",
+                        "Cultural authorship"
+                    ],
+                    "colors": [
+                        "Indigo (traditional)",
+                        "Madder (traditional)",
+                        "Abstract colors (modern interpretations)"
+                    ],
+                    "fabrics": [
+                        "Ajrakh (block-printed textile)",
+                        "Leather (experimental)"
+                    ],
+                    "silhouettes": [
+                        "Tapestries",
+                        "Garments (general)",
+                        "Bridal collection pieces",
+                        "Modular garments (assembled with buttons/rubber bands)"
+                    ],
+                    "sellout_signals": [
+                        "Renewed appeal for unique, story-rich Ajrakh pieces due to artisan authorship and innovation"
+                    ],
+                    "signals_for_future": [
+                        "Increased collaboration between artisans and designers",
+                        "Diversification of traditional crafts into new product categories (e.g., interiors, accessories)",
+                        "Growing market for unique, handcrafted items with a strong narrative and ethical production"
+                    ],
+                    "influencer_mentions": [
+                        "Khalid Amin Khatri",
+                        "Satish Reddy (Sanchari)",
+                        "Dr Ismail Khatri",
+                        "Mubassirah Khatri (Elysian)",
+                        "Sufiyan Khatri",
+                        "Juned Khatri",
+                        "Judy Frater (Kala Raksha Vidhyalaya)",
+                        "Simon Marks",
+                        "Nitya Bajaj",
+                        "Anita Dongre (Grassroot)",
+                        "Anuj Sharma (Button Masala)",
+                        "Priyam Shah",
+                        "Bhoomi Dani (Vrajbhoomi)",
+                        "Good Earth",
+                        "Seasons India",
+                        "Alaicha by Amruta Vankar",
+                        "Muskan Khatri (Musk)",
+                        "Zaid Khatri (Ajrakh Gharana)"
+                    ],
+                    "sentiment": "Empowering, celebrating innovation and authorship within traditional crafts.",
+                    "supporting_images": [
+                        "https://cdn.thevoiceoffashion.com/articleheaderimage/68344b226ee5c-BANNER.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/6834507294d23-Triumph-of-Kachchh.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/683450731206d-Mubasirah-Branches-Insta.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/683450737c84b-Sufiyan-Ismail-Khatri-at-work-at-his-studio-in-Ajrakhpur.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/68345073e53aa-Mubasirahh.jpg",
+                        "https://cdn.thevoiceoffashion.com/bodyblocks/68345074647d1-720x720-Juned-Ismail-Khatri-2.jpg"
+                    ],
+                    "evidence_strength": 0.8,
+                    "extrapolation": "Ajrakh, with its renewed focus on artisan authorship and contemporary interpretations, is highly relevant for Gen Z women seeking unique, story-rich, and ethically produced fashion. The experimentation with new applications (like leather) and design approaches suggests a dynamic future for this traditional craft in modern Indian fashion, aligning with values of individuality and cultural appreciation."
+                },
+                {
+                    "title": "Aishwarya Rai Bachchan owns Paris Fashion Week ramp in a diamond sherwani with nau lakha haar detailing",
+                    "url": "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/aishwarya-rai-bachchan-owns-paris-fashion-week-ramp-in-a-diamond-sherwani-with-nau-lakha-haar-detailing/articleshow/124223710.cms",
+                    "author": "TOI Lifestyle Desk",
+                    "date": "Oct 02, 2025",
+                    "category": "traditional-modern fusion",
+                    "summary": "Aishwarya Rai Bachchan showcased a custom Manish Malhotra sherwani at L\u2019Or\u00e9al Paris Spring 2026 Fashion Week, blending Indian menswear heritage with high couture. The ensemble featured diamond embellishments and 'nau lakha haar' detailing, symbolizing a fusion of power, softness, and traditional grandeur on a global stage.",
+                    "micro_trends": [
+                        "Couture sherwani for women",
+                        "Diamond embellishments on traditional Indian wear",
+                        "Nau lakha haar detailing",
+                        "Androgynous couture"
+                    ],
+                    "macro_trends": [
+                        "Global appeal of Indian traditional wear",
+                        "Fusion of menswear into womenswear",
+                        "Luxury traditional-modern fusion"
+                    ],
+                    "colors": [
+                        "Monochrome (implied dark base with white/silver diamonds)",
+                        "Red (bold lip accent)"
+                    ],
+                    "fabrics": [
+                        "Luxurious fabric (implied, likely silk or blend)"
+                    ],
+                    "silhouettes": [
+                        "Tailored sherwani (structured yet soft)",
+                        "Power shoulders",
+                        "Embroidered trousers"
+                    ],
+                    "sellout_signals": [
+                        "High-fashion endorsement of traditional Indian silhouettes with luxurious modern embellishments, potentially inspiring demand for similar fusion pieces."
+                    ],
+                    "signals_for_future": [
+                        "Increased presence of Indian traditional wear on global high-fashion runways",
+                        "Further fusion of traditional Indian menswear elements into womenswear",
+                        "Demand for statement pieces that blend heritage with contemporary luxury"
+                    ],
+                    "influencer_mentions": [
+                        "Aishwarya Rai Bachchan",
+                        "Manish Malhotra",
+                        "L\u2019Or\u00e9al Paris",
+                        "Kendall Jenner",
+                        "Heidi Klum",
+                        "Eva Longoria",
+                        "Andie MacDowell",
+                        "Viola Davis"
+                    ],
+                    "sentiment": "Celebratory, highlighting Aishwarya's iconic status and the global appeal of Indian design.",
+                    "supporting_images": [
+                        "https://static.toiimg.com/thumb/msid-124223710,imgsize-45828,width-400,resizemode-4/124223710.jpg",
+                        "https://static.toiimg.com/photo/83033472.cms"
+                    ],
+                    "evidence_strength": 0.7,
+                    "extrapolation": "This demonstrates the increasing global visibility and acceptance of Indian traditional wear, even in high fashion contexts. For Gen Z, this could translate into a desire for more structured, tailored Indian-inspired pieces, possibly with subtle embellishments, for special occasions or elevated casual wear, reflecting a blend of cultural pride and modern sophistication."
+                },
+                {
+                    "title": "How to rewear your old lehenga for Navratri 2025?",
+                    "url": "https://timesofindia.indiatimes.com/life-style/fashion/web-stories/how-to-rewear-your-old-lehenga-for-navratri-2025/photostory/124159235.cms",
+                    "author": "Piyali Bhadra",
+                    "date": "Sep 27, 2025",
+                    "category": "sustainable fashion",
+                    "summary": "This article offers practical tips for Gen Z women to creatively rewear and restyle their old lehengas for Navratri, promoting sustainable fashion practices. It suggests various styling techniques, from monochrome looks to pairing with modern tops and accessories.",
+                    "micro_trends": [
+                        "Lehenga restyling",
+                        "Monochrome ethnic styling",
+                        "Crop tops with lehengas",
+                        "Cape-style jackets with chaniya choli",
+                        "Dupatta draping variations",
+                        "Kamarbandh as a key accessory"
+                    ],
+                    "macro_trends": [
+                        "Circular fashion",
+                        "Sustainable consumption in ethnic wear",
+                        "Traditional-modern fusion through styling"
+                    ],
+                    "colors": [
+                        "Bright shades (general)",
+                        "Contrasting colors",
+                        "Monochrome palettes"
+                    ],
+                    "fabrics": [
+                        "Lehenga (implied traditional fabrics like silk, cotton, brocade)"
+                    ],
+                    "silhouettes": [
+                        "Flared lehenga",
+                        "Traditional choli",
+                        "Plain sleeveless crop top",
+                        "Short kurti",
+                        "Cape-style long jackets",
+                        "Various dupatta drapes"
+                    ],
+                    "sellout_signals": [
+                        "Promotion of 'rewear' concept as a desirable and practical approach, indicating a trend towards conscious consumption and maximizing wardrobe utility."
+                    ],
+                    "signals_for_future": [
+                        "Increased emphasis on versatile and multi-functional ethnic wear",
+                        "DIY and creative styling becoming more prominent",
+                        "Growing market for accessories that can transform traditional outfits"
+                    ],
+                    "influencer_mentions": [],
+                    "sentiment": "Practical, encouraging, promoting sustainable fashion practices.",
+                    "supporting_images": [
+                        "https://static.toiimg.com/thumb/124159263.jpg?imgsize=1574929&width=420&resizemode=3",
+                        "https://static.toiimg.com/thumb/124159264.jpg?imgsize=2293386&width=420&resizemode=3",
+                        "https://static.toiimg.com/thumb/124159268.jpg?imgsize=1821418&width=420&resizemode=3"
+                    ],
+                    "evidence_strength": 0.7,
+                    "extrapolation": "This article directly addresses Gen Z's interest in sustainability and personal expression by offering ways to modernize and reuse traditional Indian garments. This trend of 'traditional-modern fusion through restyling' is highly relevant for casual and festive wear, encouraging versatility and mindful consumption, and reducing the need for new purchases."
+                }
+            ],
+            "enhanced_thesis": "Indian fashion for Gen Z women (18-26, casual) is strongly characterized by a dynamic fusion of traditional elements with modern, comfortable, and sustainable aesthetics. Key trends include the reinterpretation of classic Indian drapes like the dhoti into versatile, gender-neutral silhouettes, and the integration of traditional crafts like chikankari and Ajrakh into contemporary casual wear, often with a global appeal. Sustainability is a significant driver, seen in the promotion of handloom textiles, eco-friendly accessories made from natural and recycled materials, and the emphasis on restyling existing ethnic wear. White and natural tones are popular, alongside vibrant accents, reflecting a desire for both minimalist chic and cultural expression. This demographic values authenticity, ethical production, and personal authorship in fashion, leading to a growing appreciation for artisan-led design and conscious consumption.",
+            "final_report": "The analysis of the provided URLs reveals a clear and compelling picture of current Indian fashion trends for Gen Z women, aligning with the query's focus on sustainable fashion and traditional-modern fusion styles. \n\n**Traditional-Modern Fusion:** This is a dominant theme, with designers and brands actively reinterpreting traditional Indian garments and crafts for a contemporary audience. The dhoti, for instance, has evolved into comfortable and stylish dhoti pants and skirts, suitable for casual and festive wear, and even gaining gender-neutral appeal. Anamika Khanna's AK|OK collection exemplifies this by blending Indian heritage (chikankari, mythological prints) with global casual elements like denim and modern silhouettes. Aishwarya Rai Bachchan's appearance in a couture sherwani at Paris Fashion Week further underscores the global recognition and high-fashion adaptation of Indian traditional wear, influencing broader trends.\n\n**Sustainable Fashion:** Sustainability is a core value for Gen Z, reflected in several articles. The emphasis on handlooms (Ryndia silk, Ajrakh) highlights a move towards ethically produced, culturally significant textiles. There's a strong push for supporting artisan livelihoods and understanding the entire value chain of traditional crafts. The rise of eco-friendly accessories, such as woven basket bags made from natural and recycled materials, demonstrates a demand for conscious consumption in everyday items. Furthermore, practical advice on restyling old lehengas for festive occasions promotes circular fashion and mindful wardrobe utilization.\n\n**Key Elements:**\n*   **Colors:** While white, ecru, and natural tones are prominent for their crispness and versatility, vibrant accents (fuchsia, yellow, green, crimson red, orange, pink) are used for embellishments and festive wear. Traditional Ajrakh colors (indigo, madder) are also being reinterpreted.\n*   **Fabrics:** Handlooms are central, including various types of cotton, silk (Eri silk, silk-cotton blends), linen, and traditional block-printed textiles like Ajrakh. Modern materials like denim and Tencel are also integrated, often in fusion pieces. Natural fibers like banana fiber, sabai grass, rattan, seagrass, Moonj, Kaans grass, and water hyacinth are trending for accessories.\n*   **Silhouettes:** Comfort and versatility are key. Trends include relaxed-fit dhoti pants, deconstructed saris, summer maxis, asymmetric pants, crop tops, kaftans, and tailored separates. Power shoulders and fluid drapes are also noted. The ability to layer and mix-and-match is highly valued.\n*   **Accessories:** Woven basket bags made from sustainable materials are a significant trend. Traditional Indian jewellery, like silver pieces and kamarbandhs, are being paired with modern and fusion outfits.\n\n**Overall Aesthetic:** The prevailing aesthetic is one of 'Indian Cool' \u2013 a blend of traditional richness with contemporary ease. It's about celebrating cultural heritage without being confined by it, embracing comfort, and making ethical choices. Gen Z women are looking for unique pieces that tell a story, support local craftsmanship, and can be styled in multiple ways for both casual outings and elevated occasions.",
+            "trend_insights": {},
+            "confidence_scores": {}
+        }
+    ],
+    "agent_memories": {
+        "data_collector": {
+            "last_analysis": "Initial scraping from Elle India and Grazia India yielded mostly global fashion week and celebrity style content, which is not directly relevant to Indian Gen Z women's casual, sustainable, or traditional-modern fusion trends. The Voice of Fashion and Times of India Fashion provided much more relevant content. I've identified several articles discussing handlooms, traditional textiles (Odisha Ikat, Eri silk, Ajrakh), traditional Indian wear (sarees, lehengas, dhoti) with modern interpretations, and sustainable fashion practices. The focus on festive wear during Durga Puja and Navratri from Times of India also highlights the ongoing relevance and potential for fusion in traditional attire. I will continue to look for more specific examples of Gen Z casual wear and explicit mentions of sustainable practices within Indian fashion."
+        },
+        "video_analyzer": {
+            "processed_videos": 4
+        },
+        "content_analyzer": {
+            "last_analysis": "Indian fashion for Gen Z women (18-26, casual) is strongly characterized by a dynamic fusion of traditional elements with modern, comfortable, and sustainable aesthetics. Key trends include the reinterpretation of classic Indian drapes like the dhoti into versatile, gender-neutral silhouettes, and the integration of traditional crafts like chikankari and Ajrakh into contemporary casual wear, often with a global appeal. Sustainability is a significant driver, seen in the promotion of handloom textiles, eco-friendly accessories made from natural and recycled materials, and the emphasis on restyling existing ethnic wear. White and natural tones are popular, alongside vibrant accents, reflecting a desire for both minimalist chic and cultural expression. This demographic values authenticity, ethical production, and personal authorship in fashion, leading to a growing appreciation for artisan-led design and conscious consumption."
+        }
+    },
+    "execution_status": {
+        "data_collector": "completed",
+        "video_analyzer": "completed",
+        "content_analyzer": "completed"
+    }
+}

@@ -1,0 +1,20 @@
+{
+  "dependencies": ["."],
+  "graphs": {
+    "agent": "./graph.py:get_graph"
+  },
+  "env": ".env",
+  "pip_installer": "uv",
+  "dockerfile_lines": [
+    "RUN apt-get update && apt-get install -y libgl1",
+    "RUN apt-get update && apt-get install -y libglib2.0-0"
+  ],
+  "checkpointer": {
+    "comment": "Checkpoint cleanup configuration - only applies to LangSmith deployments",
+    "ttl": {
+      "strategy": "delete",
+      "sweep_interval_minutes": 60,
+      "default_ttl": 259200
+    }
+  }
+}
