@@ -5,9 +5,9 @@ import './MessageList.css';
 const MessageList = ({ messages }) => {
   const messagesEndRef = useRef(null);
 
-  useEffect(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+  // useEffect(() => {
+  //   messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  // }, [messages]);
 
   const getIcon = (type) => {
     switch (type) {
