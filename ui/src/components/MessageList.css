@@ -1,5 +1,5 @@
 .messages-container {
-  background: rgba(255, 255, 255, 0.95);
+  background: rgba(17, 19, 36, 0.6);
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
@@ -7,7 +7,7 @@
 
 .messages-container h3 {
   margin: 0 0 1rem 0;
-  color: #333;
+  color: #ede4e4;
   font-size: 1.25rem;
 }
 

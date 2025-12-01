@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:2024";
+const API_URL = "https://bryant-dolls-likelihood-convention.trycloudflare.com";
 
 /**
  * Enhanced error class for API errors
@@ -212,7 +212,6 @@ export async function streamRun(threadId, input) {
     if (!response.body) {
       throw new APIError("Response body is null", 0);
     }
-
     return response.body.getReader();
   } catch (error) {
     if (error instanceof APIError) {
@@ -230,7 +229,7 @@ export async function streamRun(threadId, input) {
 /**
  * Resume a run from an interrupt
  */
-export async function resumeRun(threadId, checkpoint, resumeData) {
+export const resumeRun = async (threadId, checkpoint, input, interruptId) => {
   if (!threadId) {
     throw new Error('Thread ID is required');
   }
@@ -239,60 +238,187 @@ export async function resumeRun(threadId, checkpoint, resumeData) {
     throw new Error('Valid checkpoint is required');
   }
 
-  console.log("Resuming run with checkpoint:", checkpoint, "and resumeData:", resumeData);
+  if (!interruptId) {
+    throw new Error('Interrupt ID is required for resume');
+  }
 
-  const payload = {
-    assistant_id: "agent",
-    checkpoint: {
-      checkpoint_id: checkpoint.checkpoint_id,
-      checkpoint_ns: checkpoint.checkpoint_ns || "",
-      thread_id: checkpoint.thread_id
-    },
-    checkpoint_during: true,
+  const url = `${API_URL}/threads/${threadId}/runs/stream`;
+  
+  const requestBody = {
     command: {
-      resume: resumeData
+      resume: {
+        [interruptId]: input || null  // Put user's response data here
+      }
     },
     config: {
       configurable: {
-        thread_id: checkpoint.thread_id
+        thread_id: threadId
       }
-    }
+    },
+    stream_mode: ["values"],
+    stream_subgraphs: true,
+    assistant_id: 'agent',
+    interrupt_before: [],
+    interrupt_after: [],
+    checkpoint: {
+      checkpoint_id: checkpoint.checkpoint_id,
+      thread_id: threadId,
+      checkpoint_ns: checkpoint.checkpoint_ns || ""
+    },
+    multitask_strategy: "rollback",
+    checkpoint_during: true
   };
 
-  console.log("Sending resumeRun payload:", payload);
-
+  console.log('Resume run request:', { 
+    url, 
+    threadId, 
+    interruptId,
+    checkpointId: checkpoint.checkpoint_id,
+    body: requestBody 
+  });
+  console.log('Resume run payload:', JSON.stringify(requestBody, null, 2));
   try {
-    const response = await fetch(`${API_URL}/threads/${threadId}/runs/stream`, {
-      method: "POST",
+    const response = await fetch(url, {
+      method: 'POST',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      body: JSON.stringify(payload),
+      body: JSON.stringify(requestBody),
     });
 
     if (!response.ok) {
       const errorText = await response.text();
-      const message = parseErrorResponse(response.status, errorText);
-      throw new APIError(message, response.status, errorText);
+      console.error('Resume run failed:', response.status, errorText);
+      throw new Error(`Failed to resume run: ${response.status} ${errorText}`);
     }
 
     if (!response.body) {
-      throw new APIError("Response body is null", 0);
+      throw new Error('Response body is null');
     }
 
     return response.body.getReader();
+
   } catch (error) {
-    if (error instanceof APIError) {
-      throw error;
+    console.error('Error in resumeRun:', error);
+    throw error;
+  }
+};
+
+// add to apiClient.js (near other exported helpers)
+export async function saveStateThenStream({
+  threadId,
+  values,            // the "values" array you want to save: e.g. [ [ {...} ] ]
+  as_node = "__copy__",  // optional (your example uses "__copy__")
+  assistant_id = "agent", // default assistant id; override if needed
+  metadata = { from_studio: true, LANGGRAPH_API_URL: API_URL }, // optional metadata object
+  stream_mode = ["debug", "messages"], // default stream modes (your example)
+  stream_subgraphs = true,
+  multitask_strategy = "rollback",
+  checkpoint_during = true
+}) {
+  if (!threadId) throw new Error("threadId is required");
+  if (!values) throw new Error("values payload is required");
+
+  // 1) POST state and get checkpoint back
+  const statePayload = {
+    values,
+    checkpoint: undefined, // not sending existing checkpoint (we are creating one)
+    as_node
+  };
+
+  // Use existing updateState to keep consistent error handling
+  let stateResponse;
+  try {
+    console.log("saveStateThenStream: posting state:", { threadId, statePayload });
+    stateResponse = await fetch(`${API_URL}/threads/${threadId}/state`, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(statePayload),
+    });
+
+    if (!stateResponse.ok) {
+      const errText = await stateResponse.text();
+      const message = parseErrorResponse(stateResponse.status, errText);
+      throw new APIError(message, stateResponse.status, errText);
     }
-    console.error("Resume run error:", error);
-    throw new APIError(
-      `Network error during resume: ${error.message}. Please check if the server is running.`,
-      0,
-      error
-    );
+  } catch (err) {
+    if (err instanceof APIError) throw err;
+    throw new APIError(`Network error when updating state: ${err.message}`, 0, err);
+  }
+
+  // parse JSON checkpoint
+  let stateJson;
+  try {
+    stateJson = await stateResponse.json();
+  } catch (err) {
+    throw new APIError("Failed to parse state response JSON", 0, err);
+  }
+
+  const checkpoint = stateJson?.checkpoint || stateJson?.configurable || stateJson?.checkpoint_id ? stateJson.checkpoint : null;
+  // fallback if API returns top-level checkpoint_id like in your example:
+  if (!checkpoint && stateJson?.checkpoint_id) {
+    // Some responses include checkpoint_id at top level; construct minimal checkpoint object
+    stateJson.checkpoint = {
+      checkpoint_id: stateJson.checkpoint_id,
+      thread_id: stateJson?.configurable?.thread_id || threadId,
+      checkpoint_ns: stateJson?.configurable?.checkpoint_ns || ""
+    };
+  }
+
+  const finalCheckpoint = stateJson?.checkpoint;
+  if (!finalCheckpoint || !finalCheckpoint.checkpoint_id) {
+    throw new APIError("No checkpoint received from state API", 0, stateJson);
+  }
+
+  // 2) POST to runs/stream using the checkpoint
+  const streamUrl = `${API_URL}/threads/${threadId}/runs/stream`;
+  const streamBody = {
+    config: {
+      configurable: {
+        thread_id: threadId
+      }
+    },
+    metadata,
+    stream_mode,
+    stream_subgraphs,
+    assistant_id,
+    interrupt_before: [],
+    interrupt_after: [],
+    checkpoint: finalCheckpoint,
+    multitask_strategy,
+    checkpoint_during
+  };
+
+  try {
+    const streamResponse = await fetch(streamUrl, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(streamBody),
+    });
+
+    if (!streamResponse.ok) {
+      const errorText = await streamResponse.text();
+      const message = parseErrorResponse(streamResponse.status, errorText);
+      throw new APIError(message, streamResponse.status, errorText);
+    }
+
+    if (!streamResponse.body) {
+      throw new APIError("Stream response body is null", 0);
+    }
+
+    // return a reader so caller can consume the stream (same as streamRun)
+    return {
+      reader: streamResponse.body.getReader(),
+      checkpoint: finalCheckpoint,
+      rawStateResponse: stateJson
+    };
+
+  } catch (err) {
+    if (err instanceof APIError) throw err;
+    throw new APIError(`Network error when starting stream: ${err.message}`, 0, err);
   }
 }
+
 
 /**
  * Get the current state of a thread
@@ -318,7 +444,7 @@ export async function updateState(threadId, values, checkpointId, asNode) {
     checkpoint: checkpointId ? { checkpoint_id: checkpointId } : undefined,
     as_node: asNode
   };
-
+console.log("Updating thread state with payload:", payload);
   return fetchFromApi(`/threads/${threadId}/state`, {
     method: "POST",
     body: JSON.stringify(payload),
