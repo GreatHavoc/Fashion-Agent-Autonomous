@@ -8,7 +8,7 @@ const STAGES = [
     { id: 'trend_processor', label: 'Kavya (Trend Processor Agent)', index: 4 },
     { id: 'outfit_designer', label: 'Priya (Outfit Designer Agent)', index: 5 },
     { id: 'video_generation', label: 'Zara (Video Generation Agent)', index: 6 },
-    { id: 'final_report', label: 'Final Report & Video Showcase', index: 7 }
+    { id: 'final_processor', label: 'Final Report & Video Showcase', index: 7 }
 ];
 
 const PipelineProgress = ({ activeNode, completedNodes = [] }) => {

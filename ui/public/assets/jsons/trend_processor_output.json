@@ -1,8 +1,8 @@
 {
-    "final_report": {
+    "final_processor": {
         "trend_analysis": {
             "analysis_date": "2025-10-02",
-            "total_outfits_analyzed": 225,
+            "total_sources_analyzed": 225,
             "dominant_color_trends": [
                 {
                     "name": "White / Ecru / Natural Tones",

@@ -1,0 +1,248 @@
+{
+    "trend_analysis": {
+        "analysis_date": "2025-11-26",
+        "total_sources_analyzed": 6,
+        "dominant_color_trends": [
+            {
+                "name": "Black",
+                "pantone_code": "19-4034 TCX",
+                "frequency": 35,
+                "trend_direction": "stable",
+                "confidence_score": 0.9
+            },
+            {
+                "name": "White / Cream",
+                "pantone_code": "11-0601 TCX",
+                "frequency": 22,
+                "trend_direction": "stable",
+                "confidence_score": 0.85
+            },
+            {
+                "name": "Espresso / Brown",
+                "pantone_code": "19-1118 TCX",
+                "frequency": 8,
+                "trend_direction": "rising",
+                "confidence_score": 0.9
+            },
+            {
+                "name": "Regal Red",
+                "pantone_code": "19-1664 TCX",
+                "frequency": 0,
+                "trend_direction": "rising",
+                "confidence_score": 0.8
+            },
+            {
+                "name": "Edgy Eggplant",
+                "pantone_code": "19-3526 TCX",
+                "frequency": 0,
+                "trend_direction": "rising",
+                "confidence_score": 0.8
+            },
+            {
+                "name": "Powder Pink / Mauve",
+                "pantone_code": "13-2804 TCX",
+                "frequency": 4,
+                "trend_direction": "rising",
+                "confidence_score": 0.75
+            }
+        ],
+        "style_trends": [
+            {
+                "trend_name": "Modernized Traditional Wear",
+                "frequency": 10,
+                "trend_direction": "rising",
+                "confidence_score": 0.9,
+                "description": "A significant trend focusing on adapting traditional Indian garments and textiles for contemporary wear. This includes modernizing silhouettes like the Kashmiri Pheran and promoting heritage crafts like Manipuri weaves.",
+                "key_pieces": [
+                    "Pheran-inspired velvet dress",
+                    "Manipuri weave dress",
+                    "Oversized kaftans",
+                    "Garments with aari embroidery"
+                ]
+            },
+            {
+                "trend_name": "Celebrity-Driven Streetstyle",
+                "frequency": 8,
+                "trend_direction": "rising",
+                "confidence_score": 0.85,
+                "description": "Fashion trends heavily influenced by international pop stars (Dua Lipa) and K-pop idols (Kim Ji-yoon). This style is characterized by a mix of streetwear, preppy, and punk aesthetics.",
+                "key_pieces": [
+                    "High-waisted bottoms",
+                    "Oversized jersey tops",
+                    "Mini skirts",
+                    "Thigh-high boots",
+                    "Monochrome outfits"
+                ]
+            },
+            {
+                "trend_name": "Structured Tailoring",
+                "frequency": 15,
+                "trend_direction": "rising",
+                "confidence_score": 0.8,
+                "description": "A focus on sharp, well-defined silhouettes, including blazers with strong shoulders and structured A-line skirts. This trend blends classic tailoring with modern, romantic details.",
+                "key_pieces": [
+                    "Structured peplum blazers",
+                    "A-line skirts",
+                    "Waistcoats",
+                    "Long coats"
+                ]
+            }
+        ],
+        "pattern_trends": [
+            {
+                "pattern_name": "Aari Embroidery / Appliqu\u00e9",
+                "pattern_type": "Floral",
+                "frequency": 8,
+                "trend_direction": "rising",
+                "confidence_score": 0.8,
+                "description": "Intricate, traditional embroidery work, often floral or abstract, used to add texture and cultural significance to garments. Seen in both traditional and modern apparel.",
+                "scale": "Medium",
+                "color_combinations": [
+                    "Black",
+                    "White",
+                    "Red"
+                ]
+            },
+            {
+                "pattern_name": "Woven / Basket Weave",
+                "pattern_type": "Geometric",
+                "frequency": 5,
+                "trend_direction": "rising",
+                "confidence_score": 0.7,
+                "description": "Textural woven patterns that create a basket-like or handcrafted feel, aligning with the trend of celebrating traditional craftsmanship.",
+                "scale": "Large",
+                "color_combinations": [
+                    "Brown",
+                    "Beige",
+                    "Black"
+                ]
+            }
+        ],
+        "print_trends": [
+            {
+                "print_name": "Plaid / Tartan",
+                "print_category": "Geometric",
+                "frequency": 6,
+                "trend_direction": "stable",
+                "confidence_score": 0.7,
+                "description": "Classic plaid and tartan prints, appearing on outerwear and skirts, signaling a nod to preppy and punk rock aesthetics.",
+                "placement_style": "All-over",
+                "color_palette": [
+                    "Red",
+                    "Black",
+                    "Green"
+                ]
+            },
+            {
+                "print_name": "Floral",
+                "print_category": "Nature",
+                "frequency": 4,
+                "trend_direction": "rising",
+                "confidence_score": 0.75,
+                "description": "Floral motifs, ranging from subtle embroidery to all-over prints, adding a touch of romanticism to winter collections.",
+                "placement_style": "All-over",
+                "color_palette": [
+                    "Green",
+                    "Pink",
+                    "Yellow"
+                ]
+            }
+        ],
+        "material_trends": [
+            {
+                "material": "Wool / Tweed",
+                "frequency": 20,
+                "trend_direction": "stable"
+            },
+            {
+                "material": "Denim",
+                "frequency": 15,
+                "trend_direction": "stable"
+            },
+            {
+                "material": "Velvet",
+                "frequency": 12,
+                "trend_direction": "rising"
+            },
+            {
+                "material": "Lace / Sheer Organza",
+                "frequency": 12,
+                "trend_direction": "rising"
+            },
+            {
+                "material": "Satin / Silk",
+                "frequency": 10,
+                "trend_direction": "stable"
+            },
+            {
+                "material": "Manipuri Weave",
+                "frequency": 0,
+                "trend_direction": "rising"
+            }
+        ],
+        "silhouette_trends": [
+            {
+                "silhouette": "A-line / Fit-and-flare",
+                "frequency": 25,
+                "trend_direction": "stable"
+            },
+            {
+                "silhouette": "Structured Tailoring (Sharp Shoulders, Blazers)",
+                "frequency": 15,
+                "trend_direction": "rising"
+            },
+            {
+                "silhouette": "Voluminous / Bubble Skirt",
+                "frequency": 12,
+                "trend_direction": "rising"
+            },
+            {
+                "silhouette": "Oversized (Kaftans, Pherans, Tops)",
+                "frequency": 8,
+                "trend_direction": "rising"
+            },
+            {
+                "silhouette": "Straight-fit / Sheath",
+                "frequency": 8,
+                "trend_direction": "stable"
+            },
+            {
+                "silhouette": "High-Waisted",
+                "frequency": 0,
+                "trend_direction": "rising"
+            }
+        ],
+        "seasonal_insights": {
+            "fall": [
+                "Emphasis on rich, warm color palettes including Espresso, Regal Red, and Maroon.",
+                "Layering is key, with a focus on statement outerwear and structured blazers.",
+                "Adoption of traditional Indian wear, like Kashmiri Pherans, for festive occasions."
+            ],
+            "winter": [
+                "Dominance of rich fabrics like Velvet and Wool/Tweed for warmth and luxury.",
+                "Structured tailoring and oversized silhouettes are the two key opposing trends.",
+                "A vibrant color palette (Regal Red, Edgy Eggplant) emerges, challenging traditional neutral winter tones.",
+                "Layering with statement outerwear, capes, and long coats is a primary styling cue."
+            ],
+            "spring": [
+                "Anticipate the continuation of vibrant colors like Powder Pink and Mint Green.",
+                "Lighter fabrics such as cotton and sheer organza will become more prevalent.",
+                "Floral prints and patterns will likely see increased popularity."
+            ],
+            "summer": [
+                "Oversized and flowing silhouettes like kaftans will be popular for their comfort and style.",
+                "Handloom fabrics and traditional weaves will be favored for their breathability and unique aesthetic.",
+                "Bright, expressive color palettes will continue to dominate."
+            ]
+        },
+        "predicted_next_season_trends": [
+            "Greater fusion of traditional textiles (like Manipuri weaves) into mainstream streetwear and formalwear.",
+            "Expansion of the vibrant winter color palette, with jewel tones becoming more prominent.",
+            "Increased demand for handcrafted, embroidered, and culturally significant garments.",
+            "Rise of 'Optical Illusion Dressing' using high-waisted cuts, vertical lines, and monochrome palettes to style silhouettes.",
+            "Continued popularity of oversized yet structured outerwear as a key layering piece."
+        ]
+    },
+    "overall_confidence_score": 0.88,
+    "analysis_summary": "The Fall/Winter 2025 fashion landscape is defined by a dynamic fusion of modernized traditional craftsmanship and global celebrity-driven trends. Key directions include the adoption of vibrant, expressive colors like 'Regal Red' and 'Edgy Eggplant' into winter wardrobes, moving beyond traditional neutral palettes. Silhouettes are varied, with a strong emphasis on both structured, sharp tailoring (blazers, A-line skirts) and comfortable, oversized forms (kaftans, Pheran-inspired dresses). Rich, textural fabrics such as velvet and wool/tweed are dominant, often adorned with intricate embroidery. Celebrity influence, particularly from K-pop and Western pop stars, is driving streetstyle trends like high-waisted bottoms and monochrome dressing. Simultaneously, there is a significant movement towards celebrating heritage, with traditional Indian weaves and patterns being integrated into contemporary designs. Overall, the season is characterized by individuality, blending comfort with structured elegance and cultural pride with global aesthetics."
+}

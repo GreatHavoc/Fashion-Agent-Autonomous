@@ -1,0 +1,245 @@
+{
+    "trend_analysis": {
+        "analysis_date": "2025-11-25",
+        "total_sources_analyzed": 6,
+        "dominant_color_trends": [
+            {
+                "name": "Black",
+                "pantone_code": "19-4007 TPG",
+                "frequency": 35,
+                "trend_direction": "stable",
+                "confidence_score": 0.95
+            },
+            {
+                "name": "White / Cream",
+                "pantone_code": "11-0601 TPG",
+                "frequency": 22,
+                "trend_direction": "stable",
+                "confidence_score": 0.9
+            },
+            {
+                "name": "Gray",
+                "pantone_code": "17-3911 TPG",
+                "frequency": 15,
+                "trend_direction": "stable",
+                "confidence_score": 0.8
+            },
+            {
+                "name": "Espresso",
+                "pantone_code": "19-0912 TCX",
+                "frequency": 8,
+                "trend_direction": "rising",
+                "confidence_score": 0.85
+            },
+            {
+                "name": "Regal Red",
+                "pantone_code": "19-1664 TCX",
+                "frequency": 0,
+                "trend_direction": "rising",
+                "confidence_score": 0.85
+            },
+            {
+                "name": "Powder Pink",
+                "pantone_code": "13-1404 TCX",
+                "frequency": 4,
+                "trend_direction": "rising",
+                "confidence_score": 0.8
+            },
+            {
+                "name": "Edgy Eggplant",
+                "pantone_code": "19-3528 TCX",
+                "frequency": 0,
+                "trend_direction": "rising",
+                "confidence_score": 0.75
+            }
+        ],
+        "style_trends": [
+            {
+                "trend_name": "Modernized Heritage",
+                "frequency": 15,
+                "trend_direction": "rising",
+                "confidence_score": 0.9,
+                "description": "A strong trend of adapting traditional and regional Indian garments for contemporary fashion. This includes modernizing silhouettes, using heritage fabrics, and celebrating craftsmanship.",
+                "key_pieces": [
+                    "Pheran-inspired velvet dress",
+                    "Oversized kaftans",
+                    "Manipuri weave dress",
+                    "Floor-length salwar-kameez"
+                ]
+            },
+            {
+                "trend_name": "Global Celebrity Influence",
+                "frequency": 18,
+                "trend_direction": "rising",
+                "confidence_score": 0.88,
+                "description": "Fashion choices are heavily influenced by international music and pop culture icons, particularly from K-pop and Western pop stars. This drives trends like streetwear, punk aesthetics, and specific silhouette hacks.",
+                "key_pieces": [
+                    "Oversized jersey tops",
+                    "Mini tennis skirts",
+                    "High-waisted bottoms",
+                    "Thigh-high boots",
+                    "Waistcoats"
+                ]
+            },
+            {
+                "trend_name": "Structured Comfort",
+                "frequency": 25,
+                "trend_direction": "stable",
+                "confidence_score": 0.85,
+                "description": "A blend of comfort-driven oversized fits with sharp, structured tailoring. This trend combines relaxed silhouettes with formal elements for a modern, versatile look.",
+                "key_pieces": [
+                    "Oversized blazers",
+                    "Structured peplum blazers",
+                    "Wide-leg trousers",
+                    "Full-length crispy white shirt"
+                ]
+            }
+        ],
+        "pattern_trends": [
+            {
+                "pattern_name": "Embroidery & Appliqu\u00e9",
+                "pattern_type": "Textural",
+                "frequency": 8,
+                "trend_direction": "rising",
+                "confidence_score": 0.8,
+                "description": "Intricate threadwork and appliqu\u00e9 detailing on fabrics, adding texture and a sense of luxury. Seen in both traditional (aari work) and modern contexts.",
+                "scale": "Medium",
+                "color_combinations": [
+                    "Black & White",
+                    "Maroon & Gold",
+                    "Green & Cream"
+                ]
+            },
+            {
+                "pattern_name": "Plaid / Tartan",
+                "pattern_type": "Geometric",
+                "frequency": 6,
+                "trend_direction": "stable",
+                "confidence_score": 0.7,
+                "description": "Classic crisscross pattern, often associated with winter wear. Seen on outerwear and skirts, aligning with preppy and punk aesthetics.",
+                "scale": "Medium",
+                "color_combinations": [
+                    "Red & Black",
+                    "Green & Blue",
+                    "Grey & White"
+                ]
+            }
+        ],
+        "print_trends": [
+            {
+                "print_name": "Pinstripes",
+                "print_category": "Geometric",
+                "frequency": 3,
+                "trend_direction": "rising",
+                "confidence_score": 0.7,
+                "description": "Classic vertical lines used to create an elongating effect, inspired by celebrity styling for a taller appearance.",
+                "placement_style": "All-over",
+                "color_palette": [
+                    "Black",
+                    "White",
+                    "Navy"
+                ]
+            },
+            {
+                "print_name": "Floral",
+                "print_category": "Nature",
+                "frequency": 4,
+                "trend_direction": "stable",
+                "confidence_score": 0.65,
+                "description": "Floral motifs, particularly in embroidery on traditional wear, suggesting a move towards more detailed and craft-oriented applications.",
+                "placement_style": "Accents",
+                "color_palette": [
+                    "Green",
+                    "Pink",
+                    "Yellow"
+                ]
+            }
+        ],
+        "material_trends": [
+            {
+                "material": "Wool / Tweed",
+                "frequency": 20,
+                "trend_direction": "stable"
+            },
+            {
+                "material": "Velvet",
+                "frequency": 15,
+                "trend_direction": "rising"
+            },
+            {
+                "material": "Denim",
+                "frequency": 15,
+                "trend_direction": "stable"
+            },
+            {
+                "material": "Lace / Sheer Organza",
+                "frequency": 12,
+                "trend_direction": "rising"
+            },
+            {
+                "material": "Handcrafted Weaves",
+                "frequency": 10,
+                "trend_direction": "rising"
+            }
+        ],
+        "silhouette_trends": [
+            {
+                "silhouette": "A-line / Fit-and-flare",
+                "frequency": 25,
+                "trend_direction": "rising"
+            },
+            {
+                "silhouette": "Oversized",
+                "frequency": 20,
+                "trend_direction": "rising"
+            },
+            {
+                "silhouette": "Structured Tailoring",
+                "frequency": 15,
+                "trend_direction": "stable"
+            },
+            {
+                "silhouette": "High-Waisted",
+                "frequency": 12,
+                "trend_direction": "rising"
+            },
+            {
+                "silhouette": "Thigh-high Slits",
+                "frequency": 8,
+                "trend_direction": "rising"
+            }
+        ],
+        "seasonal_insights": {
+            "fall": [
+                "Layering is key, with statement outerwear and structured tailoring.",
+                "Dominance of rich textures like velvet, wool, and handcrafted weaves.",
+                "Adoption of a mixed color palette, blending earthy tones like Espresso with vibrant hues like Regal Red."
+            ],
+            "winter": [
+                "Strong focus on heritage-inspired wear like Pheran-inspired dresses.",
+                "Velvet and wool are the go-to fabrics for warmth and style.",
+                "A vibrant color palette is encouraged to brighten up traditional winter wardrobes.",
+                "Structured tailoring and oversized silhouettes continue to be major trends."
+            ],
+            "spring": [
+                "Emergence of pastel shades like Powder Pink and Mint Green.",
+                "Lighter fabrics such as cotton and sheer organza will be prominent.",
+                "Continuation of A-line and flared silhouettes for dresses and skirts."
+            ],
+            "summer": [
+                "Popularity of oversized and flowing silhouettes like kaftans.",
+                "Bright, expressive colors will likely dominate.",
+                "Focus on comfortable, breathable fabrics like modal silk and cotton."
+            ]
+        },
+        "predicted_next_season_trends": [
+            "Greater integration of handcrafted, sustainable textiles into mainstream fashion collections.",
+            "The fusion of punk-rock and preppy aesthetics, leading to hybrid styles.",
+            "Increased popularity of optical illusion dressing and silhouette-enhancing cuts.",
+            "Expansion of vibrant, expressive color palettes into Spring/Summer collections.",
+            "Rise of gender-fluid silhouettes inspired by traditional garments."
+        ]
+    },
+    "overall_confidence_score": 0.88,
+    "analysis_summary": "The current fashion landscape is characterized by a dynamic fusion of global pop culture influences and a renewed appreciation for heritage craftsmanship. Key trends indicate a strong movement towards oversized and structured silhouettes, with A-line cuts and high-waisted bottoms gaining significant traction. While the runway shows a dominance of classic neutral colors like black and white, editorial content strongly advocates for a vibrant winter palette, including regal red and espresso brown. In materials, there is a dual trend of traditional fabrics like wool and tweed coexisting with a rising interest in handcrafted and sustainable textiles such as Manipuri weaves. Style is heavily influenced by international celebrities and K-pop culture, popularizing aesthetics that blend preppy, punk, and streetwear elements. Simultaneously, there is a significant trend towards modernizing traditional garments like Kashmiri Pherans and Kaftans for contemporary wear. Textural patterns like embroidery and woven details are more prominent than traditional prints. Overall, the market is moving towards expressive, individualistic styles that prioritize both comfort and a strong fashion statement."
+}

@@ -53,8 +53,8 @@ async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
             dashboard_file = "data/dashboard_data.json"
             if not os.path.exists(dashboard_file):
                 # Load trend analysis from state or file
-                final_report = state.get("final_report", {})
-                trend_analysis = final_report.get("trend_analysis", {})
+                final_processor = state.get("final_processor", {})
+                trend_analysis = final_processor.get("trend_analysis", {})
                 if not trend_analysis and os.path.exists("data/trend_processor_output.json"):
                     with open("data/trend_processor_output.json", "r") as f:
                         file_data = json.load(f)
@@ -81,9 +81,9 @@ async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     console_logger.info("Starting Outfit Designer Agent...")
     
     try:
-        # Get trend analysis from final processor output stored in final_report
-        final_report = state.get("final_report", {})
-        trend_analysis = final_report.get("trend_analysis", {})
+        # Get trend analysis from final processor output stored in final_processor
+        final_processor = state.get("final_processor", {})
+        trend_analysis = final_processor.get("trend_analysis", {})
         
         if not trend_analysis:
             file_logger.warning("No trend analysis found for outfit design")

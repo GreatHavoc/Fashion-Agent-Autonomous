@@ -39,14 +39,14 @@ async def outfit_reviewer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         "message": "Review outfit designs before proceeding to video generation",
         "total_outfits": len(outfits_list),
         "outfits": [
-            {
-                "outfit_id": outfit.get("outfit_id", f"outfit_{idx}"),
-                "name": outfit.get("outfit_name", ""),
-                "description": outfit.get("description", ""),
-                "colors": outfit.get("colors", []),
-                "style": outfit.get("style_elements", {}),
-                "image_path": outfit.get("saved_image_path", "")
-            }
+        {
+            "outfit_id": f"outfit_{idx}",
+            "name": outfit.get("outfit_name", ""),
+            "description": outfit.get("outfit_description", ""),
+            "colors": outfit.get("dominant_colors", []),
+            "style": outfit.get("style_tags", []),
+            "image_path": outfit.get("saved_image_path", "")
+        }
             for idx, outfit in enumerate(outfits_list)
         ],
         "instructions": {
@@ -66,7 +66,7 @@ async def outfit_reviewer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     
     # Interrupt for human review
     review_response = interrupt(review_payload)
-    
+    print("--------------",review_response)
     # Validate review decision
     try:
         decision = OutfitReviewDecision(**review_response)

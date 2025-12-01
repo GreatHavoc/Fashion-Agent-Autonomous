@@ -6,35 +6,38 @@ import os
 import time
 import traceback
 from typing import Dict, Any
+from langgraph.func import task
 
 from fashion_agent.config import file_logger, console_logger, MAX_RETRIES, BASE_DELAY
 from fashion_agent.state import TrendAnalysisList
 from fashion_agent.agents.builders import build_agent4_modern
+from fashion_agent.utils import storage
 
 
 async def final_processor_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     """LangGraph node for final processing - synthesizes content and video analysis."""
     
-    async def load_trend_processor_output():
-        """Check if cached trend processor output exists."""
+    # Check for cached output from previous run
+    def load_cached_output():
         output_file = "data/trend_processor_output.json"
-        if await asyncio.to_thread(os.path.exists, output_file):
+        if os.path.exists(output_file):
             try:
-                with await asyncio.to_thread(open, output_file, "r") as f:
-                    content = await asyncio.to_thread(f.read)
-                    data = json.loads(content)
-                    structured_output = TrendAnalysisList(**data)
-                
+                with open(output_file, "r") as f:
+                    structured_output = TrendAnalysisList(**json.load(f))
                 file_logger.info("Loaded Trend Processor output from file, skipping agent execution.")
                 return {
-                    "final_report": structured_output.model_dump(),  # Dict, not list
+                    "final_processor": structured_output.model_dump(),
                     "agent_memories": {
+                        **state.get("agent_memories", {}),
                         "final_processor": {
-                            "trends_analyzed": structured_output.total_trends,
-                            "top_trends": len(structured_output.top_5_trends)
+                            "trends_analyzed": structured_output.trend_analysis.total_sources_analyzed,
+                            "top_trends": len(structured_output.trend_analysis.style_trends),
+                            "avg_confidence": structured_output.overall_confidence_score,
+                            "processing_time": 0
                         }
                     },
                     "execution_status": {
+                        **state.get("execution_status", {}),
                         "final_processor": "completed"
                     }
                 }
@@ -42,12 +45,13 @@ async def final_processor_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                 file_logger.warning(f"Failed to load cached Trend Processor output: {e}. Will rerun agent.")
         return None
     
-    cached = await load_trend_processor_output()
+    cached = load_cached_output()
     if cached:
-        from ..utils import storage
-        await asyncio.to_thread(storage.update_final_report, 
-                               record_id=f"fashion_analysis_{config['configurable']['thread_id']}", 
-                               data=cached)
+        await asyncio.to_thread(
+            storage.update_final_report,
+            record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
+            data=cached
+        )
         return cached
     
     console_logger.info("Starting Final Processor Agent...")
@@ -56,11 +60,12 @@ async def final_processor_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         # Get content analysis and video analysis from previous steps
         content_analysis = state.get("content_analysis", [])
         video_analysis = state.get("video_analysis", [])
+        data_urls = state.get("data_urls", [])
         
         if not content_analysis:
             file_logger.warning("No content analysis found for final processing")
             return {
-                "final_report": {},  # Empty dict, not empty list
+                "final_processor": {},
                 "errors": {"final_processor": "No content analysis available"},
                 "execution_status": {"final_processor": "skipped"}
             }
@@ -68,15 +73,36 @@ async def final_processor_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         # Build agent for trend synthesis
         agent4 = await build_agent4_modern()
         
-        # Prepare input for final processor
-        # Format the analysis data clearly for the agent
+        # Extract video URLs from video analysis for source tracking
+        video_urls = []
+        for analysis in video_analysis:
+            if isinstance(analysis, dict):
+                for video_result in analysis.get("per_video_results", []):
+                    if video_result.get("video_url"):
+                        video_urls.append(video_result["video_url"])
+        
+        file_logger.info(f"Source tracking: {len(data_urls)} web URLs, {len(video_urls)} video URLs")
+        
+        # Prepare input for final processor with source URL tracking
         input_message = (
             "Synthesize the following fashion trend data from web content analysis and video analysis:\n\n"
+            "## Web Article Sources\n"
+            f"{json.dumps([{'url': u.get('url', ''), 'title': u.get('title', '')} for u in data_urls], indent=2)}\n\n"
+            "## Video Sources\n"
+            f"{json.dumps([{'video_url': url} for url in video_urls], indent=2)}\n\n"
             "## Content Analysis Data\n"
             f"{json.dumps(content_analysis, indent=2)}\n\n"
             "## Video Trend Data\n"
             f"{json.dumps(video_analysis, indent=2)}\n\n"
-            "Please analyze this data and produce a comprehensive TrendAnalysisList with quantitative backing."
+            "IMPORTANT SOURCE TRACKING:\n"
+            "For EVERY trend you identify (color, style, pattern, print, material, silhouette):\n"
+            "1. Track which source URLs (BOTH web articles and videos) mentioned this trend\n"
+            "2. Populate the source_urls field with those URLs\n"
+            "3. If a trend appears in content_analysis from a specific URL, include that article URL\n"
+            "4. If a trend appears in video_analysis from a specific video, include that video_url\n"
+            "5. Each trend's source_urls array should contain a mix of web article URLs and video URLs\n"
+            "6. Ensure EVERY trend has at least one source_url for complete traceability\n\n"
+            "Please analyze this data and produce a comprehensive TrendAnalysisList with quantitative backing and complete source attribution."
         )
         
         # Log the input message
@@ -125,29 +151,37 @@ async def final_processor_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                     file_logger.info(json.dumps(structured_output.model_dump(), indent=2))
                     file_logger.info("="*80)
                     
-                    # Persist to disk
-                    output_data = structured_output.model_dump()
-                    await asyncio.to_thread(
-                        lambda: json.dump(output_data, open("data/trend_processor_output.json", "w"), indent=4)
-                    )
+                    # Use @task for blocking file write to avoid blocking async event loop
+                    @task
+                    def save_output_to_disk():
+                        with open("data/trend_processor_output.json", "w") as f:
+                            json.dump(structured_output.model_dump(), f, indent=4)
+                    
+                    await save_output_to_disk()
+                    file_logger.info("Final processor output saved")
                     
                     # Update storage
-                    from ..utils import storage
-                    await asyncio.to_thread(storage.update_final_report,
-                                          record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
-                                          data=output_data)
+                    await asyncio.to_thread(
+                        storage.update_final_report,
+                        record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
+                        data=structured_output.model_dump()
+                    )
                     
                     return {
-                        "final_report": output_data,  # Dict, not list
+                        "final_processor": structured_output.model_dump(),
                         "agent_memories": {
+                            **state.get("agent_memories", {}),
                             "final_processor": {
-                                "trends_analyzed": structured_output.trend_analysis.total_outfits_analyzed,
+                                "trends_analyzed": structured_output.trend_analysis.total_sources_analyzed,
                                 "top_trends": len(structured_output.trend_analysis.style_trends),
                                 "avg_confidence": structured_output.overall_confidence_score,
                                 "processing_time": end_time - start_time
                             }
                         },
-                        "execution_status": {"final_processor": "completed"}
+                        "execution_status": {
+                            **state.get("execution_status", {}),
+                            "final_processor": "completed"
+                        }
                     }
                 else:
                     raise ValueError("Failed to parse Final Processor output")
@@ -165,7 +199,8 @@ async def final_processor_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         file_logger.error(f"ERROR: Final Processor error: {e}")
         file_logger.error(f"Final processor traceback: {traceback.format_exc()}")
         return {
-            "final_report": {},  # Empty dict, not empty list
+            "final_processor": {},
             "errors": {"final_processor": str(e)},
             "execution_status": {"final_processor": "failed"}
         }
+

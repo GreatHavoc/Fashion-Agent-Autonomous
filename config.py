@@ -44,8 +44,7 @@ logger = file_logger
 google_api_key = config('GoogleAPI')
 if not google_api_key:
     error_msg = (
-        "Missing Google API credentials. Set one of the following environment variables: "
-        f"{env_list}."
+        "Missing Google API credentials. Set the 'GoogleAPI' environment variable."
     )
     file_logger.error(error_msg)
     raise RuntimeError(error_msg)
@@ -54,6 +53,7 @@ if not google_api_key:
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-pro",
     temperature=0,
+    stream_usage=True,
     google_api_key=google_api_key
 )
 

@@ -145,7 +145,7 @@ config = {
 
 **What's Redundant**:
 - ❌ `MediaProcessing` table columns duplicating checkpoint state:
-  - `data_collector`, `video_analyzer`, `content_analysis`, `final_report`, etc.
+  - `data_collector`, `video_analyzer`, `content_analysis`, `final_processor`, etc.
   - All this data already in checkpoints
 
 **Recommendation**: Keep Supabase functions, remove state duplication unless you need external REST API.

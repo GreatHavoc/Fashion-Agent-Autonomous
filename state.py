@@ -299,6 +299,7 @@ class ColorTrend(BaseModel):
     frequency: int = Field(..., description="Number of times this color appeared in the analyzed outfits.")
     trend_direction: str = Field(..., description="Indicates whether the color is rising, stable, or declining in popularity.")
     confidence_score: float = Field(..., description="Confidence score (0-1) indicating reliability of the color trend analysis.")
+    source_urls: List[str] = Field(default_factory=list, description="URLs (web articles and videos) that mentioned this color trend")
 
 
 class StyleTrend(BaseModel):
@@ -308,6 +309,7 @@ class StyleTrend(BaseModel):
     confidence_score: float = Field(..., description="Confidence score (0-1) indicating reliability of the style trend analysis.")
     description: str = Field(..., description="Brief explanation of the style trend.")
     key_pieces: List[str] = Field(..., description="List of key clothing or accessory pieces associated with this style trend.")
+    source_urls: List[str] = Field(default_factory=list, description="URLs (web articles and videos) that contributed to identifying this style trend")
 
 
 class PatternTrend(BaseModel):
@@ -319,6 +321,7 @@ class PatternTrend(BaseModel):
     description: str = Field(..., description="Brief description of the pattern and its characteristics.")
     scale: str = Field(..., description="Scale or size of the pattern (e.g., Small, Medium, Large).")
     color_combinations: List[str] = Field(..., description="List of common color combinations associated with the pattern.")
+    source_urls: List[str] = Field(default_factory=list, description="URLs featuring this pattern")
 
 
 class PrintTrend(BaseModel):
@@ -330,18 +333,21 @@ class PrintTrend(BaseModel):
     description: str = Field(..., description="Brief description of the print and its relevance.")
     placement_style: str = Field(..., description="Typical placement or styling of the print (e.g., All-over, Accents).")
     color_palette: List[str] = Field(..., description="List of prominent colors found in the print palette.")
+    source_urls: List[str] = Field(default_factory=list, description="URLs showcasing this print")
 
 
 class MaterialTrend(BaseModel):
     material: str = Field(..., description="Type of fabric or material trending (e.g., Denim, Linen).")
     frequency: int = Field(..., description="Number of times this material appeared in the analyzed outfits.")
     trend_direction: str = Field(..., description="Direction or nature of the material trend (rising, stable, declining).")
+    source_urls: List[str] = Field(default_factory=list, description="URLs featuring this material")
 
 
 class SilhouetteTrend(BaseModel):
     silhouette: str = Field(..., description="Type of silhouette or cut trending (e.g., A-line, Oversized).")
     frequency: int = Field(..., description="Number of times this silhouette appeared in the analyzed outfits.")
     trend_direction: str = Field(..., description="Direction or nature of the silhouette trend (rising, stable, declining).")
+    source_urls: List[str] = Field(default_factory=list, description="URLs showcasing this silhouette")
 
 
 class SeasonalInsights(BaseModel):
@@ -353,7 +359,7 @@ class SeasonalInsights(BaseModel):
 
 class TrendAnalysisOutput(BaseModel):
     analysis_date: str = Field(default="2025-09-23", description="Date of the trend analysis in YYYY-MM-DD format.")
-    total_outfits_analyzed: int = Field(..., description="Total number of outfits analyzed to derive these trends.")
+    total_sources_analyzed: int = Field(..., description="Total number of sources analyzed to derive these trends.")
     dominant_color_trends: List[ColorTrend] = Field(..., description="List of dominant color trends identified in the analysis.")
     style_trends: List[StyleTrend] = Field(..., description="List of style trends identified in the analysis.")
     pattern_trends: List[PatternTrend] = Field(..., description="List of pattern trends identified in the analysis.")
@@ -470,7 +476,7 @@ class FashionAnalysisState(TypedDict):
     data_urls: Annotated[List[Dict[str, Any]], operator.add]
     content_analysis: Annotated[List[Dict[str, Any]], operator.add]
     video_analysis: Annotated[List[Dict[str, Any]], operator.add]
-    final_report: Dict[str, Any]
+    final_processor: Dict[str, Any]
     outfit_designs: Annotated[List[Dict[str, Any]], operator.add]
     outfit_videos: Annotated[List[Dict[str, Any]], operator.add]
     
@@ -479,12 +485,3 @@ class FashionAnalysisState(TypedDict):
     execution_status: Annotated[Dict[str, str], merge_dicts]
     errors: Annotated[Dict[str, str], merge_dicts]
 
-
-# =========================
-# Note on Agent State Schemas
-# =========================
-# Per LangGraph v1.0 guidelines:
-# - create_agent only supports TypedDict for state schemas (not Pydantic BaseModel)
-# - Custom state for agents should extend AgentState from langgraph.prebuilt
-# - Use AnyMessage for message fields to ensure proper serialization
-# - Pydantic BaseModel is used for structured output (response_format), not state

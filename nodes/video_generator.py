@@ -15,22 +15,17 @@ from fashion_agent.tools.helpers import make_video
 async def video_generator_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     """LangGraph node for video generation - runs after outfit designer."""
     
-    async def load_video_generation_collection_output():
+    def load_cached_output():
         """Check if cached video generation output exists."""
-        output_file = "video_generation_collection_output.json"
-        if await asyncio.to_thread(os.path.exists, output_file):
+        output_file = "data/video_generation_collection_output.json"
+        if os.path.exists(output_file):
             try:
-                with await asyncio.to_thread(open, output_file, "r") as f:
-                    content = await asyncio.to_thread(f.read)
-                    data = json.loads(content)
-                    structured_output = VideoGenerationCollectionOutput(**data)
+                with open(output_file, "r") as f:
+                    structured_output = VideoGenerationCollectionOutput(**json.load(f))
                 
                 file_logger.info("Loaded Video Generation output from file, skipping agent execution.")
                 
-                # Upload cached videos to storage
-                await _upload_cached_videos(structured_output, config)
-                
-                result_dict = {
+                return {
                     "outfit_videos": [structured_output.model_dump()],
                     "agent_memories": {
                         **state.get("agent_memories", {}),
@@ -45,45 +40,9 @@ async def video_generator_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                         "video_generator": "completed"
                     }
                 }
-                
-                # Archive if workflow complete
-                await _check_and_archive(result_dict, config)
-                
-                return result_dict
             except Exception as e:
                 file_logger.warning(f"Failed to load cached Video Generation output: {e}. Will rerun agent.")
         return None
-    
-    async def _upload_cached_videos(structured_output: VideoGenerationCollectionOutput, config):
-        """Upload videos from cached output to storage."""
-        try:
-            from ..utils import storage
-            record_id = f"fashion_analysis_{config['configurable']['thread_id']}"
-            video_file_paths = []
-            
-            for v in structured_output.video_results:
-                out_path = getattr(v, 'output_video_path', None) if hasattr(v, 'output_video_path') else (
-                    v.get('output_video_path') if isinstance(v, dict) else None
-                )
-                if not out_path:
-                    continue
-                
-                # Normalize path to absolute
-                if not await asyncio.to_thread(os.path.isabs, out_path):
-                    full_path = await asyncio.to_thread(
-                        lambda: os.path.normpath(os.path.join(os.getcwd(), out_path))
-                    )
-                else:
-                    full_path = await asyncio.to_thread(os.path.normpath, out_path)
-                video_file_paths.append(full_path)
-            
-            if video_file_paths:
-                await asyncio.to_thread(storage.update_videos,
-                                      record_id=record_id,
-                                      video_paths=video_file_paths,
-                                      append=True)
-        except Exception as e:
-            file_logger.warning(f"Failed to process cached video upload paths: {e}")
     
     async def _check_and_archive(result_dict: Dict[str, Any], config):
         """Check if workflow is complete and archive if successful."""
@@ -110,8 +69,18 @@ async def video_generator_node(state: Dict[str, Any], config) -> Dict[str, Any]:
             failed_agents = [agent for agent in required_agents if execution_status.get(agent) != "completed"]
             file_logger.warning(f"Failed/incomplete agents: {failed_agents}")
     
-    cached = await load_video_generation_collection_output()
+    cached = load_cached_output()
     if cached:
+        from ..utils import storage
+        await asyncio.to_thread(
+            storage.update_video_generation,
+            record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
+            data=cached
+        )
+        
+        # Check if workflow is complete
+        await _check_and_archive(cached, config)
+        
         return cached
     
     console_logger.info("Starting Video Generator Agent...")
@@ -184,11 +153,30 @@ async def video_generator_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                     processing_time = end_time - start_time
                     total_processing_time += processing_time
                     
-                    # Create video generation result
+                    # Upload video to Supabase and get public URL
+                    video_url = ''
+                    if video_result.get('success') and video_result.get('output_path'):
+                        try:
+                            from ..utils import storage
+                            local_video_path = video_result.get('output_path')
+                            video_url = await asyncio.to_thread(
+                                storage.upload_video_to_supabase, 
+                                local_video_path
+                            )
+                            if video_url:
+                                file_logger.info(f"Video uploaded to Supabase: {video_url}")
+                            else:
+                                file_logger.warning(f"Failed to upload video to Supabase, using local path")
+                                video_url = local_video_path
+                        except Exception as e:
+                            file_logger.warning(f"Error uploading video to Supabase: {e}, using local path")
+                            video_url = video_result.get('output_path', '')
+                    
+                    # Create video generation result with Supabase URL
                     video_output = VideoGenerationOutput(
                         outfit_id=outfit_id,
                         input_image_path=image_path,
-                        output_video_path=video_result.get('output_path', ''),
+                        output_video_path=video_url,  # Now stores Supabase URL instead of local path
                         generation_success=video_result.get('success', False),
                         generation_time=processing_time,
                         error_message=video_result.get('error') or '',
