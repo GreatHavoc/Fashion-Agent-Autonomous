@@ -103,7 +103,7 @@
   gap: 0.5rem;
   padding: 1rem;
   border: 2px solid #e0e0e0;
-  border-radius: 8px;
+  borderRadius: 8px;
   background: white;
   color: #666;
   font-weight: 600;
@@ -146,8 +146,13 @@
   .outfits-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .decision-buttons {
     grid-template-columns: 1fr;
   }
+}
+
+/* Hide scrollbar while keeping scroll functionality */
+.outfit-review-scrollable::-webkit-scrollbar {
+  display: none;
 }

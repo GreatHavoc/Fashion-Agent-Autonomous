@@ -473,12 +473,12 @@ class FashionAnalysisState(TypedDict):
     outfit_review_decision: Dict[str, Any]  # OutfitReviewDecision.model_dump() - human decision
     
     # Agent outputs (use list concatenation for parallel updates)
-    data_urls: Annotated[List[Dict[str, Any]], operator.add]
+    data_collection: Dict[str, Any]  # Replaces data_urls to hold full structured output
     content_analysis: Annotated[List[Dict[str, Any]], operator.add]
     video_analysis: Annotated[List[Dict[str, Any]], operator.add]
     final_processor: Dict[str, Any]
-    outfit_designs: Annotated[List[Dict[str, Any]], operator.add]
-    outfit_videos: Annotated[List[Dict[str, Any]], operator.add]
+    outfit_designs: List[Dict[str, Any]]
+    outfit_videos: List[Dict[str, Any]]
     
     # State management - all need reducers for parallel node updates
     agent_memories: Annotated[Dict[str, Dict[str, Any]], merge_agent_memories]

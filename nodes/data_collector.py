@@ -34,7 +34,7 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                     structured_output = DataCollectorOutput(**json.load(f))
 
                 return {
-                    "data_urls": [item.model_dump() for item in structured_output.url_list],
+                    "data_collection": structured_output.model_dump(),
                     "agent_memories": {
                         **state.get("agent_memories", {}),
                         "data_collector": {"last_analysis": structured_output.self_analysis}
@@ -44,7 +44,7 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                         "data_collector": "completed"
                     }
                 }
-            except Exception as e:
+            except Exception as e:  
                 file_logger.warning(f"Failed to load cached Data Collector output: {e}. Will rerun agent.")
         return None
     
@@ -110,7 +110,7 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                         # Fallback: create default output if structure is unexpected
                         file_logger.error(f"Unexpected result structure: {type(result)}, missing structured_response key")
                         structured_output = DataCollectorOutput(
-                            data_urls=[],
+                            data_collection=[],
                             video_urls=[],
                             search_queries=[],
                             metadata={}
@@ -168,7 +168,7 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         
         # Create return dictionary with proper state isolation
         return_dict = {
-            "data_urls": [item.model_dump() for item in structured_output.url_list],
+            "data_collection": structured_output.model_dump(),
             "agent_memories": {
                 **state.get("agent_memories", {}),
                 "data_collector": {"last_analysis": structured_output.self_analysis}
@@ -179,7 +179,7 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
             }
         }
         
-        file_logger.info(f"Data collector returning {len(return_dict['data_urls'])} URLs")
+        file_logger.info(f"Data collector returning {len(return_dict['data_collection']['data_urls'])} URLs")
         file_logger.debug(f"Return dict keys: {list(return_dict.keys())}")
         console_logger.info("[Agent 1] Consolidating website findings...")
         await asyncio.sleep(1)
@@ -187,14 +187,14 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         await asyncio.sleep(1)
         console_logger.info("[Agent 1] Consolidating Instagram findings...")
         await asyncio.sleep(1)
-        console_logger.info(f"[Agent 1] Final URLs scraped: {len(return_dict['data_urls'])}")
+        console_logger.info(f"[Agent 1] Final URLs scraped: {len(return_dict['data_collection']['data_urls'])}")
         return return_dict
         
     except Exception as e:
         file_logger.error(f"ERROR: Data Collector error: {e}")
         file_logger.error(f"Traceback: {traceback.format_exc()}")
         return {
-            "data_urls": [],
+            "data_collection": [],
             "errors": {**state.get("errors", {}), "data_collector": str(e)},
             "execution_status": {
                 **state.get("execution_status", {}),

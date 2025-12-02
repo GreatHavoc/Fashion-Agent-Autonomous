@@ -60,7 +60,7 @@ async def content_analyzer_node(state: Dict[str, Any], config) -> Dict[str, Any]
     
     try:
         
-        data_urls = state.get("data_urls", [])
+        data_urls = state.get("data_collection", {}).get("data_urls", [])
         if not data_urls:
             raise ValueError("No URLs from data collector")
         

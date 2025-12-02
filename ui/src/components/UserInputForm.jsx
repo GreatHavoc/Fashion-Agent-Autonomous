@@ -106,7 +106,7 @@ const UserInputForm = ({ onSubmit, initialValues = {} }) => {
     border: '1px solid rgba(124, 92, 255, 0.6)',
     padding: '10px 20px',
     boxShadow: 'none',
-    borderRadius:'999px',
+    borderRadius: '999px',
     cursor: 'pointer',
   };
 
@@ -156,7 +156,7 @@ const UserInputForm = ({ onSubmit, initialValues = {} }) => {
     border: '1px solid rgba(124, 92, 255, 0.6)',
     padding: '10px 20px',
     boxShadow: 'none',
-    borderRadius:'999px',
+    borderRadius: '999px',
     cursor: 'pointer',
   };
 

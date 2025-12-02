@@ -18,6 +18,21 @@ async def outfit_reviewer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     
     Returns state with review decision and updated awaiting_outfit_review flag.
     """
+    
+    # GUARD: Check if review was already completed (prevent double interrupt from cached nodes)
+    execution_status = state.get("execution_status", {})
+    reviewer_status = execution_status.get("outfit_reviewer")
+    
+    if reviewer_status == "completed":
+        file_logger.info("Outfit review already completed (status=completed), skipping re-review")
+        return {}  # Pass through without changes
+    
+    # Also check if we already have a review decision with approve/reject
+    existing_decision = state.get("outfit_review_decision", {})
+    if existing_decision.get("decision_type") in ["approve", "reject"]:
+        file_logger.info(f"Outfit review already completed (decision={existing_decision.get('decision_type')}), skipping re-review")
+        return {}  # Pass through without changes
+    
     file_logger.info("Starting outfit review process...")
     
     # Get outfit designs from state
@@ -66,7 +81,7 @@ async def outfit_reviewer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     
     # Interrupt for human review
     review_response = interrupt(review_payload)
-    print("--------------",review_response)
+    print("--------------", review_response)
     # Validate review decision
     try:
         decision = OutfitReviewDecision(**review_response)
@@ -85,7 +100,11 @@ async def outfit_reviewer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
             file_logger.info("Outfits approved - proceeding to video generation")
             return {
                 "awaiting_outfit_review": False,
-                "outfit_review_decision": decision.model_dump()
+                "outfit_review_decision": decision.model_dump(),
+                "execution_status": {
+                    **state.get("execution_status", {}),
+                    "outfit_reviewer": "completed"
+                }
             }
         
         elif decision.decision_type == "reject":

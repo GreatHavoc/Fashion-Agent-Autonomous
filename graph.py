@@ -2,6 +2,7 @@
 
 import os
 import sqlite3
+from typing import Dict, Any
 from pathlib import Path
 from langgraph.graph import StateGraph, START, END
 from langgraph.checkpoint.sqlite import SqliteSaver
@@ -32,6 +33,7 @@ def coordination_node(state, config):
     file_logger.info("Coordination node: Both content_analyzer and video_analyzer completed")
     return {}  # No state updates, just acts as a barrier
 
+
 # Ensure data directory exists at module import (synchronous context)
 # This avoids blocking calls during async graph compilation
 _DATA_DIR = Path(__file__).parent / "data"
@@ -40,10 +42,42 @@ _CHECKPOINT_DB = str(_DATA_DIR / "checkpoints.db")
 
 # Initialize and setup checkpointer at module load time
 _CHECKPOINTER = None
+
 if not os.getenv("LANGGRAPH_DEPLOYMENT_ENV"):
     _CHECKPOINTER = SqliteSaver(sqlite3.connect(_CHECKPOINT_DB, check_same_thread=False))
     _CHECKPOINTER.setup()  # Create database tables
     file_logger.info(f"SqliteSaver initialized and setup complete: {_CHECKPOINT_DB}")
+
+
+def route_after_review(state: Dict[str, Any]) -> str:
+    """Route based on outfit review decision.
+    
+    Args:
+        state: Current graph state containing outfit_review_decision
+        
+    Returns:
+        Name of the next node to route to based on decision type
+    """
+    decision = state.get("outfit_review_decision", {})
+    decision_type = decision.get("decision_type", "")
+    
+    # Debug logging
+    file_logger.info(f"ROUTER: Evaluating outfit review routing")
+    file_logger.info(f"ROUTER: decision_type = '{decision_type}'")
+    file_logger.info(f"ROUTER: full decision = {decision}")
+    
+    if decision_type == "approve":
+        file_logger.info(f"ROUTER: Routing to video_generator (APPROVED)")
+        return "video_generator"
+    elif decision_type == "reject":
+        file_logger.info(f"ROUTER: Routing to END (REJECTED)")
+        return END
+    elif decision_type == "edit":
+        file_logger.info(f"ROUTER: Routing to outfit_designer (EDIT REQUESTED)")
+        return "outfit_designer"  # Loop back for regeneration
+    else:
+        file_logger.info(f"ROUTER: No valid decision, staying at outfit_reviewer")
+        return "outfit_reviewer"
 
 
 def create_fashion_analysis_graph():
@@ -57,7 +91,7 @@ def create_fashion_analysis_graph():
     5. Final Processor -> Outfit Designer
     6. Outfit Designer -> Outfit Reviewer (HITL: approve/reject/edit)
     7. Outfit Reviewer -> Video Generator (if approved)
-    8. Video Generator -> END
+   8. Video Generator -> END
     
     Returns:
         Compiled graph with checkpointer (auto-configured in LangSmith deployments)
@@ -101,9 +135,17 @@ def create_fashion_analysis_graph():
     # 7. Outfit designer -> Outfit reviewer (HITL pause point)
     builder.add_edge("outfit_designer", "outfit_reviewer")
     
-    # 8. Outfit reviewer -> Video generator (only if approved)
-    # Note: If rejected, workflow ends at outfit_reviewer
-    builder.add_edge("outfit_reviewer", "video_generator")
+    # 8. Outfit reviewer -> Conditional routing based on decision
+    builder.add_conditional_edges(
+        "outfit_reviewer",
+        route_after_review,
+        {
+            "video_generator": "video_generator",
+            "outfit_designer": "outfit_designer",
+            "outfit_reviewer": "outfit_reviewer",
+            END: END
+        }
+    )
     
     # 9. Video generator -> END
     builder.add_edge("video_generator", END)

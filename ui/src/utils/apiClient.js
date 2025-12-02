@@ -1,4 +1,4 @@
-const API_URL = "https://bryant-dolls-likelihood-convention.trycloudflare.com";
+const API_URL = "http://localhost:2024";
 
 /**
  * Enhanced error class for API errors
