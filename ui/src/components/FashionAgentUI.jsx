@@ -7,6 +7,7 @@ import { createThread, streamRun, resumeRun, getThreadState, updateState, cancel
 import DynamicForm from './DynamicForm';
 import TaskDataViewer from './TaskDataViewer';
 import PipelineProgress from './PipelineProgress';
+import InputRequiredModal from './InputRequiredModal';
 
 const FashionAgentUI = () => {
   const [threadId, setThreadId] = useState(null);
@@ -316,10 +317,16 @@ const FashionAgentUI = () => {
     if (event.__interrupt__ || (event.interrupt && Array.isArray(event.interrupt))) {
       console.log('Interrupt detected:', event);
 
-      let interruptArray = event.__interrupt__ || event.interrupt;
+      let interruptData = event.__interrupt__ || event.interrupt;
+      let firstInterrupt;
 
-      if (Array.isArray(interruptArray) && interruptArray.length > 0) {
-        const firstInterrupt = interruptArray[0];
+      if (Array.isArray(interruptData) && interruptData.length > 0) {
+        firstInterrupt = interruptData[0];
+      } else if (interruptData && !Array.isArray(interruptData)) {
+        firstInterrupt = interruptData;
+      }
+
+      if (firstInterrupt) {
         const interruptValue = firstInterrupt.value;
         const interruptId = firstInterrupt.id;
 
@@ -345,7 +352,7 @@ const FashionAgentUI = () => {
         if (interruptValue?.type === 'human_review_node' ||
           interruptValue?.outfits ||
           interruptValue?.designs_to_review) {
-          type = 'outfitreview';
+          type = 'review_outfit';
           console.log(' render Identified as outfit review interrupt');
         }
 
@@ -353,7 +360,7 @@ const FashionAgentUI = () => {
         if (interruptValue?.message) {
           const msg = interruptValue.message.toLowerCase();
           if (msg.includes('review') || msg.includes('critique') || msg.includes('outfit')) {
-            type = 'outfitreview';
+            type = 'review_outfit';
           } else if (msg.includes('url') || msg.includes('image') || msg.includes('video') || msg.includes('custom')) {
             type = 'userinput';
           }
@@ -601,7 +608,7 @@ const FashionAgentUI = () => {
       // For now, we just pass the input as the resume payload
       const resumeData = inputData;
 
-      streamReaderRef.current = await resumeRun(threadId, checkpoint, resumeData);
+      streamReaderRef.current = await resumeRun(threadId, checkpoint, resumeData, currentInterrupt?.id);
 
       setIsStreaming(true);
       // Don't clear interrupt state here - let handleStreamEvent set the next interrupt
@@ -1135,7 +1142,7 @@ const FashionAgentUI = () => {
           )}
 
           {/* PRIORITY 3: USER INPUT INTERRUPT (Only show once!) */}
-          {workflowState === 'interrupted' && interruptType === 'userinput' && currentInterrupt && (
+          {false && workflowState === 'interrupted' && interruptType === 'userinput' && currentInterrupt && (
             <div className="interrupt-container" style={{
               padding: '20px',
               // backgroundColor: '#1a1d3499',
@@ -1239,7 +1246,7 @@ const FashionAgentUI = () => {
 
 
           {/* PRIORITY 5: GENERIC INTERRUPT */}
-          {workflowState === 'interrupted' && interruptType === 'generic' && currentInterrupt && (
+          {false && workflowState === 'interrupted' && interruptType === 'generic' && currentInterrupt && (
             <>
               {completedNodes.length > 0 && (
                 <div className="visual-card" style={{ marginBottom: '20px' }}>
@@ -1359,6 +1366,83 @@ const FashionAgentUI = () => {
       <footer className="footer">
         <p>Multi-agent orchestration for fashion intelligence</p>
       </footer>
+      {/* PRIORITY 3: INTERRUPT MODAL (User Input & Outfit Review) */}
+      {workflowState === 'interrupted' && currentInterrupt && (
+        <InputRequiredModal
+          isOpen={true}
+          title={
+            interruptType === 'userinput' ? "Input Required" :
+              interruptType === 'review_outfit' ? "Review Outfits" :
+                "Action Required"
+          }
+        >
+          {/* Context: Show last completed task data if available */}
+          {completedNodes.length > 0 && interruptType !== 'review_outfit' && (
+            <div style={{ marginBottom: '16px' }}>
+              <div style={{ fontSize: '0.9rem', color: 'rgba(255,255,255,0.6)', marginBottom: '8px' }}>
+                Context from previous step:
+              </div>
+              <TaskDataViewer
+                completedNodes={completedNodes}
+                activeNode={null}
+                taskData={taskData}
+                onUpdateData={handleTaskDataUpdate}
+                onSaveChanges={handleSaveTaskChanges}
+              />
+            </div>
+          )}
+
+          {/* 1. USER INPUT FORM */}
+          {interruptType === 'userinput' && (
+            <>
+              <div style={{ marginBottom: '16px', color: '#ecefffb8', fontSize: '0.95rem' }}>
+                {currentInterrupt.value?.message || 'Please provide the requested information below.'}
+              </div>
+              <UserInputForm
+                onSubmit={handleUserInputSubmit}
+                initialValues={{
+                  custom_urls: [],
+                  custom_images: [],
+                  custom_videos: [],
+                  query: ''
+                }}
+              />
+            </>
+          )}
+
+          {/* 2. OUTFIT REVIEW FORM */}
+          {interruptType === 'review_outfit' && (
+            <OutfitReviewForm
+              onSubmit={resumeWithReview}
+              loading={loading}
+              interruptPayload={currentInterrupt.value}
+            />
+          )}
+
+          {/* 3. GENERIC / DYNAMIC FORM */}
+          {interruptType === 'generic' && (
+            <>
+              <div style={{ marginBottom: '16px', color: '#ecefffb8', fontSize: '0.95rem' }}>
+                {currentInterrupt.value?.message || 'Workflow paused for input.'}
+              </div>
+              <DynamicForm
+                data={currentInterrupt?.value}
+                onChange={(newData) => setCurrentInterrupt(prev => ({ ...prev, value: newData }))}
+                readOnly={false}
+                collapsedByDefault={false}
+              />
+              <div style={{ display: 'flex', justifyContent: 'flex-end', marginTop: '16px' }}>
+                <button
+                  onClick={() => resumeWithUserInput(currentInterrupt?.value)}
+                  className="btn btn--primary"
+                >
+                  Resume Workflow
+                </button>
+              </div>
+            </>
+          )}
+        </InputRequiredModal>
+      )}
     </div>
   );
 
