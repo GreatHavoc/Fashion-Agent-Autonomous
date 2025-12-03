@@ -57,7 +57,7 @@ const PipelineProgress = ({ activeNode, completedNodes = [], failedNodes = [], o
         style = { 
           ...style, 
           background: 'linear-gradient(90deg, rgba(16, 185, 129, 0.1) 0%, rgba(16, 185, 129, 0.02) 100%)',
-          borderColor: 'rgba(16, 185, 129, 0.3)',
+          border: '1px solid rgba(16, 185, 129, 0.3)',
           boxShadow: '0 4px 12px rgba(16, 185, 129, 0.1)',
         };
         break;
@@ -65,7 +65,7 @@ const PipelineProgress = ({ activeNode, completedNodes = [], failedNodes = [], o
         style = { 
           ...style, 
           background: 'linear-gradient(90deg, rgba(124, 92, 255, 0.15) 0%, rgba(124, 92, 255, 0.05) 100%)',
-          borderColor: '#7c5cff',
+          border: '1px solid #7c5cff',
           boxShadow: '0 0 20px rgba(124, 92, 255, 0.25), inset 0 0 10px rgba(124, 92, 255, 0.1)',
           transform: 'scale(1.02)',
           zIndex: 1
@@ -75,7 +75,7 @@ const PipelineProgress = ({ activeNode, completedNodes = [], failedNodes = [], o
         style = { 
           ...style, 
           background: 'rgba(239, 68, 68, 0.1)',
-          borderColor: '#ef4444',
+          border: '1px solid #ef4444',
           boxShadow: '0 4px 12px rgba(239, 68, 68, 0.1)'
         };
         break;
@@ -87,13 +87,13 @@ const PipelineProgress = ({ activeNode, completedNodes = [], failedNodes = [], o
     if (isHovered && status !== 'active') {
       style.transform = 'translateY(-2px)';
       style.background = 'rgba(255, 255, 255, 0.05)';
-      style.borderColor = 'rgba(124, 92, 255, 0.5)';
+      style.border = '1px solid rgba(124, 92, 255, 0.5)';
       style.boxShadow = '0 8px 24px rgba(0,0,0,0.2)';
     }
 
     // 3. Selected State (Highest Priority)
     if (isSelected) {
-      style.borderColor = '#ffffff'; // White border
+      style.border = '1px solid #ffffff'; // White border
       style.background = 'rgba(255, 255, 255, 0.08)'; // Slightly lighter background
       style.boxShadow = '0 0 0 1px rgba(255, 255, 255, 0.5), 0 8px 24px rgba(0,0,0,0.3)'; // Double border effect
       style.transform = 'scale(1.02)';

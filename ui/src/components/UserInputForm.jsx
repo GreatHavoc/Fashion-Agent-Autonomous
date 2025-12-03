@@ -1,5 +1,6 @@
 // UserInputForm.jsx
 import React, { useState } from 'react';
+import './UserInputForm.css';
 
 const THEME = {
   bgPrimary: "linear-gradient(135deg, rgba(17,19,36,0.75), rgba(21,24,45,0.55))",
@@ -161,64 +162,44 @@ const UserInputForm = ({ onSubmit, initialValues = {} }) => {
   };
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      style={{
-        display: 'flex',
-        flexDirection: 'column',
-        gap: '16px',
-        padding: '16px',
-        // background: THEME.bgSecondary,
-        // borderRadius: '8px',
-        // border: `1px solid ${THEME.borderColor}`,
-        color: THEME.textPrimary
-      }}
-    >
+    <form onSubmit={handleSubmit} className="user-input-form">
       {/* Query Input */}
-      <div>
-        <label style={labelStyle}>Query (Optional)</label>
+      <div className="form-field">
+        <label className="form-label">
+          Query <span className="form-label-optional">(Optional)</span>
+        </label>
         <textarea
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           placeholder="Describe what fashion trends you want to analyze..."
           rows={3}
-          style={{
-            width: '100%',
-            padding: '10px',
-            borderRadius: '6px',
-            // border: `1px solid ${THEME.borderColor}`,
-            fontSize: '14px',
-            fontFamily: 'inherit',
-            // background: THEME.subtleCardBg,
-            color: THEME.textPrimary,
-            resize: 'vertical'
-          }}
+          className="form-input form-textarea"
         />
       </div>
 
       {/* Custom URLs */}
-      <div>
-        <label style={labelStyle}>Custom URLs (Optional)</label>
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+      <div className="form-field">
+        <label className="form-label">
+          Custom URLs <span className="form-label-optional">(Optional)</span>
+        </label>
+        <div className="form-input-group">
           <input
             type="url"
             value={urlInput}
             onChange={(e) => setUrlInput(e.target.value)}
             placeholder="https://example.com/fashion-article"
-            style={inputBase}
+            className="form-input"
           />
-          <button type="button" onClick={handleAddUrl} style={addButtonStyle}>
+          <button type="button" onClick={handleAddUrl} className="btn-add">
             Add
           </button>
         </div>
         {customUrls.length > 0 && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div className="item-list">
             {customUrls.map((url, index) => (
-              <div key={index} style={itemRowStyle}>
-                <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: THEME.textPrimary }}>
-                  {url}
-                </span>
-                <button type="button" onClick={() => handleRemoveUrl(index)} style={removeButtonStyle}>
+              <div key={index} className="item-row">
+                <span className="item-text">{url}</span>
+                <button type="button" onClick={() => handleRemoveUrl(index)} className="btn-remove">
                   Remove
                 </button>
               </div>
@@ -228,28 +209,29 @@ const UserInputForm = ({ onSubmit, initialValues = {} }) => {
       </div>
 
       {/* Custom Images */}
-      <div>
-        <label style={labelStyle}>Custom Images (Optional)</label>
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+      <div className="form-field">
+        <label className="form-label">
+          Custom Images <span className="form-label-optional">(Optional)</span>
+        </label>
+        <div className="form-input-group">
           <input
-            type="text"
+            type="url"
             value={imageInput}
             onChange={(e) => setImageInput(e.target.value)}
             placeholder="Image URL or file path"
-            style={inputBase}
+            className="form-input"
+
           />
-          <button type="button" onClick={handleAddImage} style={addButtonStyle}>
+          <button type="button" onClick={handleAddImage} className="btn-add">
             Add
           </button>
         </div>
         {customImages.length > 0 && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div className="item-list">
             {customImages.map((image, index) => (
-              <div key={index} style={itemRowStyle}>
-                <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: THEME.textPrimary }}>
-                  {image}
-                </span>
-                <button type="button" onClick={() => handleRemoveImage(index)} style={removeButtonStyle}>
+              <div key={index} className="item-row">
+                <span className="item-text">{image}</span>
+                <button type="button" onClick={() => handleRemoveImage(index)} className="btn-remove">
                   Remove
                 </button>
               </div>
@@ -259,28 +241,28 @@ const UserInputForm = ({ onSubmit, initialValues = {} }) => {
       </div>
 
       {/* Custom Videos */}
-      <div>
-        <label style={labelStyle}>Custom Videos (Optional)</label>
-        <div style={{ display: 'flex', gap: '8px', marginBottom: '8px' }}>
+      <div className="form-field">
+        <label className="form-label">
+          Custom Videos <span className="form-label-optional">(Optional)</span>
+        </label>
+        <div className="form-input-group">
           <input
             type="url"
             value={videoInput}
             onChange={(e) => setVideoInput(e.target.value)}
             placeholder="https://youtube.com/watch?v=..."
-            style={inputBase}
+            className="form-input"
           />
-          <button type="button" onClick={handleAddVideo} style={addButtonStyle}>
+          <button type="button" onClick={handleAddVideo} className="btn-add">
             Add
           </button>
         </div>
         {customVideos.length > 0 && (
-          <div style={{ display: 'flex', flexDirection: 'column', gap: '8px' }}>
+          <div className="item-list">
             {customVideos.map((video, index) => (
-              <div key={index} style={itemRowStyle}>
-                <span style={{ flex: 1, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap', color: THEME.textPrimary }}>
-                  {video}
-                </span>
-                <button type="button" onClick={() => handleRemoveVideo(index)} style={removeButtonStyle}>
+              <div key={index} className="item-row">
+                <span className="item-text">{video}</span>
+                <button type="button" onClick={() => handleRemoveVideo(index)} className="btn-remove">
                   Remove
                 </button>
               </div>
@@ -290,11 +272,11 @@ const UserInputForm = ({ onSubmit, initialValues = {} }) => {
       </div>
 
       {/* Action Buttons */}
-      <div style={actionContainerStyle}>
-        <button type="submit" style={submitButtonStyle}>
+      <div className="form-actions">
+        <button type="submit" className="btn-submit">
           Submit & Continue
         </button>
-        <button type="button" onClick={handleSkip} style={skipButtonStyle}>
+        <button type="button" onClick={handleSkip} className="btn-skip">
           Skip
         </button>
       </div>

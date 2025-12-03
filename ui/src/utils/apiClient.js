@@ -476,6 +476,132 @@ export async function listRuns(threadId) {
   return fetchFromApi(`/threads/${threadId}/runs`);
 }
 
+
+/**
+ * Get the history (checkpoints) for a thread
+ */
+export async function getThreadHistory(threadId, options = {}) {
+  if (!threadId) {
+    throw new Error('Thread ID is required');
+  }
+  const { limit = 50, before = null } = options;
+  let url = `/threads/${threadId}/history?limit=${limit}`;
+  if (before) {
+    url += `&before=${before}`;
+  }
+  return fetchFromApi(url);
+}
+
+/**
+ * Find a checkpoint for a specific node in the thread history
+ */
+export async function findCheckpointByNode(threadId, nodeName) {
+  if (!threadId) {
+    throw new Error('Thread ID is required');
+  }
+  if (!nodeName) {
+    throw new Error('Node name is required');
+  }
+  const history = await getThreadHistory(threadId, { limit: 50 });
+  
+  if (!history || history.length === 0) {
+    throw new Error('No history found for this thread');
+  }
+  // Find the checkpoint where this node appears in the next nodes to execute
+  // OR where the node was the last one executed
+  const targetState = history.find(state => {
+    // Check if node is in the next array (waiting to execute)
+    if (state.next && state.next.includes(nodeName)) {
+      return true;
+    }
+    
+    // Check metadata for node information
+    if (state.metadata && state.metadata.checkpoint_node === nodeName) {
+      return true;
+    }
+    
+    // Check values for last executed node
+    if (state.values && state.values.last_node === nodeName) {
+      return true;
+    }
+    
+    return false;
+  });
+  if (!targetState) {
+    throw new Error(`No checkpoint found for node: ${nodeName}`);
+  }
+  return targetState;
+}
+
+/**
+ * Update state at a specific node and rerun the workflow from that checkpoint
+ */
+export async function updateStateAndRerun(threadId, nodeName, updatedData) {
+  if (!threadId) {
+    throw new Error('Thread ID is required');
+  }
+  if (!nodeName) {
+    throw new Error('Node name is required');
+  }
+  if (!updatedData) {
+    throw new Error('Updated data is required');
+  }
+  console.log(`Updating state and rerunning from node: ${nodeName}`);
+  // Step 1: Find the checkpoint for this node
+  const targetState = await findCheckpointByNode(threadId, nodeName);
+  console.log('Found checkpoint:', targetState.checkpoint);
+  // Step 2: Update the state at this checkpoint
+  const updatePayload = {
+    values: updatedData,
+    checkpoint: targetState.checkpoint,
+    as_node: nodeName // Update as if this node just executed
+  };
+  console.log('Updating state with payload:', updatePayload);
+  const updateResponse = await fetchFromApi(`/threads/${threadId}/state`, {
+    method: 'POST',
+    body: JSON.stringify(updatePayload),
+  });
+  // Step 3: Get the new checkpoint from the update response
+  const newCheckpoint = updateResponse.checkpoint;
+  
+  if (!newCheckpoint || !newCheckpoint.checkpoint_id) {
+    throw new Error('No checkpoint received from state update');
+  }
+  console.log('Received new checkpoint:', newCheckpoint);
+  // Step 4: Start streaming from the new checkpoint
+  const streamUrl = `${API_URL}/threads/${threadId}/runs/stream`;
+  const streamPayload = {
+    config: {
+      configurable: {
+        thread_id: threadId
+      }
+    },
+    assistant_id: 'agent',
+    checkpoint: newCheckpoint,
+    stream_mode: ['values', 'debug'],
+    stream_subgraphs: true,
+    multitask_strategy: 'rollback',
+    checkpoint_during: true
+  };
+  console.log('Starting stream with new checkpoint');
+  const streamResponse = await fetch(streamUrl, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(streamPayload),
+  });
+  if (!streamResponse.ok) {
+    const errorText = await streamResponse.text();
+    throw new Error(`Failed to resume workflow: ${streamResponse.status} ${errorText}`);
+  }
+  if (!streamResponse.body) {
+    throw new Error('Stream response body is null');
+  }
+  return {
+    checkpoint: newCheckpoint,
+    reader: streamResponse.body.getReader()
+  };
+}
+
 /**
  * Export error class and validation functions for use in components
  */

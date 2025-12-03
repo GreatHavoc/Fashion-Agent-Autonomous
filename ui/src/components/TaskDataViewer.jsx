@@ -1,7 +1,7 @@
 // TaskDataViewer.jsx
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, ChevronRight, Edit2, Save, X } from 'lucide-react';
-import { saveStateThenStream } from '../utils/apiClient';
+import { saveStateThenStream, updateStateAndRerun } from '../utils/apiClient';
 import { FaYoutube, FaGlobe, FaRegImage } from "react-icons/fa";
 
 
@@ -682,6 +682,8 @@ const TaskDataViewer = ({
   selectedTask: externalSelectedTask = "data_collector",
   onSelectTask = null,
   allowLocalSelection = true, // when false, sidebar items won't change selection
+  threadId, // Add this prop
+  onRerunFromNode, // Add this callback prop
 }) => {
   // Use internal state but sync with external selectedTask if provided
   const [selectedTask, setSelectedTask] = useState(externalSelectedTask);
@@ -758,65 +760,43 @@ const TaskDataViewer = ({
     if (onEditModeChange) onEditModeChange(false);
   };
 
-  // inside TaskDataViewer component (replace existing handleSaveEdit)
   const handleSaveEdit = async () => {
     if (!selectedTask || !editedData) return;
-
-    // If parent passed onSaveChanges, call it (keeps UI state consistent)
+    // Call parent's onSaveChanges if provided (to update local state)
     if (onSaveChanges) {
       try {
-        // parent can persist locally first
         await onSaveChanges(selectedTask, editedData);
       } catch (err) {
         console.error("onSaveChanges failed:", err);
       }
     }
-
-    // Prepare values array the state API expects.
-    const valuesPayload = [[editedData]];
-
-    // Determine threadId: prefer prop, fallback env var
-    const effectiveThreadId = (typeof props !== 'undefined' && props?.threadId) || process.env.REACT_APP_THREAD_ID;
-    if (!effectiveThreadId) {
-      console.warn("No threadId available. Provide threadId prop to TaskDataViewer to call LangGraph APIs.");
+    // Use checkpoint-based rerun if threadId is available
+    if (!threadId) {
+      console.warn("No threadId provided. Cannot rerun from checkpoint.");
       setIsEditing(false);
       setEditedData(null);
       if (onEditModeChange) onEditModeChange(false);
       return;
     }
-
     try {
-      const { reader, checkpoint } = await saveStateThenStream({
-        threadId: effectiveThreadId,
-        values: valuesPayload,
-        as_node: "__copy__",
-        assistant_id: "fe096781-5601-53d2-b2f6-0d3403f7e9ca",
-      });
-
-      console.log("Checkpoint received:", checkpoint);
-
-      const streamDecoder = new TextDecoder();
-      const readLoop = async () => {
-        while (true) {
-          const { done, value } = await reader.read();
-          if (done) break;
-          try {
-            const text = streamDecoder.decode(value, { stream: true });
-            console.log("stream chunk:", text);
-          } catch (e) {
-            console.error("Error decoding stream chunk", e);
-          }
-        }
-        console.log("Stream finished");
-      };
-
-      readLoop().catch(e => console.error("Stream read error", e));
-
+      console.log(`Updating node ${selectedTask} and rerunning from checkpoint`);
+      // Use the new checkpoint-based approach
+      const { reader, checkpoint } = await updateStateAndRerun(
+        threadId,
+        selectedTask,  // The node to update
+        editedData     // The modified data
+      );
+      console.log("Re-running workflow from checkpoint:", checkpoint);
+      // Notify parent to handle the stream
+      if (onRerunFromNode) {
+        onRerunFromNode(selectedTask, reader);
+      }
       setIsEditing(false);
       setEditedData(null);
+      if (onEditModeChange) onEditModeChange(false);
     } catch (err) {
-      console.error("Error saving state and streaming:", err);
-      alert(`Save failed: ${err.message || err}`);
+      console.error("Error during checkpoint rerun:", err);
+      alert(`Failed to rerun workflow: ${err.message || err}`);
     }
   };
 
@@ -2816,8 +2796,8 @@ const TaskDataViewer = ({
 
   return (
     <div style={{
-      display: 'flex',
-      height: '600px',
+      // display: 'flex',
+      // height: '600px',
       // border: `1px solid ${THEME.borderColor}`,
       // borderRadius: '10px',
       overflow: 'hidden',
@@ -2836,7 +2816,8 @@ const TaskDataViewer = ({
               display: 'flex',
               justifyContent: 'space-between',
               alignItems: 'center',
-              // background: THEME.bgSecondary,
+              marginBottom: '10px',
+              // background : THEME.bgSecondary,
               color: THEME.textPrimary
             }}>
               <div style={{ fontWeight: '600', fontSize: '16px' }}>

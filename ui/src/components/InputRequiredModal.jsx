@@ -1,6 +1,6 @@
 import React from 'react';
 import { X } from 'lucide-react';
-import './FashionAgentUI.css';
+import './InputRequiredModal.css';
 
 const InputRequiredModal = ({ isOpen, title, children, onClose }) => {
     if (!isOpen) return null;
@@ -9,9 +9,12 @@ const InputRequiredModal = ({ isOpen, title, children, onClose }) => {
         <div className="modal-overlay">
             <div className="modal-container">
                 <div className="modal-header">
-                    <h3 style={{ margin: 0, color: '#fff', fontSize: '1.2rem' }}>{title}</h3>
+                    <div className="modal-header-content">
+                        <div className="modal-title-icon"></div>
+                        <h3 className="modal-title">{title}</h3>
+                    </div>
                     {onClose && (
-                        <button className="btn-close" onClick={onClose}>
+                        <button className="btn-close" onClick={onClose} aria-label="Close modal">
                             <X size={20} />
                         </button>
                     )}
