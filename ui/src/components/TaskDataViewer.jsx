@@ -1171,7 +1171,14 @@ const TaskDataViewer = ({
           </button>
         </div>
 
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '20px' }}>
+        <div style={{
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '20px',
+          maxHeight: '600px', // Limit height
+          overflowY: 'auto',  // Enable vertical scrolling
+          paddingRight: '8px' // Add padding for scrollbar
+        }}>
           {urls.map((item, index) => (
             <div key={index} style={{
               padding: '24px',
