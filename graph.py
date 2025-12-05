@@ -60,11 +60,13 @@ def route_after_review(state: Dict[str, Any]) -> str:
     """
     decision = state.get("outfit_review_decision", {})
     decision_type = decision.get("decision_type", "")
+    execution_status = state.get("execution_status", {})
     
     # Debug logging
     file_logger.info(f"ROUTER: Evaluating outfit review routing")
     file_logger.info(f"ROUTER: decision_type = '{decision_type}'")
     file_logger.info(f"ROUTER: full decision = {decision}")
+    file_logger.info(f"ROUTER: execution_status = {execution_status}")
     
     if decision_type == "approve":
         file_logger.info(f"ROUTER: Routing to video_generator (APPROVED)")

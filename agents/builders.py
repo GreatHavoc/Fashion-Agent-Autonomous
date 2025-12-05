@@ -6,7 +6,6 @@ for each specialized role in the fashion trend analysis pipeline.
 """
 
 import traceback
-from langgraph.func import task
 from langchain.agents import create_agent
 from langchain.agents.structured_output import ProviderStrategy, ToolStrategy
 
@@ -176,11 +175,9 @@ async def build_agent5_modern():
     try:
         file_logger.info("Building outfit designer agent...")
         
-        @task
-        async def get_tools_task():
-            return await get_outfit_tools()
-        
-        tools = await get_tools_task()
+        # Get MCP tools directly - no @task needed for async operations
+        # Using @task can cause execution context issues when agent is used as subgraph
+        tools = await get_outfit_tools()
         file_logger.info(f"Retrieved {len(tools)} outfit design tools")
 
         agent = create_agent(

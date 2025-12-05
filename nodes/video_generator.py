@@ -105,6 +105,16 @@ async def video_generator_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         successful_videos = 0
         failed_videos = 0
         
+        # Get selected outfit IDs from the review decision
+        # If empty, generate videos for all outfits (approved means all)
+        outfit_review_decision = state.get("outfit_review_decision", {})
+        selected_outfit_ids = outfit_review_decision.get("selected_outfit_ids", [])
+        
+        if selected_outfit_ids:
+            file_logger.info(f"Filtering videos for selected outfits only: {selected_outfit_ids}")
+        else:
+            file_logger.info("No specific outfits selected - generating videos for ALL approved outfits")
+        
         # Process each outfit design collection
         for design_collection in outfit_designs:
             if isinstance(design_collection, dict):
@@ -119,22 +129,7 @@ async def video_generator_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                 for outfit in outfits_list:
                     outfit_dict = outfit if isinstance(outfit, dict) else {}
                     
-                    # Extract image path from outfit
-                    image_path = (
-                        outfit_dict.get('saved_image_path') or 
-                        outfit_dict.get('image_path') or
-                        outfit_dict.get('output_image_path')
-                    )
-                    
-                    if image_path and not image_path.startswith('D:/Downloads/FashionUseCase/scraapper/'):
-                        image_path = "D:/Downloads/FashionUseCase/scraapper/" + image_path
-                    
-                    if not image_path:
-                        file_logger.warning(f"No image path found for outfit: {outfit_dict.get('outfit_name', outfit_dict.get('name', 'Unknown'))}")
-                        failed_videos += 1
-                        continue
-                    
-                    # Get outfit ID
+                    # Get outfit ID/name for filtering
                     outfit_id = (
                         outfit_dict.get('outfit_name') or
                         outfit_dict.get('outfit_id') or
@@ -142,6 +137,32 @@ async def video_generator_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                         outfit_dict.get('name') or
                         f"outfit_{len(video_results) + 1}"
                     )
+                    
+                    # FILTER: Skip outfits not in selected list (if any selected)
+                    if selected_outfit_ids and outfit_id not in selected_outfit_ids:
+                        file_logger.info(f"Skipping outfit '{outfit_id}' - not in selected list")
+                        continue
+                    
+                    # Extract image path from outfit
+                    image_path = (
+                        outfit_dict.get('saved_image_path') or 
+                        outfit_dict.get('image_path') or
+                        outfit_dict.get('output_image_path')
+                    )
+                    
+                    # FIX: Only prepend local path if it's a relative local path (not a URL)
+                    if image_path:
+                        if image_path.startswith(('http://', 'https://')):
+                            # It's a URL (e.g., Supabase), use as-is
+                            file_logger.info(f"Using remote URL for outfit {outfit_id}: {image_path}")
+                        elif not os.path.isabs(image_path):
+                            # Relative local path - prepend base directory
+                            image_path = os.path.join("D:/Downloads/FashionUseCase/scraapper/", image_path)
+                    
+                    if not image_path:
+                        file_logger.warning(f"No image path found for outfit: {outfit_id}")
+                        failed_videos += 1
+                        continue
                     
                     console_logger.info(f"Generating video for outfit: {outfit_id}")
                     
@@ -193,15 +214,11 @@ async def video_generator_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                         failed_videos += 1
                         file_logger.error(f"FAILED: Video generation for {outfit_id}: {video_result.get('error')}")
         
-        # Create collection output
-        total_outfits_count = 0
-        for design_collection in outfit_designs:
-            if isinstance(design_collection, dict):
-                outfits_list = design_collection.get('Outfits') or design_collection.get('outfits', [])
-                total_outfits_count += len(outfits_list) if outfits_list else 1
+        # Create collection output - count only processed outfits (after filtering)
+        total_outfits_processed = successful_videos + failed_videos
         
         collection_output = VideoGenerationCollectionOutput(
-            total_outfits_processed=total_outfits_count,
+            total_outfits_processed=total_outfits_processed,
             successful_videos=successful_videos,
             failed_videos=failed_videos,
             video_results=[VideoGenerationOutput(**result) for result in video_results],

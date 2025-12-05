@@ -116,27 +116,27 @@ const FashionAgentUI = () => {
         const frontendNode = AGENT_NAME_MAP[failedNode];
         setActiveNode(frontendNode || null);
         console.log('Active node (failed):', frontendNode);
-      } 
+      }
       else {
-      // All nodes completed or waiting - determine next node
+        // All nodes completed or waiting - determine next node
         const pipelineOrder = ['data_collector', 'video_analyzer', 'content_analyzer',
           'final_processor', 'outfit_designer', 'video_generator'];
-        
+
         // Check if all nodes are either in execution_status as 'completed' OR already in completedNodes
         const allNodesComplete = pipelineOrder.every(backendNode => {
           const frontendNode = AGENT_NAME_MAP[backendNode];
           return status[backendNode] === 'completed' || completedNodes.includes(frontendNode);
         });
-        
+
         if (allNodesComplete) {
           setActiveNode(null); // All completed
           setWorkflowState('complete');
           console.log('All nodes complete - workflow finished');
         } else {
-          const nextBackendNode = pipelineOrder.find(node => 
+          const nextBackendNode = pipelineOrder.find(node =>
             status[node] !== 'completed' && !completedNodes.includes(AGENT_NAME_MAP[node])
           );
-          
+
           if (nextBackendNode) {
             const frontendNode = AGENT_NAME_MAP[nextBackendNode];
             setActiveNode(frontendNode || null);
@@ -440,10 +440,10 @@ const FashionAgentUI = () => {
   };
   const handleRerunFromNode = async (nodeName, reader) => {
     console.log(`Re-running workflow from node: ${nodeName}`);
-    
+
     // Reset workflow to running state
     setWorkflowState('running');
-    
+
     // Define which nodes will actually re-execute based on dependencies
     const affectedNodesMap = {
       'data_collector': ['content_analyzer', 'trend_processor', 'outfit_designer', 'video_generation'],
@@ -453,22 +453,22 @@ const FashionAgentUI = () => {
       'outfit_designer': ['video_generation'],
       'video_generation': []
     };
-    
+
     var affectedNodes = affectedNodesMap[nodeName] || [];
-    
+
     if (affectedNodes.length > 0) {
       // Only clear nodes that will actually re-execute
       setCompletedNodes(prev => prev.filter(node => !affectedNodes.includes(node)));
       console.log(`Cleared downstream nodes that will re-execute: ${affectedNodes.join(', ')}`);
     }
-    
+
     addMessage('info', `Rerunning workflow from ${nodeName}...`);
-    
+
     // Process the stream
     try {
       await processStream(reader);
       addMessage('success', 'Workflow rerun completed successfully');
-    } 
+    }
     catch (error) {
       console.error('Error during rerun stream:', error);
       addMessage('error', `Rerun failed: ${error.message}`);
@@ -719,12 +719,14 @@ const FashionAgentUI = () => {
 
       if (decisionType === 'approve') {
         reviewResponse = {
-          decision_type: 'approve'
+          decision_type: 'approve',
+          selected_outfit_ids: reviewData.selected_outfit || []  // Include selected outfits for video generation
         };
       } else if (decisionType === 'edit') {
         reviewResponse = {
           decision_type: 'edit',
-          edit_instructions: reviewData.feedback || ''
+          edit_instructions: reviewData.feedback || '',
+          selected_outfit_ids: reviewData.selected_outfit || []
         };
       } else if (decisionType === 'reject') {
         reviewResponse = {
@@ -1077,7 +1079,7 @@ const FashionAgentUI = () => {
                 onChange={(e) => setQuery(e.target.value)}
                 placeholder="Describe your fashion trend..."
                 className="input-text"
-                style={{ maxWidth: '400px'}}
+                style={{ maxWidth: '400px' }}
               />
               <button onClick={startAnalysis} className="btn btn--primary" disabled={loading || !query.trim()}>
                 {loading ? 'Starting...' : 'Launch Pipeline'}

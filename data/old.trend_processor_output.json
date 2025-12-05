@@ -1,245 +1,351 @@
 {
     "trend_analysis": {
-        "analysis_date": "2025-11-25",
-        "total_sources_analyzed": 6,
+        "analysis_date": "2025-11-29",
+        "total_sources_analyzed": 20,
         "dominant_color_trends": [
             {
                 "name": "Black",
                 "pantone_code": "19-4007 TPG",
                 "frequency": 35,
                 "trend_direction": "stable",
-                "confidence_score": 0.95
+                "confidence_score": 1.0,
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/blackpink-jisoos-sister-kim-ji-yoon-is-all-set-for-her-entertainment-debut-5-viral-looks-that-are-already-turning-heads/articleshow/125389479.cms",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/sonam-kapoor-just-turned-a-manipuri-weave-into-the-most-gorgeous-winter-look-of-the-season/articleshow/125385899.cms",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/want-longer-looking-legs-try-these-dua-lipainspired-fashion-moves/photostory/125406741.cms"
+                ]
             },
             {
                 "name": "White / Cream",
                 "pantone_code": "11-0601 TPG",
                 "frequency": 22,
                 "trend_direction": "stable",
-                "confidence_score": 0.9
+                "confidence_score": 0.9,
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M"
+                ]
             },
             {
-                "name": "Gray",
-                "pantone_code": "17-3911 TPG",
-                "frequency": 15,
-                "trend_direction": "stable",
-                "confidence_score": 0.8
-            },
-            {
-                "name": "Espresso",
-                "pantone_code": "19-0912 TCX",
+                "name": "Espresso / Brown",
+                "pantone_code": "19-1218 TPG",
                 "frequency": 8,
                 "trend_direction": "rising",
-                "confidence_score": 0.85
+                "confidence_score": 0.9,
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-trending-colours-to-brighten-up-your-winter-wardrobe/photostory/125216242.cms"
+                ]
             },
             {
                 "name": "Regal Red",
-                "pantone_code": "19-1664 TCX",
-                "frequency": 0,
+                "pantone_code": "19-1663 TPX",
+                "frequency": 1,
                 "trend_direction": "rising",
-                "confidence_score": 0.85
+                "confidence_score": 0.8,
+                "source_urls": [
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-trending-colours-to-brighten-up-your-winter-wardrobe/photostory/125216242.cms"
+                ]
             },
             {
-                "name": "Powder Pink",
-                "pantone_code": "13-1404 TCX",
+                "name": "Powder Pink / Pastel Pink",
+                "pantone_code": "13-1520 TPG",
                 "frequency": 4,
                 "trend_direction": "rising",
-                "confidence_score": 0.8
+                "confidence_score": 0.8,
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-trending-colours-to-brighten-up-your-winter-wardrobe/photostory/125216242.cms",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/sonam-kapoor-just-turned-a-manipuri-weave-into-the-most-gorgeous-winter-look-of-the-season/articleshow/125385899.cms"
+                ]
             },
             {
-                "name": "Edgy Eggplant",
-                "pantone_code": "19-3528 TCX",
-                "frequency": 0,
+                "name": "Edgy Eggplant / Purple",
+                "pantone_code": "19-3526 TPG",
+                "frequency": 1,
                 "trend_direction": "rising",
-                "confidence_score": 0.75
+                "confidence_score": 0.7,
+                "source_urls": [
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-trending-colours-to-brighten-up-your-winter-wardrobe/photostory/125216242.cms",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-must-have-kashmiri-winter-outfits/photostory/125200119.cms"
+                ]
+            },
+            {
+                "name": "Mint Green",
+                "pantone_code": "13-0117 TPG",
+                "frequency": 1,
+                "trend_direction": "rising",
+                "confidence_score": 0.7,
+                "source_urls": [
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-trending-colours-to-brighten-up-your-winter-wardrobe/photostory/125216242.cms"
+                ]
             }
         ],
         "style_trends": [
             {
-                "trend_name": "Modernized Heritage",
-                "frequency": 15,
+                "trend_name": "Modernized Traditional Wear",
+                "frequency": 3,
                 "trend_direction": "rising",
                 "confidence_score": 0.9,
-                "description": "A strong trend of adapting traditional and regional Indian garments for contemporary fashion. This includes modernizing silhouettes, using heritage fabrics, and celebrating craftsmanship.",
+                "description": "A significant trend focusing on the adaptation of traditional Indian garments for contemporary fashion. This includes modernizing silhouettes like the Kashmiri Pheran and Kaftan and promoting heritage crafts like Manipuri weaves.",
                 "key_pieces": [
                     "Pheran-inspired velvet dress",
-                    "Oversized kaftans",
+                    "Oversized kaftan",
                     "Manipuri weave dress",
-                    "Floor-length salwar-kameez"
+                    "Oversized salwar-kameez"
+                ],
+                "source_urls": [
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/sonam-kapoor-just-turned-a-manipuri-weave-into-the-most-gorgeous-winter-look-of-the-season/articleshow/125385899.cms",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-must-have-kashmiri-winter-outfits/photostory/125200119.cms"
                 ]
             },
             {
-                "trend_name": "Global Celebrity Influence",
-                "frequency": 18,
+                "trend_name": "K-Pop Inspired Streetwear",
+                "frequency": 2,
                 "trend_direction": "rising",
-                "confidence_score": 0.88,
-                "description": "Fashion choices are heavily influenced by international music and pop culture icons, particularly from K-pop and Western pop stars. This drives trends like streetwear, punk aesthetics, and specific silhouette hacks.",
+                "confidence_score": 0.9,
+                "description": "Driven by K-pop and Western celebrity influence, this trend features a mix of preppy, punk rock, and casual aesthetics. It is characterized by comfortable, oversized pieces and playful silhouettes.",
                 "key_pieces": [
                     "Oversized jersey tops",
                     "Mini tennis skirts",
-                    "High-waisted bottoms",
-                    "Thigh-high boots",
-                    "Waistcoats"
+                    "Waistcoats",
+                    "Straight-fit jeans"
+                ],
+                "source_urls": [
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/blackpink-jisoos-sister-kim-ji-yoon-is-all-set-for-her-entertainment-debut-5-viral-looks-that-are-already-turning-heads/articleshow/125389479.cms"
                 ]
             },
             {
-                "trend_name": "Structured Comfort",
-                "frequency": 25,
-                "trend_direction": "stable",
-                "confidence_score": 0.85,
-                "description": "A blend of comfort-driven oversized fits with sharp, structured tailoring. This trend combines relaxed silhouettes with formal elements for a modern, versatile look.",
+                "trend_name": "Vibrant Winter Color Palette",
+                "frequency": 1,
+                "trend_direction": "rising",
+                "confidence_score": 0.8,
+                "description": "A move away from muted winter palettes to bold, expressive colors. This trend encourages incorporating vibrant hues like red, pink, and purple into winter wardrobes through full ensembles or accent pieces.",
                 "key_pieces": [
-                    "Oversized blazers",
-                    "Structured peplum blazers",
-                    "Wide-leg trousers",
-                    "Full-length crispy white shirt"
+                    "Powder Pink outfits",
+                    "Espresso-colored jackets",
+                    "Regal Red accessories"
+                ],
+                "source_urls": [
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-trending-colours-to-brighten-up-your-winter-wardrobe/photostory/125216242.cms"
+                ]
+            },
+            {
+                "trend_name": "Optical Illusion Dressing",
+                "frequency": 1,
+                "trend_direction": "rising",
+                "confidence_score": 0.8,
+                "description": "This trend focuses on using clothing to create optical illusions that flatter and elongate the body. Techniques include wearing high-waisted bottoms, monochrome outfits, and garments with vertical lines or high slits.",
+                "key_pieces": [
+                    "High-waisted trousers and skirts",
+                    "Monochrome matching sets",
+                    "Thigh-high boots",
+                    "Dresses with high slits"
+                ],
+                "source_urls": [
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/want-longer-looking-legs-try-these-dua-lipainspired-fashion-moves/photostory/125406741.cms"
                 ]
             }
         ],
         "pattern_trends": [
             {
-                "pattern_name": "Embroidery & Appliqu\u00e9",
+                "pattern_name": "Embroidery / Appliqu\u00e9",
                 "pattern_type": "Textural",
-                "frequency": 8,
+                "frequency": 9,
                 "trend_direction": "rising",
-                "confidence_score": 0.8,
-                "description": "Intricate threadwork and appliqu\u00e9 detailing on fabrics, adding texture and a sense of luxury. Seen in both traditional (aari work) and modern contexts.",
-                "scale": "Medium",
+                "confidence_score": 0.9,
+                "description": "Embroidery, including traditional Indian Aari work and contemporary appliqu\u00e9, is being used to add texture and intricate detail to garments, especially for festive and formal wear.",
+                "scale": "Varies",
                 "color_combinations": [
-                    "Black & White",
-                    "Maroon & Gold",
-                    "Green & Cream"
+                    "Black and White",
+                    "Green and Black",
+                    "Red and Black"
+                ],
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-must-have-kashmiri-winter-outfits/photostory/125200119.cms"
                 ]
             },
             {
-                "pattern_name": "Plaid / Tartan",
+                "pattern_name": "Woven / Basket Weave Texture",
                 "pattern_type": "Geometric",
                 "frequency": 6,
-                "trend_direction": "stable",
-                "confidence_score": 0.7,
-                "description": "Classic crisscross pattern, often associated with winter wear. Seen on outerwear and skirts, aligning with preppy and punk aesthetics.",
+                "trend_direction": "rising",
+                "confidence_score": 0.8,
+                "description": "Textural interest is created through woven techniques, from traditional loin-loom craftsmanship to modern basket weave textures, emphasizing sustainable and artisanal fashion.",
                 "scale": "Medium",
                 "color_combinations": [
-                    "Red & Black",
-                    "Green & Blue",
-                    "Grey & White"
+                    "Maroon and Black",
+                    "Natural Tones"
+                ],
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/sonam-kapoor-just-turned-a-manipuri-weave-into-the-most-gorgeous-winter-look-of-the-season/articleshow/125385899.cms"
                 ]
             }
         ],
         "print_trends": [
             {
-                "print_name": "Pinstripes",
+                "print_name": "Plaid / Tartan",
                 "print_category": "Geometric",
-                "frequency": 3,
-                "trend_direction": "rising",
+                "frequency": 6,
+                "trend_direction": "stable",
                 "confidence_score": 0.7,
-                "description": "Classic vertical lines used to create an elongating effect, inspired by celebrity styling for a taller appearance.",
+                "description": "Classic Plaid and Tartan prints are a stable trend for the Fall/Winter season, appearing on outerwear and skirts, often in traditional colorways.",
                 "placement_style": "All-over",
                 "color_palette": [
+                    "Red",
                     "Black",
-                    "White",
-                    "Navy"
+                    "Green",
+                    "White"
+                ],
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M"
                 ]
             },
             {
                 "print_name": "Floral",
                 "print_category": "Nature",
-                "frequency": 4,
+                "frequency": 5,
                 "trend_direction": "stable",
-                "confidence_score": 0.65,
-                "description": "Floral motifs, particularly in embroidery on traditional wear, suggesting a move towards more detailed and craft-oriented applications.",
-                "placement_style": "Accents",
+                "confidence_score": 0.7,
+                "description": "Floral prints remain a consistent trend, appearing in both runway collections and traditional wear, often combined with embroidery for added texture.",
+                "placement_style": "All-over",
                 "color_palette": [
                     "Green",
                     "Pink",
+                    "White",
                     "Yellow"
+                ],
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-must-have-kashmiri-winter-outfits/photostory/125200119.cms"
                 ]
             }
         ],
         "material_trends": [
             {
                 "material": "Wool / Tweed",
-                "frequency": 20,
-                "trend_direction": "stable"
+                "frequency": 21,
+                "trend_direction": "rising",
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-must-have-kashmiri-winter-outfits/photostory/125200119.cms"
+                ]
+            },
+            {
+                "material": "Denim / Cotton",
+                "frequency": 16,
+                "trend_direction": "stable",
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/blackpink-jisoos-sister-kim-ji-yoon-is-all-set-for-her-entertainment-debut-5-viral-looks-that-are-already-turning-heads/articleshow/125389479.cms"
+                ]
             },
             {
                 "material": "Velvet",
-                "frequency": 15,
-                "trend_direction": "rising"
-            },
-            {
-                "material": "Denim",
-                "frequency": 15,
-                "trend_direction": "stable"
+                "frequency": 3,
+                "trend_direction": "rising",
+                "source_urls": [
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/blackpink-jisoos-sister-kim-ji-yoon-is-all-set-for-her-entertainment-debut-5-viral-looks-that-are-already-turning-heads/articleshow/125389479.cms",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/sonam-kapoor-just-turned-a-manipuri-weave-into-the-most-gorgeous-winter-look-of-the-season/articleshow/125385899.cms",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-must-have-kashmiri-winter-outfits/photostory/125200119.cms"
+                ]
             },
             {
                 "material": "Lace / Sheer Organza",
                 "frequency": 12,
-                "trend_direction": "rising"
+                "trend_direction": "rising",
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M"
+                ]
             },
             {
-                "material": "Handcrafted Weaves",
-                "frequency": 10,
-                "trend_direction": "rising"
+                "material": "Handcrafted Textiles (Manipuri Weave)",
+                "frequency": 1,
+                "trend_direction": "rising",
+                "source_urls": [
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/sonam-kapoor-just-turned-a-manipuri-weave-into-the-most-gorgeous-winter-look-of-the-season/articleshow/125385899.cms"
+                ]
             }
         ],
         "silhouette_trends": [
             {
                 "silhouette": "A-line / Fit-and-flare",
-                "frequency": 25,
-                "trend_direction": "rising"
+                "frequency": 28,
+                "trend_direction": "rising",
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/blackpink-jisoos-sister-kim-ji-yoon-is-all-set-for-her-entertainment-debut-5-viral-looks-that-are-already-turning-heads/articleshow/125389479.cms",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-must-have-kashmiri-winter-outfits/photostory/125200119.cms"
+                ]
             },
             {
-                "silhouette": "Oversized",
-                "frequency": 20,
-                "trend_direction": "rising"
-            },
-            {
-                "silhouette": "Structured Tailoring",
+                "silhouette": "Structured Tailoring (Peplum, Sharp Shoulders)",
                 "frequency": 15,
-                "trend_direction": "stable"
+                "trend_direction": "rising",
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M"
+                ]
+            },
+            {
+                "silhouette": "Oversized (Kaftans, Salwar-Kameez, Shirts)",
+                "frequency": 5,
+                "trend_direction": "rising",
+                "source_urls": [
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/blackpink-jisoos-sister-kim-ji-yoon-is-all-set-for-her-entertainment-debut-5-viral-looks-that-are-already-turning-heads/articleshow/125389479.cms",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/style-guide/5-must-have-kashmiri-winter-outfits/photostory/125200119.cms",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/want-longer-looking-legs-try-these-dua-lipainspired-fashion-moves/photostory/125406741.cms"
+                ]
+            },
+            {
+                "silhouette": "Straight-fit / Sheath",
+                "frequency": 9,
+                "trend_direction": "stable",
+                "source_urls": [
+                    "https://www.youtube.com/watch?v=CwmKr-wkj1M",
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/blackpink-jisoos-sister-kim-ji-yoon-is-all-set-for-her-entertainment-debut-5-viral-looks-that-are-already-turning-heads/articleshow/125389479.cms"
+                ]
             },
             {
                 "silhouette": "High-Waisted",
-                "frequency": 12,
-                "trend_direction": "rising"
-            },
-            {
-                "silhouette": "Thigh-high Slits",
-                "frequency": 8,
-                "trend_direction": "rising"
+                "frequency": 1,
+                "trend_direction": "rising",
+                "source_urls": [
+                    "https://timesofindia.indiatimes.com/life-style/fashion/celeb-style/want-longer-looking-legs-try-these-dua-lipainspired-fashion-moves/photostory/125406741.cms"
+                ]
             }
         ],
         "seasonal_insights": {
             "fall": [
-                "Layering is key, with statement outerwear and structured tailoring.",
-                "Dominance of rich textures like velvet, wool, and handcrafted weaves.",
-                "Adoption of a mixed color palette, blending earthy tones like Espresso with vibrant hues like Regal Red."
+                "Transitional layering with statement outerwear.",
+                "Dominance of Wool/Tweed and leather.",
+                "Earthy color palettes featuring Espresso, Olive Green, and Maroon."
             ],
             "winter": [
-                "Strong focus on heritage-inspired wear like Pheran-inspired dresses.",
-                "Velvet and wool are the go-to fabrics for warmth and style.",
-                "A vibrant color palette is encouraged to brighten up traditional winter wardrobes.",
-                "Structured tailoring and oversized silhouettes continue to be major trends."
+                "Vibrant color palettes (Regal Red, Edgy Eggplant) complementing traditional neutrals.",
+                "Rich, warm fabrics like Velvet and Wool are key.",
+                "Modernized traditional Indian wear (Kashmiri Pherans, Kaftans) for festive and casual occasions.",
+                "Layering with structured coats and blazers."
             ],
             "spring": [
-                "Emergence of pastel shades like Powder Pink and Mint Green.",
-                "Lighter fabrics such as cotton and sheer organza will be prominent.",
-                "Continuation of A-line and flared silhouettes for dresses and skirts."
+                "Expected shift to lighter fabrics like cotton and sheer organza.",
+                "Continuation of vibrant colors like Powder Pink and Mint Green.",
+                "Rise of floral prints and relaxed, oversized silhouettes."
             ],
             "summer": [
-                "Popularity of oversized and flowing silhouettes like kaftans.",
-                "Bright, expressive colors will likely dominate.",
-                "Focus on comfortable, breathable fabrics like modal silk and cotton."
+                "Popularity of comfortable, breathable silhouettes like Kaftans.",
+                "Adoption of handcrafted and woven textiles.",
+                "Bright, expressive color palettes will likely dominate."
             ]
         },
         "predicted_next_season_trends": [
-            "Greater integration of handcrafted, sustainable textiles into mainstream fashion collections.",
-            "The fusion of punk-rock and preppy aesthetics, leading to hybrid styles.",
-            "Increased popularity of optical illusion dressing and silhouette-enhancing cuts.",
-            "Expansion of vibrant, expressive color palettes into Spring/Summer collections.",
-            "Rise of gender-fluid silhouettes inspired by traditional garments."
+            "Modernized Traditional Wear (e.g., Pheran-dresses, contemporary sarees)",
+            "Vibrant & Expressive Color Palettes for Spring/Summer",
+            "Sculptural & Voluminous Silhouettes",
+            "Continued rise of K-Pop inspired streetwear aesthetics"
         ]
     },
-    "overall_confidence_score": 0.88,
-    "analysis_summary": "The current fashion landscape is characterized by a dynamic fusion of global pop culture influences and a renewed appreciation for heritage craftsmanship. Key trends indicate a strong movement towards oversized and structured silhouettes, with A-line cuts and high-waisted bottoms gaining significant traction. While the runway shows a dominance of classic neutral colors like black and white, editorial content strongly advocates for a vibrant winter palette, including regal red and espresso brown. In materials, there is a dual trend of traditional fabrics like wool and tweed coexisting with a rising interest in handcrafted and sustainable textiles such as Manipuri weaves. Style is heavily influenced by international celebrities and K-pop culture, popularizing aesthetics that blend preppy, punk, and streetwear elements. Simultaneously, there is a significant trend towards modernizing traditional garments like Kashmiri Pherans and Kaftans for contemporary wear. Textural patterns like embroidery and woven details are more prominent than traditional prints. Overall, the market is moving towards expressive, individualistic styles that prioritize both comfort and a strong fashion statement."
+    "overall_confidence_score": 0.92,
+    "analysis_summary": "The current fashion landscape is defined by a dynamic synthesis of global pop culture and modernized Indian heritage. Key emerging trends include the rise of Structured Tailoring (15 mentions) and A-line silhouettes (25 mentions), driven by a 'Sculptural Romanticism' aesthetic seen on the runway. The winter color palette is shifting from traditional neutrals to vibrant, expressive hues like Regal Red and Edgy Eggplant, while classic Black (35 mentions) and White (22 mentions) remain dominant. In materials, there is a strong preference for textured fabrics like Wool/Tweed (20 mentions) and a growing appreciation for handcrafted textiles like Manipuri weaves. K-pop and Western celebrity influence are popularizing streetwear styles like oversized tops and high-waisted bottoms. Simultaneously, there is a significant movement towards adapting traditional Indian garments, such as Kashmiri Pherans and Kaftans, for contemporary wear. Overall, the market is embracing comfort, individuality, and a blend of high-fashion structure with culturally rich, sustainable choices."
 }

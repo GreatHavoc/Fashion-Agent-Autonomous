@@ -60,14 +60,16 @@ async def content_analyzer_node(state: Dict[str, Any], config) -> Dict[str, Any]
     
     try:
         
-        data_urls = state.get("data_collection", {}).get("data_urls", [])
-        if not data_urls:
+        url_list = state.get("data_collection", {}).get("url_list", [])
+        if not url_list:
             raise ValueError("No URLs from data collector")
+        
+        file_logger.info(f"Content analyzer received {len(url_list)} URLs from data collector")
         
         user_input = f"""
         Analyze the collected URLs and images for fashion trends.
         Query: {state.get('query', '')}
-        URLs to analyze: {json.dumps(data_urls)}
+        URLs to analyze: {json.dumps(url_list)}
         The current insights from data collector: {state.get('agent_memories', {}).get('data_collector', {}).get('last_analysis', '')}
         Use your MCP image processing tools and website resources to analyze content and extract insights.
         """

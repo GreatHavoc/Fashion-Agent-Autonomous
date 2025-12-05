@@ -7,9 +7,30 @@ import time
 import traceback
 from typing import Dict, Any
 
+import aiofiles
+
 from fashion_agent.config import file_logger, console_logger, MAX_RETRIES, BASE_DELAY
 from fashion_agent.state import ListofOutfits
 from fashion_agent.agents.builders import build_agent5_modern
+
+
+# Async file I/O helpers to avoid pickling issues with lambda in asyncio.to_thread
+async def save_json_async(filepath: str, data: dict) -> None:
+    """Async helper to save JSON data to file."""
+    async with aiofiles.open(filepath, "w") as f:
+        await f.write(json.dumps(data, indent=4))
+
+
+async def load_json_async(filepath: str) -> dict:
+    """Async helper to load JSON data from file."""
+    async with aiofiles.open(filepath, "r") as f:
+        content = await f.read()
+        return json.loads(content)
+
+
+async def file_exists_async(filepath: str) -> bool:
+    """Async helper to check if file exists."""
+    return await asyncio.to_thread(os.path.exists, filepath)
 
 
 async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
@@ -18,12 +39,10 @@ async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     async def load_outfit_designer_output():
         """Check if cached outfit designer output exists."""
         output_file = "data/outfit_designer_output.json"
-        if await asyncio.to_thread(os.path.exists, output_file):
+        if await file_exists_async(output_file):
             try:
-                with await asyncio.to_thread(open, output_file, "r") as f:
-                    content = await asyncio.to_thread(f.read)
-                    data = json.loads(content)
-                    structured_output = ListofOutfits(**data)
+                data = await load_json_async(output_file)
+                structured_output = ListofOutfits(**data)
                 
                 file_logger.info("Loaded Outfit Designer output from file, skipping agent execution.")
                 
@@ -70,13 +89,24 @@ async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         except Exception as e:
             file_logger.warning(f"Failed to create dashboard from cached data: {e}")
     
-    cached = await load_outfit_designer_output()
-    if cached:
-        from ..utils import storage
-        await asyncio.to_thread(storage.update_outfit_generation,
-                               record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
-                               data=cached)
-        return cached
+    # Check if this is an edit request (revision from outfit_reviewer)
+    outfit_review_decision = state.get("outfit_review_decision", {})
+    is_edit_request = outfit_review_decision.get("decision_type") == "edit"
+    edit_instructions = outfit_review_decision.get("edit_instructions", "")
+    selected_outfit_ids = outfit_review_decision.get("selected_outfit_ids", [])
+    
+    # Only use cache if NOT an edit request
+    if not is_edit_request:
+        cached = await load_outfit_designer_output()
+        if cached:
+            from ..utils import storage
+            await asyncio.to_thread(storage.update_outfit_generation,
+                                   record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
+                                   data=cached)
+            return cached
+    else:
+        file_logger.info(f"Edit request detected - skipping cache, will regenerate with instructions: {edit_instructions}")
+        file_logger.info(f"Selected outfits to edit: {selected_outfit_ids}")
     
     console_logger.info("Starting Outfit Designer Agent...")
     
@@ -96,11 +126,22 @@ async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                 }
             }
         
-        # Prepare input with trend analysis
+        # Get existing outfit designs if this is an edit request
+        existing_outfits = state.get("outfit_designs", [])
+        
+        # Prepare input with trend analysis and edit instructions if applicable
         designer_input = {
             "trend_analysis": trend_analysis,
             "design_timestamp": state.get("analysis_timestamp", "")
         }
+        
+        # Add revision context if this is an edit request
+        if is_edit_request:
+            designer_input["revision_mode"] = True
+            designer_input["edit_instructions"] = edit_instructions
+            designer_input["selected_outfits"] = selected_outfit_ids  # Names of outfits to edit
+            designer_input["existing_outfits"] = existing_outfits  # Current outfit designs to modify
+            file_logger.info(f"Revision mode enabled - editing {len(selected_outfit_ids)} outfits: {selected_outfit_ids}")
         
         input_json = json.dumps(designer_input, indent=2)
         
@@ -117,10 +158,11 @@ async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                 agent5 = await build_agent5_modern()
                 
                 start_time = time.time()
-                # Invoke agent WITHOUT checkpointer config to prevent MCP tool pickling errors
+                # Pass full parent config to preserve checkpointer and thread_id
+                # This avoids pickling issues by letting subgraph share parent's checkpointer
                 result = await agent5.ainvoke(
                     {"messages": [("user", input_json)]},
-                    config={"configurable": {"checkpoint_ns": ""}}  # Disable checkpointing for subgraph
+                    config  # Pass parent config completely - preserves checkpointer
                 )
                 end_time = time.time()
                 processing_time = end_time - start_time
@@ -175,19 +217,15 @@ async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         file_logger.info(json.dumps(output_data, indent=2))
         file_logger.info("="*80)
         
-        # Persist to disk
-        await asyncio.to_thread(
-            lambda: json.dump(output_data, open("data/outfit_designer_output.json", "w"), indent=4)
-        )
+        # Persist to disk using proper async file operations
+        await save_json_async("data/outfit_designer_output.json", output_data)
         
         # Create dashboard data by combining trend analysis and outfit designs
         dashboard_data = {
             "trend_analysis": trend_analysis,
             "outfit_designs": [output_data]
         }
-        await asyncio.to_thread(
-            lambda: json.dump(dashboard_data, open("data/dashboard_data.json", "w"), indent=4)
-        )
+        await save_json_async("data/dashboard_data.json", dashboard_data)
         file_logger.info("Created data/dashboard_data.json with trend analysis and outfit designs")
         
         # Update storage
@@ -196,20 +234,30 @@ async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                               record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
                               data=output_data)
         
-        return {
+        # Prepare return with reset of review decision so outfit_reviewer can run again
+        result = {
             "outfit_designs": [output_data],
             "agent_memories": {
                 **state.get("agent_memories", {}),
                 "outfit_designer": {
                     "outfits_created": len(structured_output.Outfits),
-                    "processing_time": processing_time
+                    "processing_time": processing_time,
+                    "was_revision": is_edit_request
                 }
             },
             "execution_status": {
                 **state.get("execution_status", {}),
-                "outfit_designer": "completed"
+                "outfit_designer": "completed",
+                "outfit_reviewer": "pending"  # Reset so reviewer runs again
             }
         }
+        
+        # Reset the review decision so the reviewer node will present new outfits
+        if is_edit_request:
+            result["outfit_review_decision"] = {}  # Clear the edit decision
+            file_logger.info("Reset outfit_review_decision after revision completion")
+        
+        return result
         
     except Exception as e:
         file_logger.error(f"ERROR: Outfit Designer error: {e}")

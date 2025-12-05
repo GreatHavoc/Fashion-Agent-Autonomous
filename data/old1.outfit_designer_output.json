@@ -1,0 +1,148 @@
+{
+    "Outfits": [
+        {
+            "outfit_name": "Bronze Goddess",
+            "outfit_description": "A glamorous and trendy bronze sequin backless halter mini dress. It features a bodycon silhouette that is mini in length, with a halter neckline and a daring backless design. The entire dress is adorned with shimmering bronze metallic sequins, making it a perfect statement piece for any high-glamour event.",
+            "season": "Winter",
+            "occasion": "Party, Night Out, Festive Event",
+            "fashion_metrics": {
+                "Formality": 0.8,
+                "Trendiness": 0.95,
+                "Boldness": 0.9,
+                "Wearability": 0.7
+            },
+            "style_tags": [
+                "Nightlife Glamour",
+                "Sequin",
+                "Metallic",
+                "Bodycon",
+                "Mini Dress"
+            ],
+            "dominant_colors": [
+                "Bronze Metallic"
+            ],
+            "forecasted_popularity": 0.9,
+            "target_market_alignment": "Excellent. The design strongly appeals to the target 18-26 age group in urban India, who are influenced by social media and celebrity styles for their party and festive wear.",
+            "trend_incorporation": [
+                "Nightlife Glamour",
+                "Bronze Metallic",
+                "Sequin",
+                "Bodycon",
+                "Mini Length",
+                "Halter Neck",
+                "Backless",
+                "Solid Color"
+            ],
+            "total_revisions": 0,
+            "revision_history": [],
+            "final_garment_specs": {},
+            "saved_image_path": "https://ehugtknzurtsjnkpclgf.supabase.co/storage/v1/object/public/outfit_images/outfits/bronze_sequin_dress_v1.png",
+            "design_success": true,
+            "reflection_insights": [
+                "The design is a direct and successful translation of the 'Nightlife Glamour' trend, making it highly relevant.",
+                "Its primary limitation is its specificity; it is strictly for parties and high-glamour events, which narrows its versatility.",
+                "A key recommendation was to explore a 'Conscious Glamour' version by using recycled or biodegradable sequins to appeal to the sustainable fashion trend."
+            ]
+        },
+        {
+            "outfit_name": "Mauve Mystique",
+            "outfit_description": "A chic and modern mauve mini dress designed with a bodycon silhouette. It features an asymmetrical one-shoulder neckline, extensive ruching that flatters the figure, and a tasteful cut-out detail at the waist. The soft jersey knit fabric ensures a comfortable yet body-hugging fit.",
+            "season": "Winter, Spring",
+            "occasion": "Social Event, Cocktail Party, Date Night",
+            "fashion_metrics": {
+                "Formality": 0.8,
+                "Trendiness": 0.9,
+                "Boldness": 0.85,
+                "Wearability": 0.75
+            },
+            "style_tags": [
+                "Nightlife Glamour",
+                "Cut-Out",
+                "Ruched",
+                "Asymmetrical",
+                "Bodycon"
+            ],
+            "dominant_colors": [
+                "Mauve"
+            ],
+            "forecasted_popularity": 0.85,
+            "target_market_alignment": "Strong. It caters perfectly to the fashion-forward segment of the 18-26 demographic in metropolitan areas who are confident in showcasing bold trends.",
+            "trend_incorporation": [
+                "Nightlife Glamour",
+                "Mauve",
+                "Jersey Knit",
+                "Bodycon",
+                "Mini Length",
+                "Cut-Out",
+                "Asymmetrical",
+                "Solid Color"
+            ],
+            "total_revisions": 0,
+            "revision_history": [],
+            "final_garment_specs": {},
+            "saved_image_path": "https://ehugtknzurtsjnkpclgf.supabase.co/storage/v1/object/public/outfit_images/outfits/mauve_cutout_dress_v1.png",
+            "design_success": true,
+            "reflection_insights": [
+                "This design excels at synthesizing multiple rising silhouette trends (Asymmetrical, Cut-Out, Bodycon) into a single, cohesive garment.",
+                "The ruching is a highly commercial element that enhances wearability and appeal across different body types.",
+                "The main critique was the failure to incorporate the sustainability trend. Using a sustainable jersey alternative (like Tencel Modal or recycled polyester) would have significantly elevated the design's market position."
+            ]
+        },
+        {
+            "outfit_name": "Golden Earth",
+            "outfit_description": "A sophisticated two-piece 'Conscious Glamour' outfit. It pairs a stunning bronze metallic sequin camisole top with elegant, high-waisted, wide-leg trousers in a cream hue. The trousers are crafted from a fluid, sustainable fabric like Tencel, offering a beautiful drape and reflecting a commitment to ethical fashion.",
+            "season": "All-Season Festive",
+            "occasion": "Festive Gathering, Wedding Reception, Cocktail Party",
+            "fashion_metrics": {
+                "Formality": 0.85,
+                "Trendiness": 0.95,
+                "Boldness": 0.8,
+                "Wearability": 0.9
+            },
+            "style_tags": [
+                "Conscious Glamour",
+                "Sustainable Fashion",
+                "Indo-Western",
+                "Two-Piece",
+                "Sequin"
+            ],
+            "dominant_colors": [
+                "Bronze Metallic",
+                "Cream"
+            ],
+            "forecasted_popularity": 0.95,
+            "target_market_alignment": "Perfect. This design has the broadest appeal, catering to modern Indian consumers who value style, cultural fusion, and sustainability. Its versatility makes it suitable for a wide range of festive and social occasions.",
+            "trend_incorporation": [
+                "Nightlife Glamour",
+                "Sustainable & Ethical Fashion",
+                "Bronze Metallic",
+                "Sequin",
+                "Plant-based fibers",
+                "Solid Color"
+            ],
+            "total_revisions": 1,
+            "revision_history": [
+                {
+                    "revision_number": 1,
+                    "feedback": "The initial design (a classic trench coat) was rejected due to a major disconnect with the 'Nightlife Glamour' trend, unsuitable color palette, and poor climate suitability for the Indian market. It scored only 3/10 on trend alignment.",
+                    "changes_made": [
+                        "Discarded the impractical trench coat concept entirely.",
+                        "Pivoted to a two-piece outfit to better fuse the glamour and sustainable trends.",
+                        "Introduced a 'Bronze Metallic' sequin top to directly hit the 'Nightlife Glamour' and color trends.",
+                        "Paired the top with elegant, wide-leg trousers made from a sustainable, climate-appropriate fabric."
+                    ],
+                    "design_confidence": 0.95
+                }
+            ],
+            "final_garment_specs": {},
+            "saved_image_path": "https://ehugtknzurtsjnkpclgf.supabase.co/storage/v1/object/public/outfit_images/outfits/conscious_glamour_v1.png",
+            "design_success": true,
+            "reflection_insights": [
+                "This design is the most successful as it perfectly fuses the two strongest trends: 'Nightlife Glamour' and 'Sustainable & Ethical Fashion'.",
+                "The revision process was critical; it evolved from a rejected, climate-inappropriate trench coat into a highly relevant and marketable Indo-Western outfit.",
+                "The two-piece nature offers high versatility, allowing the items to be sold and styled separately, which significantly increases commercial value.",
+                "It directly addresses the predicted future trend of 'conscious party wear'."
+            ]
+        }
+    ]
+}

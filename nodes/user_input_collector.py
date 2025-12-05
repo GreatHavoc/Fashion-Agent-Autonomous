@@ -38,16 +38,29 @@ async def user_input_collector_node(state: Dict[str, Any], config) -> Dict[str, 
         }
     })
     
+    # Debug: Log the raw response from interrupt
+    file_logger.info(f"Raw user_response from interrupt: {user_response}")
+    file_logger.info(f"User_response type: {type(user_response)}")
+    
     # Validate and structure user input
     try:
-        user_input = UserInput(**user_response)
+        # Handle nested structure from UI resume - extract the actual user_input dict
+        if 'user_input' in user_response and isinstance(user_response['user_input'], dict):
+            user_input_data = user_response['user_input']
+            query_override = user_response.get('query')
+        else:
+            # Direct structure (backwards compatibility)
+            user_input_data = user_response
+            query_override = None
+        
+        user_input = UserInput(**user_input_data)
         file_logger.info(f"User input collected: {len(user_input.custom_urls)} URLs, "
                         f"{len(user_input.custom_images)} images, "
                         f"{len(user_input.custom_videos)} videos")
         
         return {
             "user_input": user_input.model_dump(),
-            "query": user_input.query or state.get("query", "Fashion trend analysis")
+            "query": query_override or user_input.query or state.get("query", "Fashion trend analysis")
         }
     except Exception as e:
         file_logger.error(f"Error processing user input: {e}")

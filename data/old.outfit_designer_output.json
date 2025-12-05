@@ -1,10 +1,10 @@
 {
     "Outfits": [
         {
-            "outfit_name": "Regal Pheran",
-            "outfit_description": "A modern, oversized Pheran-inspired maxi dress in a rich 'Regal Red' velvet. The dress has a flowing, comfortable silhouette, long loose sleeves, and a round neckline. It features intricate gold and cream Aari embroidery with floral and paisley motifs around the neckline, cuffs, and hem. The overall style is a fusion of traditional Indian heritage and contemporary fashion.",
-            "season": "Winter",
-            "occasion": "Festive / Evening Wear",
+            "outfit_name": "Modernized Heritage Fusion",
+            "outfit_description": "A regal red, A-line, Pheran-inspired dress made of a handcrafted weave with a subtle, dark winter floral print. It features a mandarin collar and full-length sleeves. This is layered with a structured, black velvet waistcoat that has intricate Aari work embroidery on the collar. The design epitomizes the 'Modernized Heritage & Tailoring' trend, blending traditional Indian silhouettes with sharp, contemporary tailoring for the fall/winter season.",
+            "season": "Fall/Winter",
+            "occasion": "Semi-formal, Festive",
             "fashion_metrics": {
                 "Formality": 0.7,
                 "Trendiness": 0.9,
@@ -12,131 +12,124 @@
                 "Wearability": 0.6
             },
             "style_tags": [
-                "Modern Indian",
+                "Modernized Heritage",
+                "Tailored",
                 "Festive",
                 "Velvet",
-                "Embroidery",
-                "Maxi Dress"
+                "Embroidery"
             ],
             "dominant_colors": [
                 "Regal Red",
-                "Gold",
-                "Cream"
+                "Black"
             ],
-            "forecasted_popularity": 0.85,
-            "target_market_alignment": "Excellent alignment for young women seeking statement ethnic wear for festive occasions. Appeals to a consumer who values both heritage crafts and modern silhouettes.",
+            "forecasted_popularity": 0.9,
+            "target_market_alignment": "Excellent alignment for young Indian consumers who appreciate a blend of tradition and modernity for festive occasions. The design is culturally appropriate, sophisticated, and makes a strong style statement.",
             "trend_incorporation": [
-                "Modernized Indian Heritage",
-                "Regal Red Color",
-                "Velvet Material",
-                "Oversized Silhouette",
-                "Embroidery/Appliqu\u00e9"
+                "Modernized Heritage & Tailoring",
+                "Regal Red (Rising Color)",
+                "Velvet (Rising Material)",
+                "A-line / Flared Silhouette (Rising)",
+                "Structured Tailoring (Rising)",
+                "Embroidery & Appliqu\u00e9 (Rising)",
+                "Winter Floral (Stable Print)"
             ],
             "total_revisions": 0,
             "revision_history": [],
             "final_garment_specs": {},
-            "saved_image_path": "generated_images/regal_pheran_v1.png",
+            "saved_image_path": "generated_images/Modernized_Heritage_Tailoring.png",
             "design_success": true,
             "reflection_insights": [
-                "The design is an exceptional synthesis of the 'Modernized Indian Heritage' trend with rising colors (Regal Red) and materials (Velvet).",
-                "The oversized silhouette and traditional embroidery align perfectly with market preferences for comfort and craftsmanship in festive wear.",
-                "The outfit is perfectly tailored for the Fall/Winter festive and wedding season in India."
+                "Exceptional synthesis of multiple high-confidence, rising trends, particularly 'Modernized Heritage & Tailoring'.",
+                "The Regal Red and Black color combination is powerful and commercially viable for the Indian market.",
+                "Successfully merges the top two rising silhouette trends: 'A-line/Flared' and 'Structured Tailoring'.",
+                "The design's primary limitation is its climate and occasion specificity, making it ideal for North Indian winter festive events."
             ]
         },
         {
-            "outfit_name": "Espresso Streetwear Co-ord",
-            "outfit_description": "A trendy and culturally appropriate streetwear outfit for a young Indian woman, inspired by global celebrity style. The outfit features a monochrome 'Espresso' brown color scheme. It includes a high-waisted, pleated knee-length skirt in a thick cotton fabric, paired with a matching oversized jersey top with a round neckline and long sleeves. The look is completed with stylish white sneakers.",
-            "season": "Fall / Winter",
-            "occasion": "Casual / Streetwear",
+            "outfit_name": "Global Celebrity Streetwear",
+            "outfit_description": "An oversized jersey top in a rich espresso brown, featuring drop shoulders and long sleeves. It is paired with high-waisted, straight-fit denim jeans in a light cream wash that includes a subtle, dark brown pinstripe pattern. This outfit captures the 'Global Celebrity Influence' trend, focusing on comfortable, on-trend streetwear suitable for a casual university setting during the fall.",
+            "season": "Fall",
+            "occasion": "Casual, University",
             "fashion_metrics": {
                 "Formality": 0.3,
-                "Trendiness": 0.9,
+                "Trendiness": 0.8,
                 "Boldness": 0.6,
                 "Wearability": 0.9
             },
             "style_tags": [
                 "Streetwear",
-                "Monochrome",
                 "Oversized",
-                "Preppy",
-                "Co-ord"
+                "Casual",
+                "Denim",
+                "Pinstripe"
             ],
             "dominant_colors": [
                 "Espresso Brown",
-                "White"
-            ],
-            "forecasted_popularity": 0.9,
-            "target_market_alignment": "Excellent. The revised design is highly relevant for the 18-26 age group in urban and semi-urban areas who follow global fashion trends but prefer modest and comfortable clothing.",
-            "trend_incorporation": [
-                "Global Celebrity Streetwear",
-                "Espresso Color",
-                "Oversized Silhouette",
-                "High-Waisted Silhouette",
-                "Monochrome Outfit"
-            ],
-            "total_revisions": 1,
-            "revision_history": [
-                {
-                    "revision_number": 1,
-                    "feedback": "The mini-skirt length and thigh-high boots are extremely niche and limit the addressable market due to cultural preferences for more modest hemlines. The styling is not practical for everyday wear.",
-                    "changes_made": [
-                        "Changed mini-skirt to a knee-length skirt.",
-                        "Replaced thigh-high boots with white sneakers for a more casual and accessible look."
-                    ],
-                    "design_confidence": 0.95
-                }
-            ],
-            "final_garment_specs": {},
-            "saved_image_path": "generated_images/espresso_streetwear_v2.png",
-            "design_success": true,
-            "reflection_insights": [
-                "The initial design with a mini-skirt and thigh-high boots was deemed too niche and not culturally appropriate for the broader Indian market.",
-                "Changing the skirt to a knee-length and styling with sneakers significantly improved the design's market suitability and commercial viability.",
-                "The revised design perfectly captures the 'Global Celebrity Streetwear' trend in a wearable and accessible way for the target demographic."
-            ]
-        },
-        {
-            "outfit_name": "Manipuri Weave Fusion Suit",
-            "outfit_description": "A sophisticated and powerful outfit blending structured tailoring with traditional Indian elements. It features a sharp, tailored peplum blazer in a classic 'Grey' tweed, layered over a straight-fit, ankle-length skirt made from a Manipuri weave textile in a 'Powder Pink' and cream color combination.",
-            "season": "Fall / Winter",
-            "occasion": "Formal / Workwear",
-            "fashion_metrics": {
-                "Formality": 0.8,
-                "Trendiness": 0.8,
-                "Boldness": 0.7,
-                "Wearability": 0.7
-            },
-            "style_tags": [
-                "Fusion Wear",
-                "Power Dressing",
-                "Tailored",
-                "Handloom",
-                "Sophisticated"
-            ],
-            "dominant_colors": [
-                "Grey",
-                "Powder Pink",
                 "Cream"
             ],
-            "forecasted_popularity": 0.8,
-            "target_market_alignment": "Strong alignment for the 22-26 age bracket, particularly young professionals in urban centers who are building a formal wardrobe that reflects both global trends and Indian identity.",
+            "forecasted_popularity": 0.85,
+            "target_market_alignment": "High alignment with the target demographic's desire for comfortable, globally influenced, and Instagram-worthy casual wear. The style is modest, versatile, and reflects current K-pop and Western artist-inspired fashion.",
             "trend_incorporation": [
-                "Structured Tailoring",
-                "Modernized Indian Heritage",
-                "Grey Color",
-                "Powder Pink Color",
-                "Wool/Tweed Material",
-                "Manipuri Weave"
+                "Global Celebrity Influence",
+                "Espresso / Brown (Rising Color)",
+                "Oversized Silhouette (Rising)",
+                "Pinstripes (Rising Pattern)",
+                "High-Waisted Silhouette (Stable)",
+                "Denim (Stable Material)"
             ],
             "total_revisions": 0,
             "revision_history": [],
             "final_garment_specs": {},
-            "saved_image_path": "generated_images/manipur_weave_fusion_v1.png",
+            "saved_image_path": "generated_images/Global_Celebrity_Influence.png",
             "design_success": true,
             "reflection_insights": [
-                "The design successfully fuses two major trends: 'Structured Tailoring' and 'Modernized Indian Heritage'.",
-                "The color combination of a stable neutral (Grey) with a rising pastel (Powder Pink) is both trendy and commercially appealing.",
-                "The outfit is well-positioned as 'Contemporary Indian Power Dressing' for young professionals."
+                "Perfectly captures the rising 'Espresso / Brown' and stable 'White / Cream' color trends.",
+                "Masterfully combines 'Oversized' and 'Straight-fit/High-Waisted' silhouette trends for a balanced, modern look.",
+                "Successfully integrates the rising 'Pinstripes' pattern trend, elevating the otherwise simple trousers.",
+                "The main concern is climate specificity; the heavy top is best suited for North Indian winters or air-conditioned environments."
+            ]
+        },
+        {
+            "outfit_name": "Monochrome Comfort Kaftan",
+            "outfit_description": "A monochrome ensemble in powder pink, featuring a long, oversized kaftan in sheer organza with a high neckline and flowing sleeves. The kaftan is adorned with delicate, tonal embroidery in a winter floral pattern. It is layered over a matching straight-fit slip dress. This design is a direct reflection of 'Comfort-Driven & Oversized Silhouettes' and 'Monochrome Dressing' trends, ideal for a celebratory occasion in the spring.",
+            "season": "Spring",
+            "occasion": "Festive, Celebratory",
+            "fashion_metrics": {
+                "Formality": 0.6,
+                "Trendiness": 0.9,
+                "Boldness": 0.5,
+                "Wearability": 0.8
+            },
+            "style_tags": [
+                "Monochrome",
+                "Oversized",
+                "Comfort-Driven",
+                "Sheer Organza",
+                "Kaftan"
+            ],
+            "dominant_colors": [
+                "Powder Pink"
+            ],
+            "forecasted_popularity": 0.8,
+            "target_market_alignment": "Very high alignment for young consumers seeking elegant, comfortable, and fashion-forward options for festive events. The design is ethereal, modern, and culturally appropriate, appealing to those who favor a minimalist yet sophisticated aesthetic.",
+            "trend_incorporation": [
+                "Comfort-Driven & Oversized Silhouettes",
+                "Monochrome Dressing",
+                "Powder Pink (Rising Color)",
+                "Lace / Sheer Organza (Stable Material)",
+                "Embroidery & Appliqu\u00e9 (Rising)",
+                "Winter Floral (Stable Print)"
+            ],
+            "total_revisions": 0,
+            "revision_history": [],
+            "final_garment_specs": {},
+            "saved_image_path": "generated_images/Comfort_Driven_Oversized_Silhouettes.png",
+            "design_success": true,
+            "reflection_insights": [
+                "The 'Powder Pink' color is a rising trend and aligns with the 'Vibrant Pastels' predicted for the next season.",
+                "The design perfectly embodies the 'Comfort-Driven & Oversized Silhouettes' and 'Monochrome Dressing' style trends.",
+                "The tonal embroidery reflects the rising 'Embroidery & Appliqu\u00e9' trend, adding value and craftsmanship appeal.",
+                "The silhouette is a versatile and modern interpretation of traditional Indian garments, suitable for a wide range of events."
             ]
         }
     ]

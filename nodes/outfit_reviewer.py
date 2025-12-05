@@ -22,27 +22,48 @@ async def outfit_reviewer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     # GUARD: Check if review was already completed (prevent double interrupt from cached nodes)
     execution_status = state.get("execution_status", {})
     reviewer_status = execution_status.get("outfit_reviewer")
+    existing_decision = state.get("outfit_review_decision", {})
+    
+    file_logger.info(f"REVIEWER GUARD: reviewer_status = '{reviewer_status}'")
+    file_logger.info(f"REVIEWER GUARD: existing_decision = {existing_decision}")
     
     if reviewer_status == "completed":
         file_logger.info("Outfit review already completed (status=completed), skipping re-review")
         return {}  # Pass through without changes
     
     # Also check if we already have a review decision with approve/reject
-    existing_decision = state.get("outfit_review_decision", {})
     if existing_decision.get("decision_type") in ["approve", "reject"]:
         file_logger.info(f"Outfit review already completed (decision={existing_decision.get('decision_type')}), skipping re-review")
         return {}  # Pass through without changes
     
-    file_logger.info("Starting outfit review process...")
+    # CRITICAL FIX: If decision_type is 'edit', pass through and let outfit_designer run first
+    # We should only proceed when outfit_designer has cleared the decision (empty dict)
+    # This prevents showing stale data when LangGraph runs nodes in parallel or replays checkpoints
+    if existing_decision.get("decision_type") == "edit":
+        file_logger.info("Edit decision pending - deferring to outfit_designer, will review after regeneration")
+        return {}  # Pass through, let outfit_designer process the edit first
+    
+    file_logger.info("REVIEWER GUARD: Passed all guards, proceeding with review...")
     
     # Get outfit designs from state
     outfit_designs = state.get("outfit_designs", [])
+    file_logger.info(f"REVIEWER DEBUG: outfit_designs count = {len(outfit_designs)}")
     
     if not outfit_designs:
         file_logger.warning("No outfit designs available for review")
         return {
             "awaiting_outfit_review": False,
-            "errors": {**state.get("errors", {}), "outfit_reviewer": "No outfits to review"}
+            "outfit_review_decision": {
+                "decision_type": "reject",
+                "rejection_feedback": "No outfits were generated due to insufficient data",
+                "edit_instructions": "",
+                "selected_outfit_ids": []
+            },
+            "errors": {**state.get("errors", {}), "outfit_reviewer": "No outfits to review"},
+            "execution_status": {
+                **state.get("execution_status", {}),
+                "outfit_reviewer": "rejected"
+            }
         }
     
     # Extract outfit data for presentation

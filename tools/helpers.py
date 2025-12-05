@@ -53,7 +53,7 @@ async def make_video(image_path: str) -> Dict[str, Any]:
     Generate video from outfit image.
     
     Args:
-        image_path: Path to the outfit image
+        image_path: Path to the outfit image (can be local path OR a URL)
         
     Returns:
         Dict containing:
@@ -64,18 +64,65 @@ async def make_video(image_path: str) -> Dict[str, Any]:
         - processing_time: float
     """
     from ..utils.video_generation import vid_generator
+    import tempfile
+    import aiohttp
     
-    if not os.path.exists(image_path):
-        return {
-            "success": False,
-            "output_path": None,
-            "duration": 0.0,
-            "error": f"Input image not found: {image_path}",
-            "processing_time": 0.5
-        }
+    actual_image_path = image_path
+    temp_file = None
+    
+    # Handle remote URLs (e.g., Supabase)
+    if image_path.startswith(('http://', 'https://')):
+        file_logger.info(f"Downloading remote image from: {image_path}")
+        try:
+            async with aiohttp.ClientSession() as session:
+                async with session.get(image_path) as response:
+                    if response.status != 200:
+                        return {
+                            "success": False,
+                            "output_path": None,
+                            "duration": 0.0,
+                            "error": f"Failed to download image: HTTP {response.status}",
+                            "processing_time": 0.5
+                        }
+                    
+                    # Get file extension from URL or default to .png
+                    ext = '.png'
+                    if '.' in image_path.split('/')[-1]:
+                        ext = '.' + image_path.split('/')[-1].split('.')[-1]
+                    
+                    # Create temp file
+                    temp_file = tempfile.NamedTemporaryFile(delete=False, suffix=ext)
+                    temp_file.write(await response.read())
+                    temp_file.close()
+                    actual_image_path = temp_file.name
+                    file_logger.info(f"Downloaded image to temp file: {actual_image_path}")
+                    
+        except Exception as e:
+            file_logger.error(f"Failed to download remote image: {e}")
+            return {
+                "success": False,
+                "output_path": None,
+                "duration": 0.0,
+                "error": f"Failed to download remote image: {e}",
+                "processing_time": 0.5
+            }
+    else:
+        # Local path - check if file exists
+        if not os.path.exists(actual_image_path):
+            return {
+                "success": False,
+                "output_path": None,
+                "duration": 0.0,
+                "error": f"Input image not found: {image_path}",
+                "processing_time": 0.5
+            }
+    
     try:
-        output_path = await vid_generator(image_path)
+        output_path = await vid_generator(actual_image_path)
     except Exception as e:
+        # Clean up temp file if created
+        if temp_file and os.path.exists(temp_file.name):
+            os.unlink(temp_file.name)
         return {
             "success": False,
             "output_path": None,
@@ -83,6 +130,11 @@ async def make_video(image_path: str) -> Dict[str, Any]:
             "error": str(e),
             "processing_time": 0.5
         }
+    
+    # Clean up temp file if created
+    if temp_file and os.path.exists(temp_file.name):
+        os.unlink(temp_file.name)
+    
     if output_path is None or not os.path.exists(output_path):
         return {
             "success": False,

@@ -82,19 +82,27 @@ async def video_analyzer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         session_id = f"fashion_analysis_{config['configurable']['thread_id']}"
         file_logger.info(f"Video analyzer session ID: {session_id}")
         
+        # Load default video URLs from config
         video_urls = load_video_urls()
-        console_logger.info(f"Loaded {len(video_urls)} video URLs")
+        console_logger.info(f"Loaded {len(video_urls)} video URLs from config")
+        
+        # Also check for user-provided video URLs
+        user_input = state.get("user_input", {})
+        custom_videos = user_input.get("custom_videos", [])
+        if custom_videos:
+            video_urls.extend(custom_videos)
+            console_logger.info(f"Added {len(custom_videos)} custom video URLs from user input")
+        
+        console_logger.info(f"Total video URLs to analyze: {len(video_urls)}")
         
         # If no video URLs configured, return early with empty analysis
         if len(video_urls) == 0:
             console_logger.warning("Skipping video analysis - no video URLs configured")
             return {
-                "video_analysis": {
-                    "trends_identified": [],
-                    "color_palettes": [],
-                    "style_elements": [],
-                    "seasonal_influences": [],
-                    "key_insights": ["No video URLs configured for analysis"]
+                "video_analysis": [{}],  # Return list with empty dict to match state schema
+                "execution_status": {
+                    **state.get("execution_status", {}),
+                    "video_analyzer": "skipped"
                 }
             }
         

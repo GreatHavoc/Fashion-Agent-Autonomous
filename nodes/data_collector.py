@@ -9,6 +9,7 @@ import json
 import asyncio
 import traceback
 import re
+from datetime import datetime
 from typing import Dict, Any
 from langgraph.func import task
 from langchain_core.messages import HumanMessage
@@ -66,9 +67,21 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         session_id = f"fashion_analysis_{config['configurable']['thread_id']}"
         file_logger.info(f"Data collector session ID: {session_id}")
         
+        # Get user-provided custom URLs to pass to the agent
+        user_input_data = state.get("user_input", {})
+        custom_urls = user_input_data.get("custom_urls", [])
+        
+        custom_urls_instruction = ""
+        if custom_urls:
+            file_logger.info(f"Passing {len(custom_urls)} custom URLs to data collector agent for validation")
+            custom_urls_instruction = f"\n\nUser-provided URLs to validate and include if relevant:\n{json.dumps(custom_urls, indent=2)}\nValidate each URL and only include if it's relevant for fashion trend analysis."
+        
         user_input = f"""
-        Process all scraping tools and filter URLs for fashion trend analysis.
-        Query: {state.get('query', 'Indian fashion trends for Gen Z')}
+        Do not invent any URLs or create fake URLs or use own knowledge to generate URLs.
+        Always comment on the url provided by the user.
+        Process all and filter URLs for fashion trend analysis.
+        User query: {state.get('query')}
+        {custom_urls_instruction}
         
         Return structured output with curated URL list and analysis.
         """
@@ -179,7 +192,7 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
             }
         }
         
-        file_logger.info(f"Data collector returning {len(return_dict['data_collection']['data_urls'])} URLs")
+        file_logger.info(f"Data collector returning {len(return_dict['data_collection']['url_list'])} URLs")
         file_logger.debug(f"Return dict keys: {list(return_dict.keys())}")
         console_logger.info("[Agent 1] Consolidating website findings...")
         await asyncio.sleep(1)
@@ -187,14 +200,14 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
         await asyncio.sleep(1)
         console_logger.info("[Agent 1] Consolidating Instagram findings...")
         await asyncio.sleep(1)
-        console_logger.info(f"[Agent 1] Final URLs scraped: {len(return_dict['data_collection']['data_urls'])}")
+        console_logger.info(f"[Agent 1] Final URLs scraped: {len(return_dict['data_collection']['url_list'])}")
         return return_dict
         
     except Exception as e:
         file_logger.error(f"ERROR: Data Collector error: {e}")
         file_logger.error(f"Traceback: {traceback.format_exc()}")
         return {
-            "data_collection": [],
+            "data_collection": {},
             "errors": {**state.get("errors", {}), "data_collector": str(e)},
             "execution_status": {
                 **state.get("execution_status", {}),

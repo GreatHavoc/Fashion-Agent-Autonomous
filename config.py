@@ -105,7 +105,6 @@ MCP_OUTFIT_CONFIG = {
 # Add your fashion video URLs here
 # {"video_urls": ["url1", "url2", ...]}
 VIDEO_URLS = [
-    "https://www.youtube.com/watch?v=CwmKr-wkj1M"
 ]
 
 
@@ -117,7 +116,7 @@ SCRAPER_TOOL_NAMES = [
     # "scrape_elle_india",
     # "scrape_grazia_india",
     # "scrape_tvof",
-    "scrape_toi_fashion",
+    # "scrape_toi_fashion",
     "scrape_webpage_with_images",
     "get_webpage_summary",
     # "scrape_vogue_india",
@@ -385,12 +384,36 @@ def get_outfit_designer_prompt() -> str:
         "1. **generate_outfit**: Creates outfit design from specifications and returns saved image path\n"
         "2. **reflect_on_outfit**: Takes image path + all agent reports, analyzes cultural/market fit, provides revision feedback\n"
         "\n"
-        "## Process Workflow:\n"
+        "## Operating Modes:\n"
+        "\n"
+        "### Mode 1: Initial Design (Default)\n"
+        "When the input does NOT contain `revision_mode: true`:\n"
         "1. **Analyze Input Data**: Review content analysis, video analysis, and final trend reports\n"
         "2. **Create Initial Design**: Use `generate_outfit` with garment specifications based on trends\n"
         "3. **Reflection Loop**: Use `reflect_on_outfit` with saved image path + all reports as ground truth\n"
         "4. **Iterate if Needed**: If reflection suggests revisions, modify specs and regenerate (max 5 iterations)\n"
         "5. **Focus Areas**: Indian cultural appropriateness, market fit for 18-26 age group, trend incorporation\n"
+        "\n"
+        "### Mode 2: Revision Mode (User Edit Request)\n"
+        "When the input contains `revision_mode: true`:\n"
+        "1. **Read Edit Instructions**: Check `edit_instructions` for what the user wants changed\n"
+        "2. **Identify Target Outfits**: Check `selected_outfits` for outfit names to modify (if empty, modify all)\n"
+        "3. **Review Existing Designs**: Check `existing_outfits` to understand current designs\n"
+        "4. **Apply Specific Changes**: ONLY modify the aspects mentioned in `edit_instructions`\n"
+        "   - If user says 'make the bottom pink', change pants/skirt color but keep top unchanged\n"
+        "   - If user says 'add more accessories', enhance accessories without changing core garments\n"
+        "5. **Preserve Unchanged Elements**: Keep all other design aspects identical to existing_outfits\n"
+        "6. **Regenerate Only Selected**: If `selected_outfits` is provided, only regenerate those specific outfits\n"
+        "   - Match outfit by name (e.g., 'Sunset Boulevard', 'Urban Chic')\n"
+        "   - Outfits NOT in `selected_outfits` should be returned unchanged from `existing_outfits`\n"
+        "\n"
+        "**IMPORTANT REVISION RULES:**\n"
+        "- Parse `edit_instructions` carefully to understand the exact changes requested\n"
+        "- For color changes: Only change the specified garment part (top, bottom, accessories)\n"
+        "- For style changes: Apply while maintaining trend alignment\n"
+        "- Always regenerate images for modified outfits using `generate_outfit`\n"
+        "- Always use the versioning of the existing_outfits\n"
+        "- Include all original outfits in output (modified ones regenerated, others copied from existing_outfits)\n"
         "\n"
         "## Garment Specification Format:\n"
         "Create detailed JSON specifications including:\n"

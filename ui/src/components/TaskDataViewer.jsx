@@ -2479,12 +2479,26 @@ const TaskDataViewer = ({
             {/* Player Section */}
             <div style={{ display: 'flex', gap: '24px', height: '400px' }}>
               {/* Video Player */}
-              <div style={{ flex: 1, background: '#000', borderRadius: '16px', overflow: 'hidden', border: '1px solid rgba(255,255,255,0.1)', position: 'relative' }}>
+              <div style={{
+                flex: 1,
+                background: '#000',
+                borderRadius: '16px',
+                overflow: 'hidden',
+                border: '1px solid rgba(255,255,255,0.1)',
+                position: 'relative',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center'
+              }}>
                 {selectedVideo.generation_success && selectedVideo.output_video_path ? (
                   <video
                     key={selectedVideo.output_video_path} // Force reload on change
                     width="100%" height="100%" controls autoPlay muted loop
-                    style={{ objectFit: 'contain' }}
+                    style={{
+                      objectFit: 'cover',
+                      maxHeight: '100%',
+                      maxWidth: '100%'
+                    }}
                   >
                     <source src={selectedVideo.output_video_path} type="video/mp4" />
                     Your browser does not support the video tag.

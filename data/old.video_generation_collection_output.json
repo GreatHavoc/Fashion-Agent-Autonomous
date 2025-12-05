@@ -1,0 +1,39 @@
+{
+    "total_outfits_processed": 3,
+    "successful_videos": 3,
+    "failed_videos": 0,
+    "video_results": [
+        {
+            "outfit_id": "Modernized Heritage Fusion",
+            "input_image_path": "D:/Downloads/FashionUseCase/scraapper/generated_images/Modernized_Heritage_Tailoring.png",
+            "output_video_path": "videos\\2ad79a4b-23d8-4f18-8f37-34b92ec58dde_complete_runway_presentation.mp4",
+            "generation_success": true,
+            "generation_time": 167.52979493141174,
+            "error_message": "",
+            "video_duration": 5.0,
+            "video_format": "mp4"
+        },
+        {
+            "outfit_id": "Global Celebrity Streetwear",
+            "input_image_path": "D:/Downloads/FashionUseCase/scraapper/generated_images/Global_Celebrity_Influence.png",
+            "output_video_path": "videos\\48c0afe1-ec88-4b4d-bee1-a3b6c57b7c34_complete_runway_presentation.mp4",
+            "generation_success": true,
+            "generation_time": 170.17301154136658,
+            "error_message": "",
+            "video_duration": 5.0,
+            "video_format": "mp4"
+        },
+        {
+            "outfit_id": "Monochrome Comfort Kaftan",
+            "input_image_path": "D:/Downloads/FashionUseCase/scraapper/generated_images/Comfort_Driven_Oversized_Silhouettes.png",
+            "output_video_path": "videos\\67b911c9-31fe-4d43-b02a-3518185f8600_complete_runway_presentation.mp4",
+            "generation_success": true,
+            "generation_time": 171.0216407775879,
+            "error_message": "",
+            "video_duration": 5.0,
+            "video_format": "mp4"
+        }
+    ],
+    "total_processing_time": 508.7244472503662,
+    "output_directory": "videos/"
+}

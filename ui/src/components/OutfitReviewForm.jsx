@@ -135,8 +135,8 @@ const OutfitReviewForm = ({ onSubmit, loading, interruptPayload }) => {
               key={outfit.outfit_id || index}
               outfit={outfit}
               index={index}
-              selected={selectedOutfits.includes(outfit.outfit_id)}
-              onToggle={() => toggleOutfitSelection(outfit.outfit_id)}
+              selected={selectedOutfits.includes(outfit.name)}
+              onToggle={() => toggleOutfitSelection(outfit.name)}
             />
           ))}
         </div>
