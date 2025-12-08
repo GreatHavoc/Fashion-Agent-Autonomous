@@ -28,7 +28,6 @@ dependencies = [
     "psycopg2>=2.9.11",
     "python-decouple>=3.8",
     "sqlalchemy>=2.0.44",
-    "streamlit>=1.51.0",
     "supabase>=2.24.0",
     "fastapi>=0.121.3",
     "uvicorn>=0.38.0",
