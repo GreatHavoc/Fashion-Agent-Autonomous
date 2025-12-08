@@ -484,4 +484,7 @@ class FashionAnalysisState(TypedDict):
     agent_memories: Annotated[Dict[str, Dict[str, Any]], merge_agent_memories]
     execution_status: Annotated[Dict[str, str], merge_dicts]
     errors: Annotated[Dict[str, str], merge_dicts]
+    
+    # Token usage tracking (accumulated from streaming)
+    token_usage: Dict[str, Any]  # {input_tokens, output_tokens, total_tokens, by_agent}
 

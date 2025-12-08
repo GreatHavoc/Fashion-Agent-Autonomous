@@ -9,9 +9,10 @@ from typing import Dict, Any
 
 import aiofiles
 
-from fashion_agent.config import file_logger, console_logger, MAX_RETRIES, BASE_DELAY
+from fashion_agent.config import file_logger, console_logger, MAX_RETRIES, BASE_DELAY, token_tracker
 from fashion_agent.state import ListofOutfits
 from fashion_agent.agents.builders import build_agent5_modern
+from langchain_core.messages import AIMessage
 
 
 # Async file I/O helpers to avoid pickling issues with lambda in asyncio.to_thread
@@ -36,58 +37,59 @@ async def file_exists_async(filepath: str) -> bool:
 async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     """LangGraph node for outfit design - uses memory and reflection."""
     
-    async def load_outfit_designer_output():
-        """Check if cached outfit designer output exists."""
-        output_file = "data/outfit_designer_output.json"
-        if await file_exists_async(output_file):
-            try:
-                data = await load_json_async(output_file)
-                structured_output = ListofOutfits(**data)
-                
-                file_logger.info("Loaded Outfit Designer output from file, skipping agent execution.")
-                
-                # Also ensure dashboard_data.json exists from cached output
-                await asyncio.to_thread(_create_dashboard_from_cached, state, structured_output)
-                
-                return {
-                    "outfit_designs": [structured_output.model_dump()],
-                    "agent_memories": {
-                        **state.get("agent_memories", {}),
-                        "outfit_designer": {
-                            "outfits_created": len(structured_output.Outfits)
-                        }
-                    },
-                    "execution_status": {
-                        **state.get("execution_status", {}),
-                        "outfit_designer": "completed"
-                    }
-                }
-            except Exception as e:
-                file_logger.warning(f"Failed to load cached Outfit Designer output: {e}. Will rerun agent.")
-        return None
-    
-    def _create_dashboard_from_cached(state: Dict[str, Any], outfits: ListofOutfits):
-        """Create dashboard_data.json from cached outputs."""
-        try:
-            dashboard_file = "data/dashboard_data.json"
-            if not os.path.exists(dashboard_file):
-                # Load trend analysis from state or file
-                final_processor = state.get("final_processor", {})
-                trend_analysis = final_processor.get("trend_analysis", {})
-                if not trend_analysis and os.path.exists("data/trend_processor_output.json"):
-                    with open("data/trend_processor_output.json", "r") as f:
-                        file_data = json.load(f)
-                        trend_analysis = file_data.get("trend_analysis", {})
-                
-                dashboard_data = {
-                    "trend_analysis": trend_analysis,
-                    "outfit_designs": [outfits.model_dump()]
-                }
-                with open(dashboard_file, "w") as f:
-                    json.dump(dashboard_data, f, indent=4)
-                file_logger.info("Created data/dashboard_data.json from cached outfit output")
-        except Exception as e:
-            file_logger.warning(f"Failed to create dashboard from cached data: {e}")
+    # CACHE DISABLED - Always run agent fresh
+    # async def load_outfit_designer_output():
+    #     """Check if cached outfit designer output exists."""
+    #     output_file = "data/outfit_designer_output.json"
+    #     if await file_exists_async(output_file):
+    #         try:
+    #             data = await load_json_async(output_file)
+    #             structured_output = ListofOutfits(**data)
+    #             
+    #             file_logger.info("Loaded Outfit Designer output from file, skipping agent execution.")
+    #             
+    #             # Also ensure dashboard_data.json exists from cached output
+    #             await asyncio.to_thread(_create_dashboard_from_cached, state, structured_output)
+    #             
+    #             return {
+    #                 "outfit_designs": [structured_output.model_dump()],
+    #                 "agent_memories": {
+    #                     **state.get("agent_memories", {}),
+    #                     "outfit_designer": {
+    #                         "outfits_created": len(structured_output.Outfits)
+    #                     }
+    #                 },
+    #                 "execution_status": {
+    #                     **state.get("execution_status", {}),
+    #                     "outfit_designer": "completed"
+    #                 }
+    #             }
+    #         except Exception as e:
+    #             file_logger.warning(f"Failed to load cached Outfit Designer output: {e}. Will rerun agent.")
+    #     return None
+    # 
+    # def _create_dashboard_from_cached(state: Dict[str, Any], outfits: ListofOutfits):
+    #     """Create dashboard_data.json from cached outputs."""
+    #     try:
+    #         dashboard_file = "data/dashboard_data.json"
+    #         if not os.path.exists(dashboard_file):
+    #             # Load trend analysis from state or file
+    #             final_processor = state.get("final_processor", {})
+    #             trend_analysis = final_processor.get("trend_analysis", {})
+    #             if not trend_analysis and os.path.exists("data/trend_processor_output.json"):
+    #                 with open("data/trend_processor_output.json", "r") as f:
+    #                     file_data = json.load(f)
+    #                     trend_analysis = file_data.get("trend_analysis", {})
+    #             
+    #             dashboard_data = {
+    #                 "trend_analysis": trend_analysis,
+    #                 "outfit_designs": [outfits.model_dump()]
+    #             }
+    #             with open(dashboard_file, "w") as f:
+    #                 json.dump(dashboard_data, f, indent=4)
+    #             file_logger.info("Created data/dashboard_data.json from cached outfit output")
+    #     except Exception as e:
+    #         file_logger.warning(f"Failed to create dashboard from cached data: {e}")
     
     # Check if this is an edit request (revision from outfit_reviewer)
     outfit_review_decision = state.get("outfit_review_decision", {})
@@ -95,17 +97,22 @@ async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     edit_instructions = outfit_review_decision.get("edit_instructions", "")
     selected_outfit_ids = outfit_review_decision.get("selected_outfit_ids", [])
     
-    # Only use cache if NOT an edit request
-    if not is_edit_request:
-        cached = await load_outfit_designer_output()
-        if cached:
-            from ..utils import storage
-            await asyncio.to_thread(storage.update_outfit_generation,
-                                   record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
-                                   data=cached)
-            return cached
-    else:
-        file_logger.info(f"Edit request detected - skipping cache, will regenerate with instructions: {edit_instructions}")
+    # CACHE DISABLED - Skip cache check
+    # # Only use cache if NOT an edit request
+    # if not is_edit_request:
+    #     cached = await load_outfit_designer_output()
+    #     if cached:
+    #         from ..utils import storage
+    #         await asyncio.to_thread(storage.update_outfit_generation,
+    #                                record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
+    #                                data=cached)
+    #         return cached
+    # else:
+    #     file_logger.info(f"Edit request detected - skipping cache, will regenerate with instructions: {edit_instructions}")
+    #     file_logger.info(f"Selected outfits to edit: {selected_outfit_ids}")
+    
+    if is_edit_request:
+        file_logger.info(f"Edit request - regenerating with instructions: {edit_instructions}")
         file_logger.info(f"Selected outfits to edit: {selected_outfit_ids}")
     
     console_logger.info("Starting Outfit Designer Agent...")
@@ -191,6 +198,18 @@ async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                 else:
                     raise ValueError(f"Unexpected result structure: {type(result)}, missing structured_response key")
                 
+                # Extract token usage before deleting result
+                messages = result.get("messages", []) if isinstance(result, dict) else []
+                for msg in reversed(messages):
+                    if isinstance(msg, AIMessage) and hasattr(msg, 'usage_metadata') and msg.usage_metadata:
+                        token_tracker.set_current_agent("outfit_designer")
+                        token_tracker.add_usage(
+                            input_tokens=msg.usage_metadata.get("input_tokens", 0),
+                            output_tokens=msg.usage_metadata.get("output_tokens", 0),
+                            total_tokens=msg.usage_metadata.get("total_tokens", 0)
+                        )
+                        break
+                
                 # Explicitly delete agent and result to free references before returning
                 del agent5
                 del result
@@ -249,7 +268,8 @@ async def outfit_designer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                 **state.get("execution_status", {}),
                 "outfit_designer": "completed",
                 "outfit_reviewer": "pending"  # Reset so reviewer runs again
-            }
+            },
+            "token_usage": token_tracker.get_usage()
         }
         
         # Reset the review decision so the reviewer node will present new outfits

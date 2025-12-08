@@ -8,51 +8,53 @@ import traceback
 from typing import Dict, Any
 from langgraph.func import task
 
-from fashion_agent.config import file_logger, console_logger, MAX_RETRIES, BASE_DELAY
+from fashion_agent.config import file_logger, console_logger, MAX_RETRIES, BASE_DELAY, token_tracker
 from fashion_agent.state import TrendAnalysisList
 from fashion_agent.agents.builders import build_agent4_modern
 from fashion_agent.utils import storage
+from langchain_core.messages import AIMessage
 
 
 async def final_processor_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     """LangGraph node for final processing - synthesizes content and video analysis."""
     
-    # Check for cached output from previous run
-    def load_cached_output():
-        output_file = "data/trend_processor_output.json"
-        if os.path.exists(output_file):
-            try:
-                with open(output_file, "r") as f:
-                    structured_output = TrendAnalysisList(**json.load(f))
-                file_logger.info("Loaded Trend Processor output from file, skipping agent execution.")
-                return {
-                    "final_processor": structured_output.model_dump(),
-                    "agent_memories": {
-                        **state.get("agent_memories", {}),
-                        "final_processor": {
-                            "trends_analyzed": structured_output.trend_analysis.total_sources_analyzed,
-                            "top_trends": len(structured_output.trend_analysis.style_trends),
-                            "avg_confidence": structured_output.overall_confidence_score,
-                            "processing_time": 0
-                        }
-                    },
-                    "execution_status": {
-                        **state.get("execution_status", {}),
-                        "final_processor": "completed"
-                    }
-                }
-            except Exception as e:
-                file_logger.warning(f"Failed to load cached Trend Processor output: {e}. Will rerun agent.")
-        return None
-    
-    cached = load_cached_output()
-    if cached:
-        await asyncio.to_thread(
-            storage.update_final_report,
-            record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
-            data=cached
-        )
-        return cached
+    # CACHE DISABLED - Always run agent fresh
+    # # Check for cached output from previous run
+    # def load_cached_output():
+    #     output_file = "data/trend_processor_output.json"
+    #     if os.path.exists(output_file):
+    #         try:
+    #             with open(output_file, "r") as f:
+    #                 structured_output = TrendAnalysisList(**json.load(f))
+    #             file_logger.info("Loaded Trend Processor output from file, skipping agent execution.")
+    #             return {
+    #                 "final_processor": structured_output.model_dump(),
+    #                 "agent_memories": {
+    #                     **state.get("agent_memories", {}),
+    #                     "final_processor": {
+    #                         "trends_analyzed": structured_output.trend_analysis.total_sources_analyzed,
+    #                         "top_trends": len(structured_output.trend_analysis.style_trends),
+    #                         "avg_confidence": structured_output.overall_confidence_score,
+    #                         "processing_time": 0
+    #                     }
+    #                 },
+    #                 "execution_status": {
+    #                     **state.get("execution_status", {}),
+    #                     "final_processor": "completed"
+    #                 }
+    #             }
+    #         except Exception as e:
+    #             file_logger.warning(f"Failed to load cached Trend Processor output: {e}. Will rerun agent.")
+    #     return None
+    # 
+    # cached = load_cached_output()
+    # if cached:
+    #     await asyncio.to_thread(
+    #         storage.update_final_report,
+    #         record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
+    #         data=cached
+    #     )
+    #     return cached
     
     console_logger.info("Starting Final Processor Agent...")
     
@@ -136,6 +138,19 @@ async def final_processor_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                 if isinstance(result, dict) and "structured_response" in result:
                     structured_output = result["structured_response"]
                     file_logger.info(f"Got structured response: {type(structured_output)}")
+                    
+                    # Extract token usage
+                    messages = result.get("messages", [])
+                    for msg in reversed(messages):
+                        if isinstance(msg, AIMessage) and hasattr(msg, 'usage_metadata') and msg.usage_metadata:
+                            token_tracker.set_current_agent("final_processor")
+                            token_tracker.add_usage(
+                                input_tokens=msg.usage_metadata.get("input_tokens", 0),
+                                output_tokens=msg.usage_metadata.get("output_tokens", 0),
+                                total_tokens=msg.usage_metadata.get("total_tokens", 0)
+                            )
+                            break
+                    
                     # Ensure it's a TrendAnalysisList instance
                     if not isinstance(structured_output, TrendAnalysisList):
                         structured_output = TrendAnalysisList(**structured_output)
@@ -181,7 +196,8 @@ async def final_processor_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                         "execution_status": {
                             **state.get("execution_status", {}),
                             "final_processor": "completed"
-                        }
+                        },
+                        "token_usage": token_tracker.get_usage()
                     }
                 else:
                     raise ValueError("Failed to parse Final Processor output")

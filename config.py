@@ -49,11 +49,64 @@ if not google_api_key:
     file_logger.error(error_msg)
     raise RuntimeError(error_msg)
 
+
+# Token Usage Tracking
+class TokenUsageTracker:
+    """Global tracker for LLM token usage across all agents."""
+    
+    def __init__(self):
+        self.input_tokens = 0
+        self.output_tokens = 0
+        self.total_tokens = 0
+        self.by_agent = {}
+        self._current_agent = "unknown"
+    
+    def set_current_agent(self, agent_name: str):
+        """Set the current agent context for attribution."""
+        self._current_agent = agent_name
+    
+    def add_usage(self, input_tokens: int = 0, output_tokens: int = 0, total_tokens: int = 0):
+        """Add token usage from an LLM call."""
+        self.input_tokens += input_tokens
+        self.output_tokens += output_tokens
+        self.total_tokens += total_tokens
+        
+        # Track by agent
+        if self._current_agent not in self.by_agent:
+            self.by_agent[self._current_agent] = {"input": 0, "output": 0, "total": 0}
+        self.by_agent[self._current_agent]["input"] += input_tokens
+        self.by_agent[self._current_agent]["output"] += output_tokens
+        self.by_agent[self._current_agent]["total"] += total_tokens
+        
+        file_logger.info(f"Token usage: +{total_tokens} ({self._current_agent}), cumulative: {self.total_tokens}")
+    
+    def get_usage(self) -> dict:
+        """Get current usage statistics."""
+        return {
+            "input_tokens": self.input_tokens,
+            "output_tokens": self.output_tokens,
+            "total_tokens": self.total_tokens,
+            "by_agent": self.by_agent
+        }
+    
+    def reset(self):
+        """Reset all counters."""
+        self.input_tokens = 0
+        self.output_tokens = 0
+        self.total_tokens = 0
+        self.by_agent = {}
+
+
+# Global token tracker instance
+token_tracker = TokenUsageTracker()
+
+
 # Gemini 2.5 Pro (multimodal; will be used for text+vision+video)
 llm = ChatGoogleGenerativeAI(
     model="gemini-2.5-pro",
     temperature=0,
-    google_api_key=google_api_key
+    google_api_key=google_api_key,
+    stream_usage=True  # Enable token usage tracking in streaming
 )
 
 
@@ -63,7 +116,7 @@ llm = ChatGoogleGenerativeAI(
 
 MCP_SCRAPER_CONFIG = {
     "Fashion News Scraper MCP": {
-        "url": "http://localhost:8000/mcp",
+        "url": "http://88.222.213.9:9000/mcp",
         "transport": "streamable_http",
         "timeout": 500.0,
         "sse_read_timeout": 1200  # 2 minutes timeout for scraping operations
@@ -72,7 +125,7 @@ MCP_SCRAPER_CONFIG = {
 
 MCP_IMAGE_CONFIG = {
     "Website Processing MCP": {
-        "url": "http://localhost:8100/mcp",
+        "url": "http://88.222.213.9:9100/mcp",
         "transport": "streamable_http",
         "timeout": 600.0,
         "sse_read_timeout": 1200
@@ -81,7 +134,7 @@ MCP_IMAGE_CONFIG = {
 
 MCP_VIDEO_CONFIG = {
     "Video Processing MCP": {
-        "url": "http://localhost:8001/mcp",
+        "url": "http://88.222.213.9:9001/mcp",
         "transport": "streamable_http",
         "timeout": 600.0,
         "sse_read_timeout": 1200  # 10 minutes timeout for video processing
@@ -91,7 +144,7 @@ MCP_VIDEO_CONFIG = {
 MCP_OUTFIT_CONFIG = {
     "outfit_server": {
         "transport": "streamable_http",
-        "url": "http://localhost:8002/mcp",
+        "url": "http://88.222.213.9:9002/mcp",
         "timeout": 600.0,  # 10 minutes timeout
         "sse_read_timeout": 1200
     }
@@ -452,6 +505,7 @@ __all__ = [
     "console_logger",
     "logger",
     "llm",
+    "token_tracker",
     "get_data_collector_prompt",
     "get_content_analyzer_prompt",
     "get_video_analyzer_prompt",

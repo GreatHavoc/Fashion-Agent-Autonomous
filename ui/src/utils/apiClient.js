@@ -177,6 +177,33 @@ export async function createThread() {
 }
 
 /**
+ * Search/list threads with filtering and pagination
+ * @param {Object} options - Search options
+ * @param {number} options.limit - Max results to return (default 20)
+ * @param {number} options.offset - Results to skip for pagination (default 0)
+ * @param {string} options.status - Filter by status (e.g., "idle", "busy")
+ * @param {Object} options.metadata - Filter by metadata key-value pairs
+ */
+export async function searchThreads(options = {}) {
+  const { limit = 20, offset = 0, status = null, metadata = {} } = options;
+
+  const body = {
+    limit,
+    offset,
+    order_by: "created_at",
+    sort_order: "desc"
+  };
+
+  if (status) body.status = status;
+  if (Object.keys(metadata).length > 0) body.metadata = metadata;
+
+  return fetchFromApi("/threads/search", {
+    method: "POST",
+    body: JSON.stringify(body)
+  });
+}
+
+/**
  * Stream a run on a thread
  */
 export async function streamRun(threadId, input) {
@@ -243,7 +270,7 @@ export const resumeRun = async (threadId, checkpoint, input, interruptId) => {
   }
 
   const url = `${API_URL}/threads/${threadId}/runs/stream`;
-  
+
   const requestBody = {
     command: {
       resume: {
@@ -269,12 +296,12 @@ export const resumeRun = async (threadId, checkpoint, input, interruptId) => {
     checkpoint_during: true
   };
 
-  console.log('Resume run request:', { 
-    url, 
-    threadId, 
+  console.log('Resume run request:', {
+    url,
+    threadId,
     interruptId,
     checkpointId: checkpoint.checkpoint_id,
-    body: requestBody 
+    body: requestBody
   });
   console.log('Resume run payload:', JSON.stringify(requestBody, null, 2));
   try {
@@ -444,7 +471,7 @@ export async function updateState(threadId, values, checkpointId, asNode) {
     checkpoint: checkpointId ? { checkpoint_id: checkpointId } : undefined,
     as_node: asNode
   };
-console.log("Updating thread state with payload:", payload);
+  console.log("Updating thread state with payload:", payload);
   return fetchFromApi(`/threads/${threadId}/state`, {
     method: "POST",
     body: JSON.stringify(payload),
@@ -503,7 +530,7 @@ export async function findCheckpointByNode(threadId, nodeName) {
     throw new Error('Node name is required');
   }
   const history = await getThreadHistory(threadId, { limit: 50 });
-  
+
   if (!history || history.length === 0) {
     throw new Error('No history found for this thread');
   }
@@ -514,17 +541,17 @@ export async function findCheckpointByNode(threadId, nodeName) {
     if (state.next && state.next.includes(nodeName)) {
       return true;
     }
-    
+
     // Check metadata for node information
     if (state.metadata && state.metadata.checkpoint_node === nodeName) {
       return true;
     }
-    
+
     // Check values for last executed node
     if (state.values && state.values.last_node === nodeName) {
       return true;
     }
-    
+
     return false;
   });
   if (!targetState) {
@@ -563,7 +590,7 @@ export async function updateStateAndRerun(threadId, nodeName, updatedData) {
   });
   // Step 3: Get the new checkpoint from the update response
   const newCheckpoint = updateResponse.checkpoint;
-  
+
   if (!newCheckpoint || !newCheckpoint.checkpoint_id) {
     throw new Error('No checkpoint received from state update');
   }

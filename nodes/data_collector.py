@@ -15,9 +15,10 @@ from langgraph.func import task
 from langchain_core.messages import HumanMessage
 
 from fashion_agent.utils import storage
-from fashion_agent.config import file_logger, console_logger, MAX_RETRIES, BASE_DELAY
+from fashion_agent.config import file_logger, console_logger, MAX_RETRIES, BASE_DELAY, token_tracker
 from fashion_agent.state import DataCollectorOutput
 from fashion_agent.agents import build_agent1_modern
+from langchain_core.messages import AIMessage
 
 
 async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
@@ -26,37 +27,38 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     
     Scrapes fashion URLs from configured sources and returns curated list.
     """
-    # Check for cached output from previous run
-    def load_cached_output():
-        output_file = "data/data_collector_output.json"
-        if os.path.exists(output_file):
-            try:
-                with open(output_file, "r") as f:
-                    structured_output = DataCollectorOutput(**json.load(f))
-
-                return {
-                    "data_collection": structured_output.model_dump(),
-                    "agent_memories": {
-                        **state.get("agent_memories", {}),
-                        "data_collector": {"last_analysis": structured_output.self_analysis}
-                    },
-                    "execution_status": {
-                        **state.get("execution_status", {}),
-                        "data_collector": "completed"
-                    }
-                }
-            except Exception as e:  
-                file_logger.warning(f"Failed to load cached Data Collector output: {e}. Will rerun agent.")
-        return None
-    
-    cached = load_cached_output()
-    if cached:
-        await asyncio.to_thread(
-            storage.update_data_collector,
-            record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
-            data=cached
-        )
-        return cached
+    # CACHE DISABLED - Always run agent fresh
+    # # Check for cached output from previous run
+    # def load_cached_output():
+    #     output_file = "data/data_collector_output.json"
+    #     if os.path.exists(output_file):
+    #         try:
+    #             with open(output_file, "r") as f:
+    #                 structured_output = DataCollectorOutput(**json.load(f))
+    #
+    #             return {
+    #                 "data_collection": structured_output.model_dump(),
+    #                 "agent_memories": {
+    #                     **state.get("agent_memories", {}),
+    #                     "data_collector": {"last_analysis": structured_output.self_analysis}
+    #                 },
+    #                 "execution_status": {
+    #                     **state.get("execution_status", {}),
+    #                     "data_collector": "completed"
+    #                 }
+    #             }
+    #         except Exception as e:  
+    #             file_logger.warning(f"Failed to load cached Data Collector output: {e}. Will rerun agent.")
+    #     return None
+    # 
+    # cached = load_cached_output()
+    # if cached:
+    #     await asyncio.to_thread(
+    #         storage.update_data_collector,
+    #         record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
+    #         data=cached
+    #     )
+    #     return cached
     
     console_logger.info("[Agent 1] Data Collector running...")
     file_logger.info("Starting Data Collector Agent...")
@@ -113,8 +115,25 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                     if isinstance(result, dict) and "structured_response" in result:
                         structured_output = result["structured_response"]
                         file_logger.info(f"Got structured response: {type(structured_output)}")
+                        
+                        # Extract token usage from messages
+                        token_usage = {"input_tokens": 0, "output_tokens": 0, "total_tokens": 0}
+                        messages = result.get("messages", [])
+                        for msg in reversed(messages):
+                            if isinstance(msg, AIMessage) and hasattr(msg, 'usage_metadata') and msg.usage_metadata:
+                                token_usage = {
+                                    "input_tokens": msg.usage_metadata.get("input_tokens", 0),
+                                    "output_tokens": msg.usage_metadata.get("output_tokens", 0),
+                                    "total_tokens": msg.usage_metadata.get("total_tokens", 0)
+                                }
+                                file_logger.info(f"Data collector token usage: {token_usage}")
+                                token_tracker.set_current_agent("data_collector")
+                                token_tracker.add_usage(**token_usage)
+                                break
+                        
                         # Return only the serializable Pydantic model dict
                         output_dict = structured_output.model_dump()
+                        output_dict["_token_usage"] = token_usage
                         # Clean up agent reference before returning
                         del agent
                         del result
@@ -189,7 +208,8 @@ async def data_collector_node(state: Dict[str, Any], config) -> Dict[str, Any]:
             "execution_status": {
                 **state.get("execution_status", {}),
                 "data_collector": "completed"
-            }
+            },
+            "token_usage": token_tracker.get_usage()
         }
         
         file_logger.info(f"Data collector returning {len(return_dict['data_collection']['url_list'])} URLs")

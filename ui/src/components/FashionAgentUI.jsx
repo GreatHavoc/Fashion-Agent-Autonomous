@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Play, Sparkles, AlertCircle, Loader, StopCircle } from 'lucide-react';
+import { Play, Sparkles, AlertCircle, Loader, StopCircle, Clock } from 'lucide-react';
 import UserInputForm from './UserInputForm';
 import OutfitReviewForm from './OutfitReviewForm';
 import './FashionAgentUI.css';
@@ -8,6 +8,7 @@ import DynamicForm from './DynamicForm';
 import TaskDataViewer from './TaskDataViewer';
 import PipelineProgress from './PipelineProgress';
 import InputRequiredModal from './InputRequiredModal';
+import RunHistoryPanel from './RunHistoryPanel';
 
 const FashionAgentUI = () => {
   const [threadId, setThreadId] = useState(null);
@@ -38,6 +39,8 @@ const FashionAgentUI = () => {
     outfit_designer: null,
     video_generation: null
   });
+  const [showHistory, setShowHistory] = useState(false);
+  const [tokenUsage, setTokenUsage] = useState({ input_tokens: 0, output_tokens: 0, total_tokens: 0 });
   const streamReaderRef = useRef(null);
   // Add this useEffect to log state changes after they've actually updated
   useEffect(() => {
@@ -273,6 +276,16 @@ const FashionAgentUI = () => {
         newNodes.add('outfit_designer');
         return [...newNodes];
       });
+    }
+
+    // Capture token usage from stream events
+    if (event.token_usage) {
+      console.log('Token usage received:', event.token_usage);
+      setTokenUsage(prev => ({
+        input_tokens: prev.input_tokens + (event.token_usage.input_tokens || 0),
+        output_tokens: prev.output_tokens + (event.token_usage.output_tokens || 0),
+        total_tokens: prev.total_tokens + (event.token_usage.total_tokens || 0)
+      }));
     }
 
     if (event.outfit_videos && Array.isArray(event.outfit_videos) && event.outfit_videos.length > 0) {
@@ -537,6 +550,7 @@ const FashionAgentUI = () => {
     setFailedNodes([]);
     setActiveNode(null);
     setWorkflowState('running');
+    setTokenUsage({ input_tokens: 0, output_tokens: 0, total_tokens: 0 }); // Reset token count
     // Reset task data
     setTaskData({
       data_collector: null,
@@ -1048,6 +1062,134 @@ const FashionAgentUI = () => {
     }
   };
 
+  /**
+   * Load a previous run's data from thread state into the UI
+   */
+  const loadPreviousRun = (loadedThreadId, state) => {
+    const values = state?.values || {};
+    console.log('Loading previous run:', loadedThreadId, values);
+
+    setThreadId(loadedThreadId);
+    setQuery(values.input?.query || 'Previous Run');
+
+    // Map state values to taskData
+    // TaskDataViewer expects: data.data_collection.url_list, data.video_analysis, etc.
+    setTaskData({
+      data_collector: values.data_collection ? { data_collection: values.data_collection } : null,
+      video_analyzer: values.video_analysis ? { video_analysis: values.video_analysis } : null,
+      content_analyzer: values.content_analysis ? { content_analysis: values.content_analysis } : null,
+      trend_processor: values.final_processor ? { final_processor: values.final_processor } : null,
+      outfit_designer: values.outfit_designs ? { outfit_designs: values.outfit_designs } : null,
+      video_generation: values.outfit_videos ? { outfit_videos: values.outfit_videos } : null
+    });
+
+
+    // Mark completed nodes based on execution_status or presence of data
+    // Backend uses: final_processor, video_generator
+    // Frontend expects: trend_processor, video_generation
+    const nodeNameMap = {
+      'data_collector': 'data_collector',
+      'video_analyzer': 'video_analyzer',
+      'content_analyzer': 'content_analyzer',
+      'final_processor': 'trend_processor',
+      'outfit_designer': 'outfit_designer',
+      'video_generator': 'video_generation',
+      // Also map frontend names to themselves for fallback
+      'trend_processor': 'trend_processor',
+      'video_generation': 'video_generation'
+    };
+
+    const executionStatus = values.execution_status || {};
+    const completed = Object.keys(executionStatus)
+      .filter(k => executionStatus[k] === 'completed')
+      .map(k => nodeNameMap[k] || k);
+
+    // Fallback: infer completion from data presence
+    if (completed.length === 0) {
+      if (values.data_collection) completed.push('data_collector');
+      if (values.video_analysis) completed.push('video_analyzer');
+      if (values.content_analysis) completed.push('content_analyzer');
+      if (values.final_processor) completed.push('trend_processor');
+      if (values.outfit_designs) completed.push('outfit_designer');
+      if (values.outfit_videos) completed.push('video_generation');
+    }
+
+    setCompletedNodes(completed);
+    setActiveNode(null);
+    setShowHistory(false);
+
+
+    // Check if there's an active interrupt
+    // LangGraph state has 'tasks' array with interrupt payloads when interrupted
+    const tasks = state?.tasks || [];
+    const interruptTask = tasks.find(t => t.interrupts && t.interrupts.length > 0);
+
+    if (interruptTask && interruptTask.interrupts?.length > 0) {
+      // There's an active interrupt - set interrupt state
+      const firstInterrupt = interruptTask.interrupts[0];
+      const interruptValue = firstInterrupt.value;
+      const interruptId = firstInterrupt.id;
+
+      console.log('Found interrupt in loaded run:', { interruptValue, interruptId });
+
+      // Determine interrupt type using same logic as main handleStreamEvent
+      let type = 'generic';
+
+      // Check if it's a user input request
+      if (interruptValue?.instructions) {
+        const hasCustomInputs =
+          interruptValue.instructions.custom_urls ||
+          interruptValue.instructions.custom_images ||
+          interruptValue.instructions.custom_videos ||
+          interruptValue.instructions.query;
+        if (hasCustomInputs) {
+          type = 'userinput';
+        }
+      }
+
+      // Check if it's an outfit review request
+      if (interruptValue?.type === 'human_review_node' ||
+        interruptValue?.outfits ||
+        interruptValue?.designs_to_review) {
+        type = 'review_outfit';
+        console.log('Identified as outfit review interrupt');
+      }
+
+      // Check message content for hints
+      if (interruptValue?.message) {
+        const msg = interruptValue.message.toLowerCase();
+        if (msg.includes('review') || msg.includes('critique') || msg.includes('outfit')) {
+          type = 'review_outfit';
+        } else if (msg.includes('url') || msg.includes('image') || msg.includes('video') || msg.includes('custom')) {
+          type = 'userinput';
+        }
+      }
+
+      console.log('Interrupt type determined:', type);
+
+      setInterruptType(type);
+      setCurrentInterrupt({
+        value: interruptValue,
+        id: interruptId
+      });
+      setWorkflowState('interrupted');
+      setIsInterrupted(true);
+    } else {
+      // No interrupt - workflow is complete
+      setWorkflowState('complete');
+      setIsInterrupted(false);
+      setCurrentInterrupt(null);
+      setInterruptType(null);
+    }
+
+    // Select first available task for display
+    const firstWithData = ['data_collector', 'video_analyzer', 'content_analyzer', 'trend_processor', 'outfit_designer', 'video_generation']
+      .find(task => completed.includes(task));
+    if (firstWithData) {
+      setSelectedTask(firstWithData);
+    }
+  };
+
 
   const getOutfitsToDisplay = () => {
     if (currentInterrupt?.value?.outfits) {
@@ -1084,12 +1226,37 @@ const FashionAgentUI = () => {
               <button onClick={startAnalysis} className="btn btn--primary" disabled={loading || !query.trim()}>
                 {loading ? 'Starting...' : 'Launch Pipeline'}
               </button>
+              <button onClick={() => setShowHistory(true)} className="btn btn--outline">
+                <Clock size={16} style={{ marginRight: '8px' }} /> Load Previous
+              </button>
             </div>
           ) : (
             <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
               <span className="hero__status">
                 Status: {workflowState.replace('_', ' ').toUpperCase()}
               </span>
+              {/* Token Usage Display */}
+              {tokenUsage.total_tokens > 0 && (
+                <div className="token-usage-badge" style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '8px',
+                  padding: '6px 12px',
+                  background: 'rgba(124, 92, 255, 0.15)',
+                  border: '1px solid rgba(124, 92, 255, 0.3)',
+                  borderRadius: '20px',
+                  fontSize: '0.85rem',
+                  color: 'rgba(255,255,255,0.8)'
+                }}>
+                  <span style={{ opacity: 0.7 }}>Tokens:</span>
+                  <span style={{ fontWeight: '600', color: '#a888ff' }}>
+                    {tokenUsage.total_tokens.toLocaleString()}
+                  </span>
+                  <span style={{ opacity: 0.5, fontSize: '0.75rem' }}>
+                    ({tokenUsage.input_tokens.toLocaleString()} in / {tokenUsage.output_tokens.toLocaleString()} out)
+                  </span>
+                </div>
+              )}
               {workflowState === 'running' && (
                 <button onClick={handleStop} className="btn btn--outline" style={{ borderColor: '#ef4444', color: '#ef4444' }}>
                   <StopCircle size={16} style={{ marginRight: '8px' }} /> Stop & Edit
@@ -1496,6 +1663,13 @@ const FashionAgentUI = () => {
           )}
         </InputRequiredModal>
       )}
+
+      {/* Run History Panel */}
+      <RunHistoryPanel
+        isOpen={showHistory}
+        onClose={() => setShowHistory(false)}
+        onLoadRun={loadPreviousRun}
+      />
     </div>
   );
 

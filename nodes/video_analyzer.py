@@ -18,10 +18,11 @@ from langgraph.func import task
 from langchain_core.messages import HumanMessage
 
 from fashion_agent.utils import storage
-from fashion_agent.config import file_logger, console_logger, MAX_RETRIES, BASE_DELAY
+from fashion_agent.config import file_logger, console_logger, MAX_RETRIES, BASE_DELAY, token_tracker
 from fashion_agent.state import VideoTrendOutput
 from fashion_agent.agents import build_agent3_modern
 from fashion_agent.tools import load_video_urls
+from langchain_core.messages import AIMessage
 
 
 async def video_analyzer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
@@ -30,50 +31,51 @@ async def video_analyzer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     
     Analyzes fashion videos in parallel to the data collector chain.
     """
-    # Check for cached output from previous run
-    def load_cached_output():
-        output_file = "data/video_analyzer_output.json"
-        if os.path.exists(output_file):
-            try:
-                with open(output_file, "r") as f:
-                    structured_output = VideoTrendOutput(**json.load(f))
-                
-                # Inject video URLs into cached per-video results if missing
-                video_urls = load_video_urls()
-                if structured_output.per_video_results:
-                    urls_injected = 0
-                    for idx, video_result in enumerate(structured_output.per_video_results):
-                        if idx < len(video_urls):
-                            # Check if video_url is missing or None
-                            if not video_result.video_url:
-                                video_result.video_url = video_urls[idx]
-                                urls_injected += 1
-                    if urls_injected > 0:
-                        file_logger.info(f"Injected {urls_injected} missing video URLs into cached results")
-                
-                return {
-                    "video_analysis": [structured_output.model_dump()],
-                    "agent_memories": {
-                        **state.get("agent_memories", {}),
-                        "video_analyzer": {"processed_videos": len(structured_output.per_video_results)}
-                    },
-                    "execution_status": {
-                        **state.get("execution_status", {}),
-                        "video_analyzer": "completed"
-                    }
-                }
-            except Exception as e:
-                file_logger.warning(f"Failed to load cached Video Analyzer output: {e}. Will rerun agent.")
-        return None
-    
-    cached = load_cached_output()
-    if cached:
-        await asyncio.to_thread(
-            storage.update_video_analyzer,
-            record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
-            data=cached
-        )
-        return cached
+    # CACHE DISABLED - Always run agent fresh
+    # # Check for cached output from previous run
+    # def load_cached_output():
+    #     output_file = "data/video_analyzer_output.json"
+    #     if os.path.exists(output_file):
+    #         try:
+    #             with open(output_file, "r") as f:
+    #                 structured_output = VideoTrendOutput(**json.load(f))
+    #             
+    #             # Inject video URLs into cached per-video results if missing
+    #             video_urls = load_video_urls()
+    #             if structured_output.per_video_results:
+    #                 urls_injected = 0
+    #                 for idx, video_result in enumerate(structured_output.per_video_results):
+    #                     if idx < len(video_urls):
+    #                         # Check if video_url is missing or None
+    #                         if not video_result.video_url:
+    #                             video_result.video_url = video_urls[idx]
+    #                             urls_injected += 1
+    #                 if urls_injected > 0:
+    #                     file_logger.info(f"Injected {urls_injected} missing video URLs into cached results")
+    #             
+    #             return {
+    #                 "video_analysis": [structured_output.model_dump()],
+    #                 "agent_memories": {
+    #                     **state.get("agent_memories", {}),
+    #                     "video_analyzer": {"processed_videos": len(structured_output.per_video_results)}
+    #                 },
+    #                 "execution_status": {
+    #                     **state.get("execution_status", {}),
+    #                     "video_analyzer": "completed"
+    #                 }
+    #             }
+    #         except Exception as e:
+    #             file_logger.warning(f"Failed to load cached Video Analyzer output: {e}. Will rerun agent.")
+    #     return None
+    # 
+    # cached = load_cached_output()
+    # if cached:
+    #     await asyncio.to_thread(
+    #         storage.update_video_analyzer,
+    #         record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
+    #         data=cached
+    #     )
+    #     return cached
     
     console_logger.info("Starting Video Analyzer Agent...")
     file_logger.debug(f"Input state keys: {list(state.keys())}")
@@ -146,6 +148,18 @@ async def video_analyzer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
                         elif structured_output.per_video_results:
                             file_logger.warning(f"Video result count ({len(structured_output.per_video_results)}) doesn't match URL count ({len(video_urls)})")
                         
+                        # Extract token usage from messages
+                        messages = result.get("messages", [])
+                        for msg in reversed(messages):
+                            if isinstance(msg, AIMessage) and hasattr(msg, 'usage_metadata') and msg.usage_metadata:
+                                token_tracker.set_current_agent("video_analyzer")
+                                token_tracker.add_usage(
+                                    input_tokens=msg.usage_metadata.get("input_tokens", 0),
+                                    output_tokens=msg.usage_metadata.get("output_tokens", 0),
+                                    total_tokens=msg.usage_metadata.get("total_tokens", 0)
+                                )
+                                break
+                        
                         # Return only the serializable Pydantic model dict
                         return structured_output.model_dump()
                     else:
@@ -216,7 +230,8 @@ async def video_analyzer_node(state: Dict[str, Any], config) -> Dict[str, Any]:
             "execution_status": {
                 **state.get("execution_status", {}),
                 "video_analyzer": "completed"
-            }
+            },
+            "token_usage": token_tracker.get_usage()
         }
         
         console_logger.info(f"Video analyzer returning analysis with {len(return_dict['video_analysis'])} results")
