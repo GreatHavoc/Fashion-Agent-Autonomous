@@ -15,34 +15,35 @@ from fashion_agent.tools.helpers import make_video
 async def video_generator_node(state: Dict[str, Any], config) -> Dict[str, Any]:
     """LangGraph node for video generation - runs after outfit designer."""
     
-    def load_cached_output():
-        """Check if cached video generation output exists."""
-        output_file = "data/video_generation_collection_output.json"
-        if os.path.exists(output_file):
-            try:
-                with open(output_file, "r") as f:
-                    structured_output = VideoGenerationCollectionOutput(**json.load(f))
-                
-                file_logger.info("Loaded Video Generation output from file, skipping agent execution.")
-                
-                return {
-                    "outfit_videos": [structured_output.model_dump()],
-                    "agent_memories": {
-                        **state.get("agent_memories", {}),
-                        "video_generator": {
-                            "videos_generated": structured_output.successful_videos,
-                            "videos_failed": structured_output.failed_videos,
-                            "total_processing_time": structured_output.total_processing_time
-                        }
-                    },
-                    "execution_status": {
-                        **state.get("execution_status", {}),
-                        "video_generator": "completed"
-                    }
-                }
-            except Exception as e:
-                file_logger.warning(f"Failed to load cached Video Generation output: {e}. Will rerun agent.")
-        return None
+    # CACHE DISABLED - Always run agent fresh
+    # def load_cached_output():
+    #     """Check if cached video generation output exists."""
+    #     output_file = "data/video_generation_collection_output.json"
+    #     if os.path.exists(output_file):
+    #         try:
+    #             with open(output_file, "r") as f:
+    #                 structured_output = VideoGenerationCollectionOutput(**json.load(f))
+    #             
+    #             file_logger.info("Loaded Video Generation output from file, skipping agent execution.")
+    #             
+    #             return {
+    #                 "outfit_videos": [structured_output.model_dump()],
+    #                 "agent_memories": {
+    #                     **state.get("agent_memories", {}),
+    #                     "video_generator": {
+    #                         "videos_generated": structured_output.successful_videos,
+    #                         "videos_failed": structured_output.failed_videos,
+    #                         "total_processing_time": structured_output.total_processing_time
+    #                     }
+    #                 },
+    #                 "execution_status": {
+    #                     **state.get("execution_status", {}),
+    #                     "video_generator": "completed"
+    #                 }
+    #             }
+    #         except Exception as e:
+    #             file_logger.warning(f"Failed to load cached Video Generation output: {e}. Will rerun agent.")
+    #     return None
     
     async def _check_and_archive(result_dict: Dict[str, Any], config):
         """Check if workflow is complete and archive if successful."""
@@ -69,19 +70,20 @@ async def video_generator_node(state: Dict[str, Any], config) -> Dict[str, Any]:
             failed_agents = [agent for agent in required_agents if execution_status.get(agent) != "completed"]
             file_logger.warning(f"Failed/incomplete agents: {failed_agents}")
     
-    cached = load_cached_output()
-    if cached:
-        from ..utils import storage
-        await asyncio.to_thread(
-            storage.update_video_generation,
-            record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
-            data=cached
-        )
-        
-        # Check if workflow is complete
-        await _check_and_archive(cached, config)
-        
-        return cached
+    # CACHE DISABLED - Always run agent fresh
+    # cached = load_cached_output()
+    # if cached:
+    #     from ..utils import storage
+    #     await asyncio.to_thread(
+    #         storage.update_video_generation,
+    #         record_id=f"fashion_analysis_{config['configurable']['thread_id']}",
+    #         data=cached
+    #     )
+    #     
+    #     # Check if workflow is complete
+    #     await _check_and_archive(cached, config)
+    #     
+    #     return cached
     
     console_logger.info("Starting Video Generator Agent...")
     
