@@ -30,7 +30,8 @@ from fashion_agent.tools.mcp_clients import (
     get_scraper_tools,
     get_image_tools,
     get_video_tools,
-    get_outfit_tools
+    get_outfit_tools,
+    get_tavily_tools
 )
 
 
@@ -44,8 +45,16 @@ async def build_agent1_modern():
         file_logger.info("Building data collector agent...")
         
         # Get MCP tools directly - no @task needed for async operations
-        tools = await get_scraper_tools()
-        file_logger.info(f"Retrieved {len(tools)} scraper tools")
+        scraper_tools = await get_scraper_tools()
+        file_logger.info(f"Retrieved {len(scraper_tools)} scraper tools")
+        
+        # Get Tavily tools for web search (optional)
+        tavily_tools = await get_tavily_tools()
+        file_logger.info(f"Retrieved {len(tavily_tools)} Tavily tools")
+        
+        # Combine all tools
+        tools = scraper_tools + tavily_tools
+        file_logger.info(f"Total tools for data collector: {len(tools)}")
         
         # Create LangChain v1 agent with structured output and memory isolation
         agent = create_agent(
@@ -80,8 +89,16 @@ async def build_agent2_modern():
         file_logger.info("Building content analyzer agent...")
         
         # Get MCP tools directly - no @task needed for async operations
-        tools = await get_image_tools()
-        file_logger.info(f"Retrieved {len(tools)} image tools")
+        image_tools = await get_image_tools()
+        file_logger.info(f"Retrieved {len(image_tools)} image tools")
+        
+        # Get Tavily tools for URL content extraction (optional)
+        tavily_tools = await get_tavily_tools()
+        file_logger.info(f"Retrieved {len(tavily_tools)} Tavily tools")
+        
+        # Combine all tools
+        tools = image_tools + tavily_tools
+        file_logger.info(f"Total tools for content analyzer: {len(tools)}")
         
         agent = create_agent(
             model=llm,

@@ -279,13 +279,14 @@ const FashionAgentUI = () => {
     }
 
     // Capture token usage from stream events
+    // Backend sends accumulated totals, so replace (don't add)
     if (event.token_usage) {
       console.log('Token usage received:', event.token_usage);
-      setTokenUsage(prev => ({
-        input_tokens: prev.input_tokens + (event.token_usage.input_tokens || 0),
-        output_tokens: prev.output_tokens + (event.token_usage.output_tokens || 0),
-        total_tokens: prev.total_tokens + (event.token_usage.total_tokens || 0)
-      }));
+      setTokenUsage({
+        input_tokens: event.token_usage.input_tokens || 0,
+        output_tokens: event.token_usage.output_tokens || 0,
+        total_tokens: event.token_usage.total_tokens || 0
+      });
     }
 
     if (event.outfit_videos && Array.isArray(event.outfit_videos) && event.outfit_videos.length > 0) {

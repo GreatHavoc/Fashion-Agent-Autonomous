@@ -232,27 +232,27 @@ body {
 }
 
 .hero__visual .grid__item:nth-child(1) {
-    --grid-image: url('assets/genai_imgs/ai_gen1.jpg');
+    --grid-image: url('/assets/genai_imgs/ai_gen1.jpg');
 }
 
 .hero__visual .grid__item:nth-child(2) {
-    --grid-image: url('assets/genai_imgs/ai_gen2.jpg');
+    --grid-image: url('/assets/genai_imgs/ai_gen2.jpg');
 }
 
 .hero__visual .grid__item:nth-child(3) {
-    --grid-image: url('assets/genai_imgs/ai_gen3.jpg');
+    --grid-image: url('/assets/genai_imgs/ai_gen3.jpg');
 }
 
 .hero__visual .grid__item:nth-child(4) {
-    --grid-image: url('assets/genai_imgs/ai_gen4.jpg');
+    --grid-image: url('/assets/genai_imgs/ai_gen4.jpg');
 }
 
 .hero__visual .grid__item:nth-child(5) {
-    --grid-image: url('assets/genai_imgs/ai_gen5.jpg');
+    --grid-image: url('/assets/genai_imgs/ai_gen5.jpg');
 }
 
 .hero__visual .grid__item:nth-child(6) {
-    --grid-image: url('assets/genai_imgs/ai_gen6.jpg');
+    --grid-image: url('/assets/genai_imgs/ai_gen6.jpg');
 }
 
 .stageboard {

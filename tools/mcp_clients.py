@@ -15,8 +15,10 @@ from fashion_agent.config import (
     MCP_IMAGE_CONFIG,
     MCP_VIDEO_CONFIG,
     MCP_OUTFIT_CONFIG,
+    MCP_TAVILY_CONFIG,
     SCRAPER_TOOL_NAMES,
-    IMAGE_TOOL_PREFERRED_NAMES
+    IMAGE_TOOL_PREFERRED_NAMES,
+    TAVILY_TOOL_NAMES
 )
 
 
@@ -28,6 +30,7 @@ MCP_CLIENT_SCRAPE: Optional[MultiServerMCPClient] = None
 MCP_CLIENT_IMAGE: Optional[MultiServerMCPClient] = None
 MCP_CLIENT_VIDEO: Optional[MultiServerMCPClient] = None
 MCP_CLIENT_OUTFIT: Optional[MultiServerMCPClient] = None
+MCP_CLIENT_TAVILY: Optional[MultiServerMCPClient] = None
 
 
 # =========================
@@ -68,6 +71,24 @@ def get_mcp_outfit() -> Optional[MultiServerMCPClient]:
             file_logger.warning(f"Failed to create outfit MCP client: {e}")
             MCP_CLIENT_OUTFIT = None
     return MCP_CLIENT_OUTFIT
+
+
+def get_mcp_tavily() -> Optional[MultiServerMCPClient]:
+    """Get or create MCP client for Tavily web search.
+    
+    Returns None if Tavily API key is not configured.
+    """
+    global MCP_CLIENT_TAVILY
+    if MCP_CLIENT_TAVILY is None:
+        if not MCP_TAVILY_CONFIG:
+            file_logger.warning("Tavily MCP not configured - set TavilyAPI environment variable")
+            return None
+        try:
+            MCP_CLIENT_TAVILY = MultiServerMCPClient(MCP_TAVILY_CONFIG)
+        except Exception as e:
+            file_logger.warning(f"Failed to create Tavily MCP client: {e}")
+            MCP_CLIENT_TAVILY = None
+    return MCP_CLIENT_TAVILY
 
 
 # =========================
@@ -172,3 +193,32 @@ async def get_image_tool():
     if tools:
         return tools[0]
     raise RuntimeError("No MCP image tool available. Ensure your Image MCP server is running and exposes a tool.")
+
+
+async def get_tavily_tools() -> List:
+    """Get Tavily MCP tools for web search and content extraction.
+    
+    Returns tools like tavily-search and tavily-extract.
+    Returns empty list if Tavily API key is not configured.
+    """
+    try:
+        client = get_mcp_tavily()
+        if not client:
+            file_logger.warning("Tavily MCP client not available - skipping Tavily tools")
+            return []
+        
+        tools = await client.get_tools()
+        file_logger.info(f"Retrieved {len(tools)} tools from Tavily MCP")
+        
+        # Filter to specific tools if configured
+        if TAVILY_TOOL_NAMES:
+            filtered = [t for t in tools if getattr(t, "name", None) in TAVILY_TOOL_NAMES]
+            file_logger.info(f"Filtered to {len(filtered)} Tavily tools: {[getattr(t, 'name', '') for t in filtered]}")
+            return filtered
+        
+        return tools
+        
+    except Exception as e:
+        file_logger.error(f"Failed to get Tavily tools: {e}")
+        file_logger.error(f"Tavily tools traceback: {traceback.format_exc()}")
+        return []

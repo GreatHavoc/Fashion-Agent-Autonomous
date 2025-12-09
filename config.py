@@ -150,6 +150,17 @@ MCP_OUTFIT_CONFIG = {
     }
 }
 
+# Tavily MCP for web search and content extraction
+TAVILY_API_KEY = config('TavilyAPI', default='')
+MCP_TAVILY_CONFIG = {
+    "Tavily MCP": {
+        "url": f"https://mcp.tavily.com/mcp/?tavilyApiKey={TAVILY_API_KEY}",
+        "transport": "streamable_http",
+        "timeout": 120.0,
+        "sse_read_timeout": 300
+    }
+} if TAVILY_API_KEY else {}
+
 
 # =========================
 # Video URLs Configuration
@@ -190,6 +201,11 @@ IMAGE_TOOL_PREFERRED_NAMES = [
     "analyze_webpage_structure",
     "batch_screenshot_urls",
     "extract_content_with_custom_wait"
+]
+
+TAVILY_TOOL_NAMES = [
+    "tavily-search",   # Web search for AI agents
+    "tavily-extract",  # Extract content from URLs
 ]
 
 
@@ -519,4 +535,6 @@ __all__ = [
     "MCP_OUTFIT_CONFIG",
     "SCRAPER_TOOL_NAMES",
     "IMAGE_TOOL_PREFERRED_NAMES",
+    "MCP_TAVILY_CONFIG",
+    "TAVILY_TOOL_NAMES",
 ]

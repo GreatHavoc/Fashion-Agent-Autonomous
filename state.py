@@ -49,6 +49,23 @@ def merge_dicts(left: Dict[str, str], right: Dict[str, str]) -> Dict[str, str]:
     return {**left, **right}
 
 
+def merge_token_usage(left: Dict[str, Any], right: Dict[str, Any]) -> Dict[str, Any]:
+    """Merge token usage from parallel nodes by taking the latest cumulative values.
+    
+    Since TokenTracker accumulates globally, the 'right' value always has the latest
+    cumulative totals, so we just return right (which contains the full accumulated state).
+    
+    Args:
+        left: Previous token usage dict
+        right: New token usage dict (with accumulated totals)
+        
+    Returns:
+        The latest token usage with accumulated totals
+    """
+    # Right always has the latest accumulated values from token_tracker.get_usage()
+    return right
+
+
 # =========================
 # Human-in-the-Loop Models
 # =========================
@@ -485,6 +502,6 @@ class FashionAnalysisState(TypedDict):
     execution_status: Annotated[Dict[str, str], merge_dicts]
     errors: Annotated[Dict[str, str], merge_dicts]
     
-    # Token usage tracking (accumulated from streaming)
-    token_usage: Dict[str, Any]  # {input_tokens, output_tokens, total_tokens, by_agent}
+    # Token usage tracking (accumulated from streaming) - needs reducer for parallel nodes
+    token_usage: Annotated[Dict[str, Any], merge_token_usage]  # {input_tokens, output_tokens, total_tokens, by_agent}
 
