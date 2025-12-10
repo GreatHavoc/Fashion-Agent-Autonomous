@@ -872,8 +872,8 @@ const TaskDataViewer = ({
 
     const mediaMix = urls.reduce((acc, item) => {
       if (isYouTubeUrl(item.url)) acc.video++;
-      else if (isImageUrl(item.url)) acc.image++;
-      else acc.text++;
+      if (item.image_url && item.image_url.trim()) acc.image++;  // Check image_url field
+      if (!isYouTubeUrl(item.url) && (!item.image_url || !item.image_url.trim())) acc.text++;
       return acc;
     }, { video: 0, image: 0, text: 0 });
 
@@ -973,16 +973,16 @@ const TaskDataViewer = ({
             </div>
           </div>
 
-          {/* Media Mix */}
+          {/* Rich Content */}
           <div style={statItemStyle}>
-            <div style={{ ...iconBoxStyle, background: 'rgba(74, 210, 149, 0.1)', color: '#4ad295' }}><FaYoutube size={16} /></div>
+            <div style={{ ...iconBoxStyle, background: 'rgba(74, 210, 149, 0.1)', color: '#4ad295' }}><FaRegImage size={16} /></div>
             <div>
-              <div style={{ fontSize: '10px', color: THEME.textSecondary, textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: '600' }}>Media Mix</div>
+              <div style={{ fontSize: '10px', color: THEME.textSecondary, textTransform: 'uppercase', letterSpacing: '0.05em', fontWeight: '600' }}>Rich Content</div>
               <div style={{ fontSize: '20px', fontWeight: '700', color: '#fff', lineHeight: '1.1' }}>
-                {mediaMix.video} <span style={{ fontSize: '13px', fontWeight: '400', color: 'rgba(255,255,255,0.4)' }}>vids</span> • {mediaMix.image} <span style={{ fontSize: '13px', fontWeight: '400', color: 'rgba(255,255,255,0.4)' }}>imgs</span>
+                {mediaMix.image} <span style={{ fontSize: '13px', fontWeight: '400', color: 'rgba(255,255,255,0.4)' }}>with images</span>
               </div>
               <div style={{ fontSize: '11px', color: 'rgba(255,255,255,0.3)', marginTop: '2px' }}>
-                {mediaMix.video > 0 ? `${Math.round((mediaMix.video / urls.length) * 100)}% Video` : 'Text Heavy'}
+                {mediaMix.image > 0 ? `${Math.round((mediaMix.image / urls.length) * 100)}% visual` : 'Text only'}
               </div>
             </div>
           </div>

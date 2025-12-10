@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:2024";
+const API_URL = "https://langgrap.onelogica.com";
 
 /**
  * Enhanced error class for API errors

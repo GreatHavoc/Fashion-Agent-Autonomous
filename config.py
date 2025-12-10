@@ -116,7 +116,7 @@ llm = ChatGoogleGenerativeAI(
 
 MCP_SCRAPER_CONFIG = {
     "Fashion News Scraper MCP": {
-        "url": "http://88.222.213.9:9000/mcp",
+        "url": "https://mcpserver.onelogica.com/mcp",
         "transport": "streamable_http",
         "timeout": 500.0,
         "sse_read_timeout": 1200  # 2 minutes timeout for scraping operations
@@ -125,7 +125,7 @@ MCP_SCRAPER_CONFIG = {
 
 MCP_IMAGE_CONFIG = {
     "Website Processing MCP": {
-        "url": "http://88.222.213.9:9100/mcp",
+        "url": "https://urlprocesser.onelogica.com/mcp",
         "transport": "streamable_http",
         "timeout": 600.0,
         "sse_read_timeout": 1200
@@ -134,7 +134,7 @@ MCP_IMAGE_CONFIG = {
 
 MCP_VIDEO_CONFIG = {
     "Video Processing MCP": {
-        "url": "http://88.222.213.9:9001/mcp",
+        "url": "https://videomcp.onelogica.com/mcp",
         "transport": "streamable_http",
         "timeout": 600.0,
         "sse_read_timeout": 1200  # 10 minutes timeout for video processing
@@ -144,7 +144,7 @@ MCP_VIDEO_CONFIG = {
 MCP_OUTFIT_CONFIG = {
     "outfit_server": {
         "transport": "streamable_http",
-        "url": "http://88.222.213.9:9002/mcp",
+        "url": "https://outfitmcp.onelogica.com/mcp",
         "timeout": 600.0,  # 10 minutes timeout
         "sse_read_timeout": 1200
     }

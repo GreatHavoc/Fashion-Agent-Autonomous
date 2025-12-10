@@ -1211,7 +1211,7 @@ const FashionAgentUI = () => {
 
       <header className="hero">
         <div className="hero__content">
-          <h1>Trent Digital Fashion House</h1>
+          <h1>RunwayMind AI</h1>
           <p>Design studio in the cloud powered by Agentic AI.</p>
 
           {workflowState === 'idle' ? (
