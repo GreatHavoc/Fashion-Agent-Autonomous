@@ -494,8 +494,8 @@ class FashionAnalysisState(TypedDict):
     content_analysis: Annotated[List[Dict[str, Any]], operator.add]
     video_analysis: Annotated[List[Dict[str, Any]], operator.add]
     final_processor: Dict[str, Any]
-    outfit_designs: List[Dict[str, Any]]
-    outfit_videos: List[Dict[str, Any]]
+    outfit_designs: Annotated[List[Dict[str, Any]], lambda old, new: new if new else old]  # Replace with latest
+    outfit_videos: Annotated[List[Dict[str, Any]], lambda old, new: new if new else old]  # Replace with latest
     
     # State management - all need reducers for parallel node updates
     agent_memories: Annotated[Dict[str, Dict[str, Any]], merge_agent_memories]

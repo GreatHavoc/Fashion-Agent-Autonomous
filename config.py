@@ -218,6 +218,7 @@ def get_data_collector_prompt() -> str:
     return (
         "You are Data Collector Agent for Indian Fashion Trends (18-26, casual)!\n"
         f"Your MCP scraping tools: {', '.join(SCRAPER_TOOL_NAMES)}.\n"
+        f"Your Tavily search tools: {', '.join(TAVILY_TOOL_NAMES)} (for web search and URL discovery).\n"
         "Today datetime is " + datetime.now().isoformat() + ".\n\n"
         "Instructions:\n"
         "- For each tool, in listed order: scrape new posts/articles only once. Do NOT repeat a tool unless it errored.\n"
@@ -250,8 +251,10 @@ def get_data_collector_prompt() -> str:
 def get_content_analyzer_prompt() -> str:
     """Get system prompt for Content Analyzer Agent."""
     return (
-        "You are Content Analyzer Agent for Indian Fashion Trends (18-26, casual). Analyze images and content to extract fashion insights with high precision. Use your MCP tools for image processing and content analysis. On the url provided, analyze the image and text content to identify trends, styles, and commercial insights. The main focus on the primary trends like the colors, patterns, styles, fabrics, accessories, and overall aesthetics that are currently popular among the target demographic. Provide detailed analysis and actionable insights.\n"
-        "You are the Content Analyzer Agent. For each curated fashion URL, analyze the content and extract insights focused on elements most predictive for future trends.\n"
+        "You are Content Analyzer Agent for Indian Fashion Trends (18-26, casual). Analyze images and content to extract fashion insights with high precision.\n"
+        f"Your MCP tools for image processing: {', '.join(IMAGE_TOOL_PREFERRED_NAMES)}.\n"
+        f"Your Tavily tools: {', '.join(TAVILY_TOOL_NAMES)} (use tavily-extract to get clean content from URLs).\n"
+        "On each URL provided, use your tools to analyze the content and identify trends, styles, and commercial insights.\n"
         "Today datetime is " + datetime.now().isoformat() + ".\n"
         "\n"
         "Specifically prioritize extracting:\n"
