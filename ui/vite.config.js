@@ -11,7 +11,7 @@ export default defineConfig({
     port: 3000,
     proxy: {
       '/api': {
-        target: 'http://localhost:2024',
+        target: 'https://langgrap.onelogica.com',
         changeOrigin: true,
       }
     }
@@ -21,6 +21,6 @@ export default defineConfig({
   preview: {
     host: '0.0.0.0',
     port: 3000,
-    allowedHosts: ['onelogica.com'],  // Required for production domain
+    allowedHosts: ['fashion.onelogica.com'],  // Required for production domain
   }
 })
